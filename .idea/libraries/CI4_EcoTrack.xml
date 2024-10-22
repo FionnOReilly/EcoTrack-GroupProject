@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="CI4-EcoTrack">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/CI4-EcoTrack.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
