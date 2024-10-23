@@ -3,3 +3,13 @@
     font-weight: bold;
     text-align: center;
 }
+table, th, td
+{
+    width:500px;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 2px;
+    border-collapse: collapse;
+    background-color: #80CED6;
+
+}
