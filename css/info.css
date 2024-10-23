@@ -1,0 +1,29 @@
+.info-card {
+    color: black;
+    box-shadow: 0 0 1em darkslategray;
+    padding: 2em;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #42A5A2;}
+   
+ img {
+    max-width: 100%;
+    
+}
+
+    @media  screen and (min-width: 992px) /*desktop */ {
+        .grid-container {
+            display:grid;
+            grid-template-columns: auto ;
+            margin:auto;
+        }
+    
+        .info-card {
+            color: black;
+            box-shadow: 0 0 1em darkslategray;
+            padding: 2em;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: #42A5A2;}
+    
+       }
