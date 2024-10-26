@@ -22,3 +22,12 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+### Install the router
+npm install vue-router
+
+### Install axios for HTTP requests
+npm install axios
+
+
