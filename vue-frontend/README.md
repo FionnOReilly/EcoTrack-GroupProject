@@ -1,5 +1,9 @@
 # vue-frontend
 
+Open the terminal and enter the path to the folder vue-frontend
+cd C:\your-path/GitHub\EcoTrack-GroupProject\vue-frontend
+
+run the below: 
 ## Project setup
 ```
 npm install
