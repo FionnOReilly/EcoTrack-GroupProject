@@ -5,8 +5,6 @@ import router from "@/router";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
 import '@/assets/css/nav-footer.css'; 
-import '@/assets/css/informationStyles.css'
-import '@/assets/css/registerStyles.css'
 
 
 

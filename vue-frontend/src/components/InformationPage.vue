@@ -1,6 +1,6 @@
 <template>
   <section>
-        <div class="grid-container">
+        <div class="info-container">
             <img src="@/assets/images/Solid-Waste-Management.png">
 
             <div class="info-card">
@@ -119,3 +119,42 @@
     </section>
    
 </template>
+
+
+<script>
+export default {
+  name: 'InformationPage',
+};
+</script>
+
+<style scoped>
+.info-card {
+    color: black;
+    box-shadow: 0 0 1em darkslategray;
+    padding: 2em;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #42A5A2;}
+   
+ img {
+    max-width: 100%;
+    
+}
+
+    @media  screen and (min-width: 992px) /*desktop */ {
+        .info-container {
+            display:grid;
+            grid-template-columns: auto ;
+            margin:auto;
+        }
+    
+        .info-card {
+            color: black;
+            box-shadow: 0 0 1em darkslategray;
+            padding: 2em;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: #42A5A2;}
+    
+       }
+</style>

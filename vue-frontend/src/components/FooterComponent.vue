@@ -23,3 +23,96 @@
   </div>
 </footer>
 </template>
+
+<style scoped>
+
+
+
+.text-start {
+    text-align: left; 
+  }
+  
+  .logo {
+    width: 150px; 
+    height: auto; 
+  }
+  
+  .custom-header {
+    background-color: #42A5A2;
+  }
+  
+  .navbar-brand {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .navbar-nav .nav-link {
+    color: black; 
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: white;
+  }
+  
+  header{
+    margin-bottom: 15px;
+  }
+  
+  footer{
+    margin-top: 15px;
+  }
+  
+  .custom-footer {
+    background-color: #42A5A2; 
+    border-top: 1px solid #ddd;
+  }
+  
+  .custom-footer p,
+  .custom-footer a {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .custom-footer a:hover {
+    color: white; 
+  }
+  
+  
+  /* Responsive Styles */
+  @media (max-width: 1200px) {
+    .navbar-brand {
+      font-size: 1.5rem; 
+    }
+  
+    .custom-btn {
+      padding: 8px 16px; 
+      font-size: 0.9rem; 
+    }
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .navbar-brand {
+      font-size: 1.2rem; 
+    }
+  
+    .portfolio-img {
+      max-width: 100%; 
+    }
+  
+  
+    .custom-footer p {
+      font-size: 0.9rem; 
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .navbar-nav .nav-link {
+      font-size: 0.8rem; 
+    }
+  
+    .custom-btn {
+      width: 100%; 
+    }
+  }
+  </style>

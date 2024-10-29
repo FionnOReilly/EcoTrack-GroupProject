@@ -3,6 +3,12 @@
     text-align: left; 
   }
   
+  body{
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #FFFEEF;
+  }
+
   .logo {
     width: 150px; 
     height: auto; 

@@ -2,7 +2,7 @@
   <header class="custom-header py-3">
     <div class="container">
       <nav class="navbar navbar-expand-lg">
-        <img src="" class="img-fluid logo-small" alt="Logo">
+        <img src="@/assets/images/EcoTrackLogo.png" alt="Logo">
         <button
           class="navbar-toggler"
           type="button"
@@ -20,7 +20,7 @@
               <router-link to="/" class="nav-link active">Home</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/" class="nav-link">Log Waste</router-link>
+              <router-link to="/WasteLogging" class="nav-link">Log Waste</router-link>
             </li>
             <li class="nav-item">
               <router-link to="Information" class="nav-link">Information</router-link>
@@ -38,6 +38,3 @@
   </header>
 </template>
 
-<style scoped>
-/* Additional styles specific to this component, if needed */
-</style>

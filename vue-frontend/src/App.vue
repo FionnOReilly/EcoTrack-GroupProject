@@ -15,5 +15,5 @@ import FooterComponent from "@/components/FooterComponent.vue";
 </script>
 
 <style>
-/* Optional: Add global styles here */
+
 </style>
