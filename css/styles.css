@@ -26,6 +26,13 @@
   color: white;
 }
 
+header{
+  margin-bottom: 15px;
+}
+
+footer{
+  margin-top: 15px;
+}
 
 .custom-footer {
   background-color: #42A5A2; 
