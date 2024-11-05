@@ -128,6 +128,9 @@ export default {
 </script>
 
 <style scoped>
+.info-container{
+  padding-top: 15px;
+}
 .info-card {
     color: black;
     box-shadow: 0 0 1em darkslategray;

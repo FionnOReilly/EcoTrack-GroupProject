@@ -2,7 +2,7 @@
   <header class="custom-header py-3">
     <div class="container">
       <nav class="navbar navbar-expand-lg">
-        <img src="@/assets/images/EcoTrackLogo.png" alt="Logo">
+        <router-link to="/"><img src="@/assets/images/EcoTrackLogo.png" alt="Logo"></router-link>
         <button
           class="navbar-toggler"
           type="button"
@@ -38,3 +38,5 @@
   </header>
 </template>
 
+<script setup>
+</script>
