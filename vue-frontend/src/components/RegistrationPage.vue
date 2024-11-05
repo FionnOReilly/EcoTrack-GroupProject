@@ -37,13 +37,23 @@
     </form>
   </div>
 </div>
+
+<FooterComponent></FooterComponent>
 </template>
 
 
+<script>
+import FooterComponent from './FooterComponent.vue';
+
+export default {
+  name: 'RegistrationPage',
+  components: {FooterComponent,
+  }
+};
+
+</script>
 
 <style scoped>
-
-
 .wrapper {
     display: flex;
     flex-direction: column;

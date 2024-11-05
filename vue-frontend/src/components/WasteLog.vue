@@ -68,15 +68,26 @@
     </tr>
   </table>
 </div>
- 
+
 </div>
+
+
+<FooterComponent></FooterComponent>
+ 
+
 
 </template>
 
 <script>
+
+import FooterComponent from "./FooterComponent.vue"; 
+
 export default {
   name: 'WasteLogPage',
+  components: {FooterComponent,
+  }
 };
+
 </script>
 
 <style scoped>
