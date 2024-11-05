@@ -3,7 +3,7 @@
   <!-- Registration Form -->
   <div class="Registercontainer">
     <form class="register-form">
-      <h2>Register</h2>
+      <legend>Register </legend>
 
       <div class="form-group">
         <label for="first-name">First Name:</label>
@@ -30,10 +30,10 @@
         <input type="password" id="confirm-password" name="confirm-password" required>
       </div>
 
-      <div class="buttons">
-        <button type="submit" class="submit-btn">Submit</button>
-        <button type="button" class="cancel-btn">Cancel</button>
-      </div>
+      <div class="buttonContainer">
+          <input type="submit" value="Submit" class="contactButton" id="submitButton">
+          <input type="reset" value="Reset" class="contactButton" id="resetButton">
+        </div>
     </form>
   </div>
 </div>
@@ -110,11 +110,40 @@
     font-weight: bold;
   }
   
-  .form-group {
+  .Registercontainer {
+    width: 90%;
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #d0e8e7; 
+    padding: 0 30px 30px; 
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    text-align: center;
+    overflow: hidden; 
+}
+
+legend {
+    margin: 0; 
+    padding: 15px 0; 
+    border-radius: 20px 20px 0 0; 
+    background-color: #71BAC1; 
+    font-size: 1.5em;
+    font-weight: bold;
+    width: calc(100% + 60px); 
+    position: relative;
+    left: -30px; 
+    box-sizing: border-box; 
+    text-align: center;
+}
+
+
+.form-group {
     display: flex;
-    align-items: center; /* Vertically center the label and input */
-    margin-bottom: 15px; /* Space between form groups */
-  }
+    align-items: center; 
+    margin-bottom: 15px; 
+    padding-top: 15px; 
+}
+
   
   label {
     display: block;
@@ -134,6 +163,8 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f0f8f7; /* Light input background */
+    width: calc(100% - 160px); /* Adjust width to match form group width minus label width and margin */
+  
     margin-left: 10px;
   }
   
@@ -143,35 +174,43 @@
     border-color: #5ba89b; /* Focus color */
   }
   
-  .buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
+  .contactButton:hover {
+  border-radius: 20px;
+}
   
-  .submit-btn,
-  .cancel-btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #5ba89b;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: 1em;
-  }
+  .buttonContainer {
+  text-align: center;
+  margin: 10px;
+}
+
+ #submitButton, #resetButton {
+  padding: 5px;
+margin:5px;
+  width: 7em;
+  font-weight: bold;
+  color: black;
+}
+
+#resetButton{
+  background-color:#F79181;
+}
+
+#submitButton{
+  background-color: #3ED2AA
+}
   
-  .submit-btn:hover {
-    background-color: #4d9383;
-  }
-  
-  .cancel-btn {
-    background-color: #f38181;
-  }
-  
-  .cancel-btn:hover {
-    background-color: #e36464;
-  }
+  #submitButton:hover {
+  background-color: #adffe7; 
+}
+
+#resetButton:hover {
+  background-color: #fab3a1; 
+}
+
+.error {
+  color: #c21d1d;
+  padding-left: 10px;
+}
   
   /* Responsive Design */
   @media (max-width: 1200px) {

@@ -147,8 +147,8 @@ input[type="radio"]{
 }
 
 #fieldset1 legend,#loggedWaste h4 {
-  padding: 6px;
-  border-radius: 14.8px 14.8px 0 0;
+  padding: 3px;
+  border-radius: 14.8px 11.8px 0 0;
   width: 100%;
   text-align: center;
   background-color: #71BAC1;
