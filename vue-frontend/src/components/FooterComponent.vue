@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="col-md-4">
-        <p>Contact at: joebloggs@email.com</p>
+        <p>Contact at: EcoTarcker@gmail.com</p>
         <p>Phone: +00 123 1234</p>
       </div>
     </div>
