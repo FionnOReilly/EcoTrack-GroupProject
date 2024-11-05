@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b68c702f-c47c-4902-9e4f-54dddbd8da44" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/LeaderBoard.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/UserGoals.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NavBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavBar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UserGoals.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserGoals.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +70,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730824731259</updated>
-      <workItem from="1730824732369" duration="4041000" />
+      <workItem from="1730824732369" duration="4829000" />
     </task>
     <servers />
   </component>

@@ -99,6 +99,8 @@ main {
   border-radius: 10px;
   width: 300px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  border: 4px solid #2D2828C6;
+  border-radius: 10px;
   text-align: left;
 }
 
@@ -106,6 +108,8 @@ main {
   width: 500px;
   height: auto;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  border: 4px solid #2D2828C6;
+  border-radius: 10px;
 }
 
 footer {
@@ -139,18 +143,19 @@ footer {
 
 .buttonContainer {
   text-align: center;
-  margin: 10px;
+  margin: 20px;
+  margin-left:300px;
 }
 
 #LeaderBoard {
-  padding: 5px;
-  margin:5px;
-  width: 7em;
+  padding: 10px 20px;
+  margin: 5px;
+  width: 10em;
   font-weight: bold;
+  font-size: 1.2em;
   color: black;
-}
-#LeaderBoard{
-  background-color: #3ED2AA
+  background-color: #3ED2AA;
+  border-radius: 10px;
 }
 
 .contactButton {
