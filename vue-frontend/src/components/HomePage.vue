@@ -12,12 +12,14 @@
                 Through innovative tools and real-time data, we aim to simplify sustainability, making it easy for everyone to contribute to a healthier planet. Whether you’re measuring your carbon emissions or discovering eco-friendly alternatives, we're here to guide you on your journey to a more sustainable lifestyle. Together, we can make a lasting difference.</p>
             </div>
             <button class="button">Register Here</button>
+
+          
           </div>
         </div>
       </section>
   </template>
   
-  <style>
+  <style scoped>
 
   /* Reset default margins and paddings */
   html, body {
@@ -25,6 +27,7 @@
     padding: 0;
     height: 100%;
   }
+
 
   .home-section {
     margin: 0;

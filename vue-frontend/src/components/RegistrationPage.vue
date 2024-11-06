@@ -34,21 +34,18 @@
           <input type="submit" value="Submit" class="contactButton" id="submitButton">
           <input type="reset" value="Reset" class="contactButton" id="resetButton">
         </div>
+        
+        <router-link to="/LoginPage" class="login-link">Already have an account? Log in here</router-link>
+
     </form>
   </div>
 </div>
-
-<FooterComponent></FooterComponent>
 </template>
 
 
 <script>
-import FooterComponent from './FooterComponent.vue';
-
 export default {
-  name: 'RegistrationPage',
-  components: {FooterComponent,
-  }
+  name: 'RegistrationPage'
 };
 
 </script>

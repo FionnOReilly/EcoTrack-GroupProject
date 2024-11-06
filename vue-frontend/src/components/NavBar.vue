@@ -29,7 +29,7 @@
               <router-link to="" class="nav-link">Goals</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="Registration" class="nav-link">Register</router-link>
+              <router-link to="Registration" class="nav-link">Register/Login</router-link>
             </li>
           </ul>
         </div>

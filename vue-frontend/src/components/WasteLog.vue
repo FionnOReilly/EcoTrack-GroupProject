@@ -42,8 +42,8 @@
             <span id="dateOfDisposalError" class="error"></span></p>
 
         <div class="buttonContainer">
-          <input type="submit" value="Submit" class="contactButton" id="submitButton">
-          <input type="reset" value="Reset" class="contactButton" id="resetButton">
+          <input type="submit" value="Submit" class="contactButton" id="primaryButton">
+          <input type="reset" value="Reset" class="contactButton" id="secondaryButton">
         </div>
       </div>
     </fieldset>
@@ -71,21 +71,12 @@
 
 </div>
 
-
-<FooterComponent></FooterComponent>
- 
-
-
 </template>
 
 <script>
 
-import FooterComponent from "./FooterComponent.vue"; 
-
 export default {
-  name: 'WasteLogPage',
-  components: {FooterComponent,
-  }
+  name: 'WasteLogPage'
 };
 
 </script>
@@ -94,17 +85,22 @@ export default {
 .grid-container {
   display: grid;
   grid-template-columns: 100%;
+  margin-bottom:15px;
+}
+
+#loggedWaste{
+
 }
 
 .contactButton:hover {
   border-radius: 20px;
 }
 
-#submitButton:hover {
+#primaryButton:hover {
   background-color: #adffe7; 
 }
 
-#resetButton:hover {
+#secondaryButton:hover {
   background-color: #fab3a1; 
 }
 
@@ -171,7 +167,7 @@ input[type="radio"]{
   margin: 10px;
 }
 
- #submitButton, #resetButton {
+ #primaryButton, #secondaryButton {
   padding: 5px;
 margin:5px;
   width: 7em;
@@ -179,11 +175,11 @@ margin:5px;
   color: black;
 }
 
-#resetButton{
+#secondaryButton{
   background-color:#F79181;
 }
 
-#submitButton{
+#primaryButton{
   background-color: #3ED2AA
 }
 

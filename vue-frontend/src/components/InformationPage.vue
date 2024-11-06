@@ -118,17 +118,14 @@
         </div>
     </section>
    
-   <FooterComponent></FooterComponent>
 </template>
 
 
 <script>
-import FooterComponent from './FooterComponent.vue';
 
 export default {
   name: 'InformationPage',
-  components: {FooterComponent,
-  }
+  
 };
 
 </script>
