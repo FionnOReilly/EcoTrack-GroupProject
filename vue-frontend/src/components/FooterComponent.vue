@@ -9,9 +9,9 @@
       </div>
       <div class="col-md-4">
         <div class="social-icons">
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#" @click.prevent="externalSite('https://www.facebook.com')"><i class="fab fa-facebook"></i>Facebook</a>
+          <a href="#" @click.prevent="externalSite('https://www.intagram.com')"><i class="fab fa-instagram"></i>Instagram</a>
+          <a href="#" @click.prevent="externalSite('https://www.twitter.com')"><i class="fab fa-twitter"></i>Twitter</a>
           <a href="https://github.com/daniellipper/Group2-Website.git"><i class="fab fa-github"></i></a>
         </div>
       </div>
@@ -23,6 +23,19 @@
   </div>
 </footer>
 </template>
+
+
+<script>
+export default {
+  methods: {
+    externalSite(url) {
+      console.log(`Redirecting ${url}`);
+      window.location.href = url;
+    }
+  }
+}
+</script>
+
 
 <style scoped>
 
