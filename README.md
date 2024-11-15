@@ -46,14 +46,16 @@
 
 ## Set Up API Endpoints in `Routes.php` located in `app/config/routes.php` 
  API endpoints need to be added inside the `Routes.php` file:
-```php
-//Example
-$routes->get('wastelog', 'WasteLogController::index');
+     ```plaintext
+     $routes->get('wastelog', 'WasteLogController::index');
+     ```
+
 
 ## Step 3: Set Up the Environment File
 1. Copy the `env` file located inside - 'C:\xampp\htdocs\CI4-EcoTrack'.
 2. Rename the file to `.env`.
 3. Update the environment settings:
+```php
     ```plaintext
     CI_ENVIRONMENT = development
 
@@ -93,7 +95,6 @@ $routes->get('wastelog', 'WasteLogController::index');
       ```
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 
 
 ### Compiles and minifies for production
