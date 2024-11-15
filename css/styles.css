@@ -1,5 +1,6 @@
 
 .text-start {
+
     text-align: left;
 }
 
@@ -29,21 +30,124 @@
 .custom-footer {
     background-color: #42A5A2;
     border-top: 1px solid #ddd;
+
+  text-align: left; 
+}
+
+.logo img {
+  height: 70px;  /* Set the logo's height to 60px */
+  width: auto;   /* Maintain the aspect ratio */
+}
+
+.custom-header {
+  background-color: #42A5A2;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+  color: black; 
+}
+
+
+.navbar-nav .nav-link:hover {
+  color: white;
+}
+
+header{
+  margin-bottom: 15px;
+}
+
+footer{
+  margin-top: 15px;
+}
+
+.custom-footer {
+  background-color: #42A5A2; 
+  border-top: 1px solid #ddd;
+
 }
 
 .custom-footer p,
 .custom-footer a {
+
     color: black;
     text-decoration: none;
 }
 
 .custom-footer a:hover {
     color: white;
+
+ color: black;
+  text-decoration: none;
+}
+
+.custom-footer a:hover {
+  color: white; 
+}
+
+.home-section {
+  margin: 0;
+  height: 100vh; /* Full height of the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Background container */
+.hero-container {
+  height: 100vh; /* Full height of the viewport */
+  width: 100%; /* Ensures the container takes the full width */
+  background-image: url('../images/HomePageHero.png'); /* Replace with your image URL */
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Adding a drop shadow effect */
+}
+
+.container1 {
+  text-align: center;
+}
+
+.textbox {
+  background-color: rgba(255, 255, 255, 0.75); /* White background with 75% opacity */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 450px; /* Set the desired width */
+  max-width: 90%; /* Ensure it doesn't exceed the screen width on smaller devices */
+  margin: auto; /* Center the textbox */
+}
+
+
+
+.button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #42A5A2;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #80CED6;
+
 }
 
 
 /* Responsive Styles */
 @media (max-width: 1200px) {
+
     .navbar-brand {
         font-size: 1.5rem;
     }
@@ -52,10 +156,21 @@
         padding: 8px 16px;
         font-size: 0.9rem;
     }
+
+  .navbar-brand {
+    font-size: 1.5rem; 
+  }
+
+  .custom-btn {
+    padding: 8px 16px; 
+    font-size: 0.9rem; 
+  }
+
 }
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
+
     .navbar-brand {
         font-size: 1.2rem;
     }
@@ -79,3 +194,31 @@
         width: 100%;
     }
 }
+
+  .navbar-brand {
+    font-size: 1.2rem; 
+  }
+
+  .portfolio-img {
+    max-width: 100%; 
+  }
+
+
+  .custom-footer p {
+    font-size: 0.9rem; 
+  }
+
+
+@media (max-width: 576px) {
+  .navbar-nav .nav-link {
+    font-size: 0.8rem; 
+  }
+  .navbar-nav .nav-link-active {
+    font-size: 0.8rem;
+  }
+
+  .custom-btn {
+    width: 100%; 
+  }
+}
+ 
