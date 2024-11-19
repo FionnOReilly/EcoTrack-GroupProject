@@ -19,27 +19,29 @@ class UserController extends ResourceController
 
     public function userLogin()
     {
-       $users= new UserModel();
-       $email=$this->request->getJSON()->email;
-       $password=$this->request->getJSON()->password;
-       log_message("debug","Email:".$email."password:".$password);
-
-       $user_data= $user->login($email,$password);
-      log_message ("debug", "returned from stored procedure:".print_r($user_data,true));
-
-      if($user_data->user_id){
-        return $this->respond ([
-            "user_id"=> $user_data->user_id,
-            "token" => "access.user",
-            "code"=> "200" ],200,"application/json");
-      }else {
-        return $this->respond([
-            "message"=> "Invalid email or password "
-        ], 401);
-      }
-
-
+        $email = $this->request->getJSON()->email;
+        $password = $this->request->getJSON()->password;
+        
+        log_message("debug", "Email: " . $email . " Password: " . $password);
+        
+        $user_data = $this->model->login($email, $password);
+        log_message("debug", "Returned from stored procedure: " . print_r($user_data, true));
+        
+        if ($user_data && $user_data->user_id) {
+            return $this->respond([
+                "user_id" => $user_data->user_id,
+                "token" => "access.user",
+                "code" => "200",
+            ], 200); // Success status
+        } else {
+            return $this->respond([
+                "message" => "Invalid email or password",
+            ], 401); // Unauthorized status
+        }
     }
+    
+
+    
 
 
     public function delete ($id = null)
