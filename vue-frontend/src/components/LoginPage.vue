@@ -1,179 +1,254 @@
 <template>
-  <div class="grid-container">
-    <form action="#" method="post" id="loginForm" class="loginForm">
-      <fieldset id="fieldset1">
-        <div id="fieldset2">
+    <div class="wrapper">
+      <!-- Registration Form -->
+      <div class="Registercontainer">
+        <form class="register-form">
           <legend>Login</legend>
-
-          <p>
-            <label for="username" class="loginLabel">Username: </label>
-            <input type="text" id="username" name="username" v-model="username" required />
-            <span id="usernameError" class="error"></span>
-          </p>
-
-          <p>
-            <label for="password" class="loginLabel">Password: </label>
-            <input type="password" id="password" name="password" v-model="password" required />
-            <span id="passwordError" class="error"></span>
-          </p>
-
-          <div class="buttonContainer">
-            <input type="submit" value="Login" class="contactButton" id="loginButton" @click.prevent="handleLogin" />
-            <input type="reset" value="Reset" class="contactButton" id="resetButton" />
+  
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
           </div>
-        </div>
-      </fieldset>
-    </form>
-  </div>
-</template>
-
-<script>
-export default {
-  name: 'LoginPage',
-  data() {
-    return {
-      username: '',
-      password: '',
+    
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+    
+    
+    
+          <div class="buttonContainer">
+              <input type="submit" value="Submit" class="contactButton" id="submitButton">
+              <input type="reset" value="Reset" class="contactButton" id="resetButton">
+            </div>
+            
+            <router-link to="/AdminLogin" class="login-link">Admin Login</router-link>
+        </form>
+      </div>
+    </div>
+    </template>
+    
+    
+    <script>
+    export default {
+      name: 'LoginPage'
+    
     };
-  },
-  methods: {
-    handleLogin() {
-      //  login logic
-      console.log('Attempting login with', this.username, this.password);
-      //login validation  here
-    },
-  },
-};
-</script>
-
-<style scoped>
-
-.grid-container {
-  display: grid;
-  grid-template-columns: 100%;
-}
-
-.contactButton:hover {
-  border-radius: 20px;
-}
-
-#loginButton:hover {
-  background-color: #adffe7;
-}
-
-#resetButton:hover {
-  background-color: #fab3a1;
-}
-
-form {
-  width: 100%;
-  padding: 20px;
-}
-
-fieldset {
-  width: 100%;
-  background-color: #d4e7e9;
-  font-size: 20px;
-}
-
-#fieldset1 {
-  border: 5px solid #2d2828c6;
-  border-radius: 20px;
-}
-
-label {
-  padding: 10px;
-  display: inline-block;
-  font-weight: bold;
-  text-align: right;
-}
-
-.error {
-  color: #c21d1d;
-  padding-left: 10px;
-}
-
-input[type="text"],
-input[type="password"] {
-  display: inline-block;
-  margin-left: 2em;
-  margin-bottom: 2px;
-  width: 30%;
-  padding: 5px;
-}
-
-.buttonContainer {
-  text-align: center;
-  margin: 10px;
-}
-
-#loginButton,
-#resetButton {
-  padding: 5px;
-  margin: 5px;
-  width: 7em;
-  font-weight: bold;
-  color: black;
-}
-
-#resetButton {
-  background-color: #f79181;
-}
-
-#loginButton {
-  background-color: #3ed2aa;
-}
-
-.contactButton {
-  border: 4px solid #2d2828c6;
-  border-radius: 10px;
-}
-
-/* Mobile view */
-@media only screen and (max-width: 767px) {
-  .grid-container {
-    grid-template-columns: repeat(5, 20%);
-    grid-row-gap: 2em;
-  }
-
-  form {
-    margin: 0;
-    grid-column: 1 / 6;
-  }
-
-  .error {
-    display: block;
-    margin-left: 39%;
-  }
-
-  label {
-    width: 50%;
-    margin-left: 60px;
-    text-align: left;
-    display: block;
-  }
-
-  input[type="text"],
-  input[type="password"] {
-    display: block;
-    width: 70%;
-    margin-left: 70px;
-  }
-}
-
-/* Desktop query */
-@media only screen and (min-width: 992px) {
-  .grid-container {
-    grid-template-columns: repeat(16, 6.25%);
-    grid-row-gap: 2em;
-  }
-
-  form {
-    grid-column: 5 / 13;
-  }
-
-  label {
-    width: 40%;
-  }
-}
-</style>
+    
+    </script>
+    
+    <style scoped>
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100vh;
+      }
+      
+      
+      
+      /* Responsive Styles */
+      @media (max-width: 1200px) {
+        .navbar-brand {
+          font-size: 1.5rem; 
+        }
+      
+        .custom-btn {
+          padding: 8px 16px; 
+          font-size: 0.9rem; 
+        }
+      }
+      
+      /* Mobile Responsiveness */
+      @media (max-width: 768px) {
+        .navbar-brand {
+          font-size: 1.2rem; 
+        }
+      
+        .portfolio-img {
+          max-width: 100%; 
+        }
+      
+      
+        .custom-footer p {
+          font-size: 0.9rem; 
+        }
+      }
+      
+      @media (max-width: 576px) {
+        .navbar-nav .nav-link {
+          font-size: 0.8rem; 
+        }
+      
+        .custom-btn {
+          width: 100%; 
+        }
+      }
+      
+      /* Form Styles */
+      .Registercontainer {
+        width: 90%;
+        max-width: 600px;
+        margin: 40px auto;
+        background-color: #d0e8e7; /* Light teal background */
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Box effect for form only */
+        text-align: center;
+      }
+      
+      .register-form h2 {
+        margin-bottom: 20px;
+        color: #333;
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+      
+      .Registercontainer {
+        width: 90%;
+        max-width: 600px;
+        margin: 40px auto;
+        background-color: #d0e8e7; 
+        padding: 0 30px 30px; 
+        border-radius: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+        text-align: center;
+        overflow: hidden; 
+    }
+    
+    legend {
+        margin: 0; 
+        padding: 15px 0; 
+        border-radius: 20px 20px 0 0; 
+        background-color: #71BAC1; 
+        font-size: 1.5em;
+        font-weight: bold;
+        width: calc(100% + 60px); 
+        position: relative;
+        left: -30px; 
+        box-sizing: border-box; 
+        text-align: center;
+    }
+    
+    
+    .form-group {
+        display: flex;
+        align-items: center; 
+        margin-bottom: 15px; 
+        padding-top: 15px; 
+    }
+    
+      
+      label {
+        display: block;
+        margin: 20px;
+        font-weight: bold;
+        min-width: 150px;
+        color: #333;
+        text-align: left;
+          
+      }
+      
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+         flex: 1; 
+         padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f0f8f7; /* Light input background */
+        width: calc(100% - 160px); /* Adjust width to match form group width minus label width and margin */
+      
+        margin-left: 10px;
+      }
+      
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      input[type="password"]:focus {
+        border-color: #5ba89b; /* Focus color */
+      }
+      
+      .contactButton:hover {
+      border-radius: 20px;
+    }
+      
+      .buttonContainer {
+      text-align: center;
+      margin: 10px;
+    }
+    
+     #submitButton, #resetButton {
+      padding: 5px;
+    margin:5px;
+      width: 7em;
+      font-weight: bold;
+      color: black;
+    }
+    
+    #resetButton{
+      background-color:#F79181;
+    }
+    
+    #submitButton{
+      background-color: #3ED2AA
+    }
+      
+      #submitButton:hover {
+      background-color: #adffe7; 
+    }
+    
+    #resetButton:hover {
+      background-color: #fab3a1; 
+    }
+    
+    .error {
+      color: #c21d1d;
+      padding-left: 10px;
+    }
+      
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .navbar-brand {
+          font-size: 1.5rem;
+        }
+      
+        .custom-btn {
+          padding: 8px 16px;
+          font-size: 0.9rem;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .navbar-brand {
+          font-size: 1.2rem;
+        }
+      
+        .portfolio-img {
+          max-width: 100%;
+        }
+      
+        .custom-footer p {
+          font-size: 0.9rem;
+        }
+      
+        .Registercontainer {
+          width: 100%;
+          padding: 15px;
+        }
+      
+        .navbar-nav {
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+      
+      @media (max-width: 576px) {
+        .navbar-nav .nav-link {
+          font-size: 0.8rem;
+        }
+      
+        .custom-btn {
+          width: 100%;
+        }
+      }
+      </style>
