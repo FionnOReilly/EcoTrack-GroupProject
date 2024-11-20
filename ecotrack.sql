@@ -32,6 +32,34 @@ END$$
 
 DELIMITER ;
 
+DELIMITER $$
+------------------
+CREATE PROCEDURE InsertAdmin(
+    IN p_f_name VARCHAR(50),
+    IN p_l_name VARCHAR(50),
+    IN p_username VARCHAR(50),
+    IN p_email VARCHAR(100),
+    IN p_password_hash VARCHAR(255)
+)
+BEGIN
+    INSERT INTO admins (f_name, l_name, username, email, password_hash)
+    VALUES (p_f_name, p_l_name, p_username, p_email, p_password_hash);
+END $$
+
+DELIMITER ;
+-----------------
+DELIMITER $$
+
+CREATE PROCEDURE DeleteAdmin(IN p_admin_id INT)
+BEGIN
+    UPDATE admins
+    SET deleted_at = NOW()
+    WHERE admin_id = p_admin_id;
+END $$
+
+DELIMITER ;
+
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +77,20 @@ CREATE TABLE `users` (
 
 -- --------------------------------------------------------
 
+--
+--table structure for admins--
+--
+CREATE TABLE admins (
+    admin_id INT AUTO_INCREMENT PRIMARY KEY,  -- Renamed to admin_id instead of user_id
+    f_name VARCHAR(50) NOT NULL,
+    l_name VARCHAR(50) NOT NULL,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Timestamp for record creation
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,  -- Timestamp for record update
+    deleted_at TIMESTAMP NULL DEFAULT NULL  -- Soft delete column
+);
 --
 -- Table structure for table `waste_logs`
 --
