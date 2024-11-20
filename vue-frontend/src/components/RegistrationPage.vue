@@ -109,7 +109,7 @@ export default {
       };
 
       try {
-        await axios.post('http://localhost:8081/CI4-EcoTrack/public/registerUser', userData);
+        await axios.post('http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/registerUser', userData);
         this.$router.push('/');
         this.resetForm();
       } catch (error) {
