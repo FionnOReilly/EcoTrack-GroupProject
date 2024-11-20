@@ -16,29 +16,36 @@ class UserController extends ResourceController
         return $this->respond($users);
     }
 
-
     public function userLogin()
     {
-        $email = $this->request->getJSON()->email;
-        $password = $this->request->getJSON()->password;
-        
-        log_message("debug", "Email: " . $email . " Password: " . $password);
-        
-        $user_data = $this->model->login($email, $password);
-        log_message("debug", "Returned from stored procedure: " . print_r($user_data, true));
-        
-        if ($user_data && $user_data->user_id) {
+        try {
+            $email = $this->request->getJSON()->email;
+            $password = $this->request->getJSON()->password;
+    
+            // Check if user exists
+            $user_data = $this->model->getUserByEmail($email);
+    
+            if ($user_data && password_verify($password, $user_data->password)) {
+                return $this->respond([
+                    "user_id" => $user_data->user_id,
+                    "token" => "access.token",
+                    "message" => "Login successful"
+                ], 200);
+            } else {
+                return $this->respond([
+                    "message" => "Invalid email or password"
+                ], 401);
+            }
+        } catch (\Exception $e) {
+            log_message("error", "Login failed: " . $e->getMessage());
             return $this->respond([
-                "user_id" => $user_data->user_id,
-                "token" => "access.user",
-                "code" => "200",
-            ], 200); // Success status
-        } else {
-            return $this->respond([
-                "message" => "Invalid email or password",
-            ], 401); // Unauthorized status
+                "message" => "An error occurred. Please try again later."
+            ], 500); // Internal server error
         }
     }
+    
+    
+    
     
 
     

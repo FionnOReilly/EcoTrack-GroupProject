@@ -48,5 +48,20 @@ abstract class BaseController extends Controller
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = \Config\Services::session();
+
+        public function initCORS()
+        {
+            // Handle preflight OPTIONS request
+            if ($this->request->getMethod() === 'options') {
+                $this->response->setStatusCode(200); // Respond with status 200 for OPTIONS request
+                exit; // Terminate the script after responding
+            }
+        
+            header("Access-Control-Allow-Origin: *");
+            header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+            header("Access-Control-Allow-Headers: Content-Type, Authorization");
+        }
+        
+
     }
 }
