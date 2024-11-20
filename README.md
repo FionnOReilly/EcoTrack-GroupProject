@@ -26,22 +26,40 @@
 
 ## Step 2: Configure XAMPP Apache
 1. Open the XAMPP control panel.
-2. Click on **Config** and select `httpd.config`.
+2. Click on **Config** Apache and select `httpd.conf`.
 3. Modify the following settings:
     - Press `CTRL+F` to find `AllowOverride`. Change the default setting from `none` to `All`.
     - Search for `mod_rewrite.so` to find this line: 
             LoadModule rewrite_module modules/mod_rewrite.so
       
       Uncomment this line by removing the `#` at the start.
+4. Search for 'Listen 80' and change it to:
+     ```plaintext
+     ServerName localhost:8081
+     ```
+5. Search for 'ServerName localhost:80' and change it to:
+   ```plaintext
+     ServerName localhost:8081
+     ```
 
-4. Save your changes and restart Apache.
+6. Save your changes and restart Apache.
+
+## Set Up API Endpoints in `Routes.php` located in `app/config/routes.php` 
+ API endpoints need to be added inside the `Routes.php` file:
+     ```plaintext
+     $routes->get('wastelog', 'WasteLogController::index');
+     ```
+
 
 ## Step 3: Set Up the Environment File
 1. Copy the `env` file located inside - 'C:\xampp\htdocs\CI4-EcoTrack'.
 2. Rename the file to `.env`.
 3. Update the environment settings:
+```php
     ```plaintext
     CI_ENVIRONMENT = development
+
+    app.baseURL = 'http://localhost:8081/CI4-EcoTrack/public'
     
     database.default.hostname = localhost
     database.default.database = ecotrack
@@ -53,7 +71,7 @@
     ```
 
 ## Step 4: Configure the Vue Frontend
-1. Navigate to the Vue project folder using the terminal:
+1.Navigate to the Vue project folder using the terminal:
     ```bash
     cd C:/your-path/GitHub/EcoTrack-GroupProject/vue-frontend
     ```
@@ -77,7 +95,6 @@
       ```
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 
 
 ### Compiles and minifies for production
