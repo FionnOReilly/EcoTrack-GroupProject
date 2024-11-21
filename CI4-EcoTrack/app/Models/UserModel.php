@@ -6,7 +6,20 @@ class UserModel extends Model
 {
     // params
     protected $table = 'users'; // Table name
-    protected $primaryKey = 'user_id'; // primary key
-    protected $allowedFields = ['username', 'first_name', 'last_name']; // Accessible fields
-    
+    protected $primaryKey = 'id'; // primary key
+    protected $allowedFields = [ 'firstName', 'lastName', 'email', 'password']; // Accessible fields
+
+
+    public function InsertUser($wasteLog)
+    {
+        $firstName = $wasteLog['firstName'];
+        $lastName = $wasteLog['lastName'];
+        $email = $wasteLog['email'];
+        $password = $wasteLog['password'];
+
+        $registerUser = "CALL InsertUser('$firstName', '$lastName', '$email', '$password')";
+
+        $this->db->query($registerUser);
+
+    }
 }

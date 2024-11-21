@@ -8,36 +8,45 @@
           <p>
             <label for="wasteType" class="wasteLabel">Waste Type: </label>
             <select id="wasteType" name="wasteType" v-model="wastelog.type">
-              <option value="select">Select a Type</option>
+              <option value="" disabled selected>Select a Type</option>
               <option value="general">General Waste</option>
               <option value="recyclable">Recyclable Materials</option>
               <option value="glass">Glass Waste</option>
               <option value="organic">Organic Waste</option>
             </select>
+            <span id="error1"></span>
           </p>
+
 
           <p>
             <label for="bagSize" class="wasteLabel">Bag Size: </label>
             <select id="bagSize" name="bagSize" v-model="wastelog.size">
-              <option value="select">Select a Size</option>
+              <option value=""  disabled selected>Select a Size</option>
               <option value="Small Bag (25L)">Small Bag (25L)</option>
               <option value="Medium Bag(50L)">Medium Bag (50L)</option>
               <option value="Large Bag(20L)">Large Bag (20L)</option>
               <option value="Large Bag(100L)">Large Bag (100L)</option>
             </select>
+            <span id="error2"></span>
           </p>
+
           <p>
             <label for="isRecyclable" class="wasteLabel">Recyclable: </label>
             <select id="isRecyclable" name="recyclable" v-model="wastelog.recyclable">
-              <option value="">Select</option>
+              <option value="" disabled selected>Select</option>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
             </select>
+            <span id="error3"></span>
           </p>
+
+
           <p>
             <label for="dateOfDisposal" class="wasteLabel">Date of Disposal: </label>
             <input type="date" name="dateOfDisposal" id="dateOfDisposal" v-model="wastelog.date">
+            <span id="error4"></span>
           </p>
+
 
           <div class="buttonContainer">
             <input type="submit" value="Submit" class="contactButton" id="primaryButton">
@@ -91,6 +100,31 @@ export default {
   },
   methods: {
     async submitForm() {
+      document.getElementById("error1").innerHTML = "";
+      document.getElementById("error2").innerHTML = "";
+      document.getElementById("error3").innerHTML = "";
+      document.getElementById("error4").innerHTML = "";
+
+      if (this.wastelog.type === '' || this.wastelog.type === 'select') {
+        document.getElementById("error1").innerHTML = "*Waste Type is required";
+        return;
+      }
+
+      if (this.wastelog.size === '' || this.wastelog.size === 'select') {
+        document.getElementById("error2").innerHTML = "*Bag Size is required";
+        return;
+      }
+
+      if (this.wastelog.recyclable === '' || this.wastelog.recyclable === 'select') {
+        document.getElementById("error3").innerHTML = "*Option is required";
+        return;
+      }
+
+      if (this.wastelog.date === '') {
+        document.getElementById("error4").innerHTML = "*Date of Disposal is required";
+        return;
+      }
+
       const wasteLogData = {
         type: this.wastelog.type,
         size: this.wastelog.size,
@@ -116,6 +150,12 @@ export default {
 
 
 <style scoped>
+
+span {
+  color: red;
+  font-size:16px;
+
+}
 .grid-container {
   display: grid;
   grid-template-columns: 100%;

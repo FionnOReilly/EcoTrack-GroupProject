@@ -12,7 +12,15 @@ class UserController extends ResourceController
 
         // Retrieve all users from the database, you may also call stored procedures here
         $users = $this->model->findAll();
-        // // Return the list using the respond function
+        // Return the list using the respond function
         return $this->respond($users);
+    }
+
+    public function registerUser()
+    {
+        $data = $this->request->getJSON();
+
+        $this->model->InsertUser((array)$data);
+
     }
 }
