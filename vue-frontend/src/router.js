@@ -7,6 +7,7 @@ import RegistrationPage from './components/RegistrationPage.vue';
 import InformationPage from './components/InformationPage.vue';
 import WasteLog from './components/WasteLog.vue';
 import LoginPage from './components/LoginPage.vue';
+import AdminLogin from './components/AdminLogin.vue';
 
 const routes = [
     { path: '/', component: HomePage},
@@ -15,7 +16,8 @@ const routes = [
     { path: '/Information', component: InformationPage},
     { path: '/Registration', component: RegistrationPage},
     { path: '/WasteLogging', component: WasteLog},
-	{ path: '/Login', component: LoginPage}
+    { path : '/LoginPage', component : LoginPage},
+    { path : '/AdminLogin', component : AdminLogin}
 
 ];
 const router = createRouter({

@@ -1,99 +1,180 @@
 <template>
-    
-<div class="grid-container">
-  <form action="#" method="get" id="wasteLogForm" class="wasteLogForm">
-    <fieldset id="fieldset1">
-      <div id="fieldset2">
-        <legend>Waste Logging</legend>
-
-        <p>
-          <label for="wasteType"  class="wasteLabel">Waste Type: </label>
-          <select id="wasteType" name="wasteType">
-            <option value="select">Select a Type</option>
-            <option value="general">General Waste</option>
-            <option value="recyclable">Recyclable Materials</option>
-            <option value="glass">Glass Waste </option>
-            <option value="oragnic">Organic Waste</option>
-          </select>
-
-          <span id="wasteError" class="error"></span></p>
-
-       
+  <div class="grid-container">
+    <form @submit.prevent="submitForm" id="wasteLogForm" class="wasteLogForm">
+      <fieldset id="fieldset1">
+        <div id="fieldset2">
+          <legend>Waste Logging</legend>
 
           <p>
-          <label for="bagSize" class="wasteLabel">Bag Size: </label>
-          <select id="wasteType" name="wasteType">
-            <option value="select">Select a Size</option>
-            <option value="generalWaste">Small Bag (25L)</option>
-            <option value="recyclableWaste">Medium Bag (50L) </option>
-            <option value="glassWaste">Large Bag (20L) </option>
-            <option value="oragnicWaste">Large Bag (100L) </option>
-          </select>
-          <span id="bagSizeError" class="error"></span></p>
-
-      
-        <p><label for="fName"  class="wasteLabel">Recyclable: </label>
-            <input type="radio" name="isRecyclable" id="recylable">Yes
-            <input type="radio" name="notRecyclable" id="recylable">No
-        <span id="recyclableError" class="error"></span></p>
+            <label for="wasteType" class="wasteLabel">Waste Type: </label>
+            <select id="wasteType" name="wasteType" v-model="wastelog.type">
+              <option value="" disabled selected>Select a Type</option>
+              <option value="general">General Waste</option>
+              <option value="recyclable">Recyclable Materials</option>
+              <option value="glass">Glass Waste</option>
+              <option value="organic">Organic Waste</option>
+            </select>
+            <span id="error1"></span>
+          </p>
 
 
-        <p><label for="dateOfDisposal">Date of Disposal: </label><input type="date" name="dateOfDisposal" id="dateOfDisposal">
-            <span id="dateOfDisposalError" class="error"></span></p>
+          <p>
+            <label for="bagSize" class="wasteLabel">Bag Size: </label>
+            <select id="bagSize" name="bagSize" v-model="wastelog.size">
+              <option value=""  disabled selected>Select a Size</option>
+              <option value="Small Bag (25L)">Small Bag (25L)</option>
+              <option value="Medium Bag(50L)">Medium Bag (50L)</option>
+              <option value="Large Bag(20L)">Large Bag (20L)</option>
+              <option value="Large Bag(100L)">Large Bag (100L)</option>
+            </select>
+            <span id="error2"></span>
+          </p>
 
-        <div class="buttonContainer">
-          <input type="submit" value="Submit" class="contactButton" id="submitButton">
-          <input type="reset" value="Reset" class="contactButton" id="resetButton">
+          <p>
+            <label for="isRecyclable" class="wasteLabel">Recyclable: </label>
+            <select id="isRecyclable" name="recyclable" v-model="wastelog.recyclable">
+              <option value="" disabled selected>Select</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+            <span id="error3"></span>
+          </p>
+
+
+          <p>
+            <label for="dateOfDisposal" class="wasteLabel">Date of Disposal: </label>
+            <input type="date" name="dateOfDisposal" id="dateOfDisposal" v-model="wastelog.date">
+            <span id="error4"></span>
+          </p>
+
+
+          <div class="buttonContainer">
+            <input type="submit" value="Submit" class="contactButton" id="primaryButton">
+            <input type="reset" value="Reset" class="contactButton" id="secondaryButton">
+          </div>
         </div>
-      </div>
-    </fieldset>
-  </form>
+      </fieldset>
+    </form>
 
-  <div id="loggedWaste">
-  <h4>Logged Waste Entries</h4>
-
-  <table>
-    <tr>
-      <th>Waste Type</th>
-      <th>Bag Size</th>
-      <th>Recyclable</th>
-      <th>Date of Disposal</th>
-    </tr>
-
-    <tr>
-      <td>General Waste</td>
-      <td>Small Bag (25L)</td>
-      <td>Yes</td>
-      <td>29/10/2024</td>
-    </tr>
-  </table>
-</div>
- 
-</div>
-
+    <div id="loggedWaste">
+      <h4>Logged Waste Entries</h4>
+      <table>
+        <tr>
+          <th>Waste Type</th>
+          <th>Bag Size</th>
+          <th>Recyclable</th>
+          <th>Date of Disposal</th>
+        </tr>
+        <tr v-for="log in wasteLogs" :key="log.id">
+          <td>{{ log.waste_type }}</td>
+          <td>{{ log.bag_size }}</td>
+          <td>{{ log.is_recyclable}}</td>
+          <td>{{ log.date_of_disposal }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'WasteLogPage',
+  data() {
+    return {
+      wastelog: {
+        type: '',
+        size: '',
+        recyclable: '',
+        date: '',
+      },
+      formErrors: {
+        type: '',
+        size: '',
+        recyclable: '',
+        date: '',
+      },
+      wasteLogs: [],
+    };
+  },
+  methods: {
+    async submitForm() {
+      document.getElementById("error1").innerHTML = "";
+      document.getElementById("error2").innerHTML = "";
+      document.getElementById("error3").innerHTML = "";
+      document.getElementById("error4").innerHTML = "";
+
+      if (this.wastelog.type === '' || this.wastelog.type === 'select') {
+        document.getElementById("error1").innerHTML = "*Waste Type is required";
+        return;
+      }
+
+      if (this.wastelog.size === '' || this.wastelog.size === 'select') {
+        document.getElementById("error2").innerHTML = "*Bag Size is required";
+        return;
+      }
+
+      if (this.wastelog.recyclable === '' || this.wastelog.recyclable === 'select') {
+        document.getElementById("error3").innerHTML = "*Option is required";
+        return;
+      }
+
+      if (this.wastelog.date === '') {
+        document.getElementById("error4").innerHTML = "*Date of Disposal is required";
+        return;
+      }
+
+      const wasteLogData = {
+        type: this.wastelog.type,
+        size: this.wastelog.size,
+        recyclable: this.wastelog.recyclable,
+        date: this.wastelog.date,
+      };
+
+      await axios.post('http://localhost:8081/CI4-EcoTrack/public/addWasteLog', wasteLogData);
+    },
+    async getWasteLogs() {
+        const response = await axios.get(
+            'http://localhost:8081/CI4-EcoTrack/public/wastelog');
+               this.wasteLogs = response.data;
+
+    },
+  },
+  mounted() {
+    this.getWasteLogs();
+  },
 };
 </script>
 
+
+
 <style scoped>
+
+span {
+  color: red;
+  font-size:16px;
+
+}
 .grid-container {
   display: grid;
   grid-template-columns: 100%;
+  margin-bottom:15px;
+}
+
+#loggedWaste{
+
 }
 
 .contactButton:hover {
   border-radius: 20px;
 }
 
-#submitButton:hover {
+#primaryButton:hover {
   background-color: #adffe7; 
 }
 
-#resetButton:hover {
+#secondaryButton:hover {
   background-color: #fab3a1; 
 }
 
@@ -147,8 +228,8 @@ input[type="radio"]{
 }
 
 #fieldset1 legend,#loggedWaste h4 {
-  padding: 6px;
-  border-radius: 14.8px 14.8px 0 0;
+  padding: 3px;
+  border-radius: 14.8px 11.8px 0 0;
   width: 100%;
   text-align: center;
   background-color: #71BAC1;
@@ -160,7 +241,7 @@ input[type="radio"]{
   margin: 10px;
 }
 
- #submitButton, #resetButton {
+ #primaryButton, #secondaryButton {
   padding: 5px;
 margin:5px;
   width: 7em;
@@ -168,11 +249,11 @@ margin:5px;
   color: black;
 }
 
-#resetButton{
+#secondaryButton{
   background-color:#F79181;
 }
 
-#submitButton{
+#primaryButton{
   background-color: #3ED2AA
 }
 

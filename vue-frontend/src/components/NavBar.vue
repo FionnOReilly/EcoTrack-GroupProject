@@ -2,7 +2,7 @@
   <header class="custom-header py-3">
     <div class="container">
       <nav class="navbar navbar-expand-lg">
-        <img src="@/assets/images/EcoTrackLogo.png" alt="Logo">
+        <router-link to="/"><img src="@/assets/images/EcoTrackLogo.png" alt="Logo"></router-link>
         <button
           class="navbar-toggler"
           type="button"
@@ -29,7 +29,7 @@
               <router-link to="" class="nav-link">Goals</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="Registration" class="nav-link">Register</router-link>
+              <router-link to="Registration" class="nav-link">Register/Login</router-link>
             </li>
 			<li class="nav-item">
               <router-link to="Login" class="nav-link">Login</router-link>
@@ -41,3 +41,5 @@
   </header>
 </template>
 
+<script setup>
+</script>

@@ -3,9 +3,9 @@
   text-align: left; 
 }
 
-.logo {
-  width: 150px; 
-  height: auto; 
+.logo img {
+  height: 70px;  /* Set the logo's height to 60px */
+  width: auto;   /* Maintain the aspect ratio */
 }
 
 .custom-header {
@@ -20,6 +20,7 @@
 .navbar-nav .nav-link {
   color: black; 
 }
+
 
 .navbar-nav .nav-link:hover {
   color: white;
@@ -46,6 +47,60 @@ footer{
 
 .custom-footer a:hover {
   color: white; 
+}
+
+.home-section {
+  margin: 0;
+  height: 100vh; /* Full height of the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Background container */
+.hero-container {
+  height: 100vh; /* Full height of the viewport */
+  width: 100%; /* Ensures the container takes the full width */
+  background-image: url('../images/HomePageHero.png'); /* Replace with your image URL */
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Adding a drop shadow effect */
+}
+
+.container1 {
+  text-align: center;
+}
+
+.textbox {
+  background-color: rgba(255, 255, 255, 0.75); /* White background with 75% opacity */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 450px; /* Set the desired width */
+  max-width: 90%; /* Ensure it doesn't exceed the screen width on smaller devices */
+  margin: auto; /* Center the textbox */
+}
+
+
+
+.button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #42A5A2;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #80CED6;
 }
 
 
@@ -80,6 +135,9 @@ footer{
 @media (max-width: 576px) {
   .navbar-nav .nav-link {
     font-size: 0.8rem; 
+  }
+  .navbar-nav .nav-link-active {
+    font-size: 0.8rem;
   }
 
   .custom-btn {

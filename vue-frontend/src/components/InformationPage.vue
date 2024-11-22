@@ -1,7 +1,7 @@
 <template>
   <section>
         <div class="info-container">
-            <img src="@/assets/images/Solid-Waste-Management.png">
+            <img class="bins-img" src="@/assets/images/Solid-Waste-Management.png">
 
             <div class="info-card">
 
@@ -112,7 +112,7 @@
                     <li> Newcastle West Civic Amenity Centre: operates on Wednesdays and Saturdays</li>
                 </ul>
                 </p>
-                <img src="@/assets/images/mapImg.png">
+                <img class="maps-img" src="@/assets/images/mapImg.png">
             </div>
 
         </div>
@@ -122,23 +122,37 @@
 
 
 <script>
+
 export default {
   name: 'InformationPage',
+  
 };
+
 </script>
 
 <style scoped>
+.info-container{
+  padding-top: 15px;
+}
 .info-card {
     color: black;
     box-shadow: 0 0 1em darkslategray;
     padding: 2em;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: #42A5A2;}
-   
- img {
-    max-width: 100%;
-    
+    margin: 30px;
+    background-color: #42A5A2;
+    transition: transform 0.2s, box-shadow 0.2s; /* Added transition */
+}
+
+   .info-card:hover {
+    box-shadow: 0 0 2em darkslategray; /* Increased shadow on hover */
+    transform: scale(1.02); /* Slight scale effect */
+}
+
+ .bins-img, .maps-img {
+    max-width: 100%; /* Scale images to fit the container */
+    height: auto;    /* Maintain aspect ratio */
+    display: block;  /* Prevent extra space below images */
+    margin: 0 auto;  /* Center images if needed */
 }
 
     @media  screen and (min-width: 992px) /*desktop */ {
@@ -148,13 +162,13 @@ export default {
             margin:auto;
         }
     
-        .info-card {
-            color: black;
-            box-shadow: 0 0 1em darkslategray;
-            padding: 2em;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            background-color: #42A5A2;}
-    
-       }
+    .info-card {
+    color: black;
+    box-shadow: 0 0 1em darkslategray;
+    padding: 2em;
+    margin: 30px;
+    background-color: #42A5A2;
+    transition: transform 0.2s, box-shadow 0.2s; /* Added transition */
+}
+    }
 </style>
