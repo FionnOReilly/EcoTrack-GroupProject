@@ -1,0 +1,1 @@
+<?php echo "Direct access test successful!";

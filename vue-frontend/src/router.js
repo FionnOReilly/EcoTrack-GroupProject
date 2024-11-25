@@ -16,7 +16,7 @@ const routes = [
     { path: '/Information', component: InformationPage},
     { path: '/Registration', component: RegistrationPage},
     { path: '/WasteLogging', component: WasteLog},
-    { path : '/LoginPage', component : LoginPage},
+    { path : '/Login', component : LoginPage},
     { path : '/AdminLogin', component : AdminLogin}
 
 ];

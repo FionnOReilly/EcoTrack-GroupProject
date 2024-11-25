@@ -24,7 +24,17 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://localhost:8081/CI4-EcoTrack/public';
+    public $baseURL = 'http://localhost:8082/CI4-EcoTrack/public/';
+
+	
+	public $sessionDriver = 'CodeIgniter\Session\Handlers\FileHandler'; // or your preferred driver
+	public $sessionCookieName = 'ci_session';
+	public $sessionExpiration = 7200;
+	public $sessionSavePath = WRITEPATH . 'session';
+	public $sessionMatchIP = false;
+	public $sessionTimeToUpdate = 300;
+	public $sessionRegenerateDestroy = false;
+
 
     /**
      * --------------------------------------------------------------------------
