@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import axios from "axios"; // Adjust import if using a custom axios setup
+import axiosInstance from "@/plugins/axios.js";
 
 export default {
   name: "LoginPage",
@@ -50,10 +50,23 @@ export default {
     };
   },
   methods: {
+    validateForm() {
+      if (!this.email.includes("@")) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+      if (this.password.length < 6) {
+        alert("Password must be at least 6 characters.");
+        return false;
+      }
+      return true;
+    },
     async handleLogin() {
+      if (!this.validateForm()) return;
+
       console.log("Attempting login with:", this.email, this.password);
       try {
-        const response = await axios.post("http://localhost:8082/login", {
+        const response = await axiosInstance.post("/login", {
           email: this.email,
           password: this.password,
         });
@@ -76,6 +89,7 @@ export default {
   },
 };
 </script>
+
 
 <style scoped>
 .wrapper {

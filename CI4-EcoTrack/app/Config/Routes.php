@@ -25,19 +25,27 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 // Test route
 
-$routes->post('/login', 'AuthenticationController::login',['filter' => 'cors']);
+$routes->post('test', 'Home::test');
+
+$routes->post('/login', 'AuthenticationController::login', ['filter' => 'cors']);
+$routes->post('login', 'AuthenticationController::login',['filter' => 'cors']);
+
+$routes->post('logout', 'AuthenticationController::logout');
+
 $routes->get('/', 'Home::index');
 $routes->get('/test', 'Home::index');
 $routes->get('users', 'UserController::index');
 $routes->get('users/show/(:num)', 'UserController::show/$1');
-
-$routes->post('logout', 'AuthenticationController::logout', ['filter' => 'cors']);
 
 $routes->get('wastelog', 'WasteLogController::index');
 $routes->get('wastelog/show/(:num)', 'WasteLogController::show/$1');
 
 $routes->post('addWasteLog', 'WasteLogController::addWasteLog');
 $routes->post('registerUser', 'UserController::registerUser');
+
+$routes->options('test', 'Home::options');
+
+
 
 
 /*

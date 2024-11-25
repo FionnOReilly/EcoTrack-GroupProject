@@ -24,10 +24,13 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://localhost:8082/CI4-EcoTrack/public/';
+   /*  public $baseURL = 'http://localhost:8082/CI4-EcoTrack/public/'; */
+   
+public $baseURL = 'http://localhost:8081/CI4-EcoTrack-GroupProject/EcoTrack-GroupProject/CI4-EcoTrack/public/';
+
+
 
 	
-	public $sessionDriver = 'CodeIgniter\Session\Handlers\FileHandler'; // or your preferred driver
 	public $sessionCookieName = 'ci_session';
 	public $sessionExpiration = 7200;
 	public $sessionSavePath = WRITEPATH . 'session';
@@ -173,7 +176,6 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $sessionCookieName = 'ci_session';
 
     /**
      * --------------------------------------------------------------------------
@@ -185,7 +187,6 @@ class App extends BaseConfig
      *
      * @var int
      */
-    public $sessionExpiration = 7200;
 
     /**
      * --------------------------------------------------------------------------
@@ -204,7 +205,6 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $sessionSavePath = WRITEPATH . 'session';
 
     /**
      * --------------------------------------------------------------------------
@@ -218,7 +218,6 @@ class App extends BaseConfig
      *
      * @var bool
      */
-    public $sessionMatchIP = false;
 
     /**
      * --------------------------------------------------------------------------
@@ -229,7 +228,7 @@ class App extends BaseConfig
      *
      * @var int
      */
-    public $sessionTimeToUpdate = 300;
+
 
     /**
      * --------------------------------------------------------------------------
@@ -242,7 +241,6 @@ class App extends BaseConfig
      *
      * @var bool
      */
-    public $sessionRegenerateDestroy = false;
 
     /**
      * --------------------------------------------------------------------------
