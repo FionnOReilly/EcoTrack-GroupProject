@@ -37,6 +37,8 @@ $routes->get('wastelog', 'WasteLogController::index');
 $routes->get('wastelog/show/(:num)', 'WasteLogController::show/$1');
 
 $routes->post('addWasteLog', 'WasteLogController::addWasteLog');
+$routes->post('registerUser', 'UserController::registerUser');
+
 
 /*
  * --------------------------------------------------------------------
