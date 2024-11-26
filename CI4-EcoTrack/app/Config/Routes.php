@@ -50,7 +50,13 @@ $routes->get('wastelog', 'WasteLogController::index');
 $routes->get('wastelog/show/(:num)', 'WasteLogController::show/$1');
 $routes->post('login', 'UserController::userLogin', ['filter' => 'cors']);
 $routes->post('addWasteLog', 'WasteLogController::addWasteLog');
+<<<<<<< Updated upstream
 $routes->get('/api/user/check-existence', 'UserController::checkUserExistence');
+=======
+$routes->get('admin/insert', 'AdminController::insertAdmin');
+$routes->get('admin/update/(:num)', 'AdminController::updateAdmin/$1');  // For updating by ID
+$routes->get('admin/delete/(:num)', 'AdminController::deleteAdmin/$1');  // For deleting by ID
+>>>>>>> Stashed changes
 
 
 /*
