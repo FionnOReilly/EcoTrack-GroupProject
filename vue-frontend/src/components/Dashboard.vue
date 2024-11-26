@@ -19,6 +19,7 @@
               <td>{{ log.date }}</td>
             </tr>
           </table>
+          <button @click="logout">Logout</button>
         </div>
       </div>
     </div>
@@ -62,13 +63,17 @@ export default {
           alert("Unable to fetch your waste logs. Please try again later.");
         }
       }
+    },
+    logout() {
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+      this.$router.push('/Login');
     }
   }
 };
 </script>
 
 <style scoped>
-/* Reuse the styles you already have for the home page */
 .home-section {
   margin: 0;
   padding: 0;
@@ -133,6 +138,7 @@ button {
   border: none;
   cursor: pointer;
   font-size: 16px;
+  margin-top: 20px;
 }
 
 button:hover {

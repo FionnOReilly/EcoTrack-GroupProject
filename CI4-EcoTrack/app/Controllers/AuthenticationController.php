@@ -19,11 +19,22 @@ class AuthenticationController extends BaseController
             // Generate a token (simple example)
             $token = base64_encode(random_bytes(32));
 
-            // Store token in session or database
+            // Prepare the user data with first_name and last_name
+            $userData = [
+                'user_id' => $user->user_id,
+                'username' => $user->username,
+                'email' => $user->email,
+                'first_name' => $user->first_name,
+                'last_name' => $user->last_name
+            ];
+
+            // Store token in session or database if needed
+
+            // Return the JSON response with user data
             return $this->response->setJSON([
                 'status' => 'success',
                 'token' => $token,
-                'user' => $user,
+                'user' => $userData,
             ]);
         } else {
             return $this->response->setStatusCode(401)->setJSON(['status' => 'error', 'message' => 'Invalid credentials']);

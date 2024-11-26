@@ -28,11 +28,14 @@
             <li class="nav-item">
               <router-link to="" class="nav-link">Goals</router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="!props.isLoggedIn">
               <router-link to="Registration" class="nav-link">Register/Login</router-link>
             </li>
-			<li class="nav-item">
+            <li class="nav-item" v-if="!props.isLoggedIn">
               <router-link to="Login" class="nav-link">Login</router-link>
+            </li>
+            <li class="nav-item" v-if="props.isLoggedIn">
+              <router-link to="#" @click.prevent="logout" class="nav-link">Logout</router-link>
             </li>
           </ul>
         </div>
@@ -42,4 +45,23 @@
 </template>
 
 <script setup>
+import { defineProps, defineEmits } from 'vue';
+
+const props = defineProps({
+  isLoggedIn: Boolean
+});
+
+const emits = defineEmits(['logout']);
+
+const logout = () => {
+  emits('logout');
+};
 </script>
+
+<style scoped>
+nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+</style>
