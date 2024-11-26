@@ -34,17 +34,11 @@ class Filters extends BaseConfig
      */
     public $globals = [
         'before' => [
-            'cors'
-            // 'honeypot',
-            // 'csrf',
-            // 'invalidchars',
+            'corsfilter',  // Register your CORS filter here
         ],
-        'after' => [
-            'toolbar',
-            // 'honeypot',
-            // 'secureheaders',
-        ],
+        'after' => [],
     ];
+    
 
     public array $required = [
         'before' => [

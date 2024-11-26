@@ -38,6 +38,13 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('users', 'UserController::index');
 $routes->get('users/show/(:num)', 'UserController::show/$1');
+// $routes->post('loginUser', 'UserController::loginUser');
+
+// $routes->post('userLogin', 'UserController::login');
+$routes->post('/userLogin', 'LoginController::userLogin');
+
+
+
 
 $routes->get('wastelog', 'WasteLogController::index');
 $routes->get('wastelog/show/(:num)', 'WasteLogController::show/$1');

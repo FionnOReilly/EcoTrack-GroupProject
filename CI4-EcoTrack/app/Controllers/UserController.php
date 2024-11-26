@@ -18,6 +18,7 @@ class UserController extends ResourceController
 
     public function userLogin()
     {
+<<<<<<< Updated upstream
         try {
             $email = $this->request->getJSON()->email;
             $password = $this->request->getJSON()->password;
@@ -65,3 +66,23 @@ class UserController extends ResourceController
     }
 
 }
+=======
+        $data = $this->request->getJSON();
+
+    
+        $this->model->InsertUser((array)$data);
+
+    }
+     // Fetch a specific user by ID
+     public function getUser($id)
+     {
+         $user = $this->model->find($id);
+ 
+         if ($user) {
+             return $this->respond($user);
+         } else {
+             return $this->failNotFound('User not found');
+         }
+     }
+    }
+>>>>>>> Stashed changes

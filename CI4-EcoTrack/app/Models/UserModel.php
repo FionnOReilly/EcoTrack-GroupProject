@@ -49,4 +49,21 @@ public function getUserByEmail($email)
             return $this->respond(['message' => 'Invalid email or password.'], 401);
         }
     }
+<<<<<<< Updated upstream
 }
+=======
+    public function login($email, $password)
+    {
+        // Call stored procedure
+        $this->db->query("Call loginValidation( ?, ?, @p_user_id,@p_user_name)", [$email, $password]);
+
+        // get the out param
+        $query = $this->db->query("SELECT @p_user_id as user_id, @p_user_name as f_name");
+
+        // return the user_id
+        return $query->getRow();
+    }
+    public function getUserByEmail($email) { return $this->asArray() ->where(['email' => $email]) ->first(); }
+}
+
+>>>>>>> Stashed changes
