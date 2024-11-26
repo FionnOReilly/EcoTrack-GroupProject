@@ -18,8 +18,12 @@
     
     
           <div class="buttonContainer">
-              <input type="submit" value="Submit" class="contactButton" id="submitButton">
+            <router-link to="/AdminHome" class="login-link">
+              <input type="submit" value="Submit" class="contactButton" id="submitButton">Admin Login
+            </router-link>
+
               <input type="reset" value="Reset" class="contactButton" id="resetButton">
+              
             </div>
             
         </form>

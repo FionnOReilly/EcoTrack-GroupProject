@@ -14,12 +14,8 @@
         <div class="textbox">
           <h1>Welcome Admin</h1>
           <p>This is the Admin Home page. Use the buttons below to manage users and admins.</p>
-          <button class="button" @click="navigateTo('/ManageUsers.vue')">
-            Manage Users
-          </button>
-          <button class="button" @click="navigateTo('/ManageAdmins.vue')">
-            Manage Admins
-          </button>
+          <router-link to="/ManageUsers" class="login-link"><input type="submit" value="Submit" class="button" id="button">Manage Users</router-link>
+          <router-link to="/ManageAdmin" class="login-link"><input type="submit" value="Submit" class="button" id="button">Manage Admin</router-link>
         </div>
       </div>
   
@@ -37,9 +33,9 @@
       navigateTo(page) {
         // Replace with your routing logic, e.g., Vue Router
         if (page === "ManageUsers") {
-          window.location.href = "ManageUsers.vue"; // Replace with `this.$router.push('/manage-users')` if using Vue Router
-        } else if (page === "ManageAdmins.vue") {
-          window.location.href = "ManageAdmins.html.vue"; // Replace with `this.$router.push('/manage-admins')` if using Vue Router
+          this.$router.push('/ManageUsers'); // Replace with `this.$router.push('/manage-users')` if using Vue Router
+        } else if (page === "ManageAdmins") {
+          this.$router.push('/ManageAdmin'); // Replace with `this.$router.push('/manage-admins')` if using Vue Router
         }
       },
     },
