@@ -26,10 +26,9 @@ $routes->setAutoRoute(true);
 // Test route
 
 $routes->post('test', 'Home::test');
-
 $routes->post('/login', 'AuthenticationController::login', ['filter' => 'cors']);
 $routes->post('login', 'AuthenticationController::login',['filter' => 'cors']);
-
+$routes->post('/admin-login', 'AuthenticationController::adminLogin', ['filter' => 'cors']);
 $routes->post('logout', 'AuthenticationController::logout');
 
 $routes->get('/', 'Home::index');
