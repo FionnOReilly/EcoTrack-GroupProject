@@ -1,6 +1,7 @@
 <?php namespace Config;
 
 use CodeIgniter\Config\BaseConfig;
+use App\Filters\CorsFilter;
 
 class Filters extends BaseConfig
 {
