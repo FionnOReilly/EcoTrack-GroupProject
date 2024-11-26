@@ -26,7 +26,10 @@
               <router-link to="Information" class="nav-link">Information</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="" class="nav-link">Goals</router-link>
+              <router-link to="/UserGoals" class="nav-link">Goals</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/LeaderBoard" class="nav-link">LeaderBoard</router-link>
             </li>
             <li class="nav-item">
               <router-link to="Registration" class="nav-link">Register/Login</router-link>
