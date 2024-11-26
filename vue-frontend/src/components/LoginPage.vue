@@ -61,31 +61,34 @@ export default {
       }
       return true;
     },
-    async handleLogin() {
-      if (!this.validateForm()) return;
+async handleLogin() {
+  if (!this.validateForm()) return;
 
-      console.log("Attempting login with:", this.email, this.password);
-      try {
-        const response = await axiosInstance.post("/login", {
-          email: this.email,
-          password: this.password,
-        });
-        console.log("Response from server:", response.data);
+  console.log("Attempting login with:", this.email, this.password);
+  try {
+    const response = await axiosInstance.post("/login", {
+      email: this.email,
+      password: this.password,
+    });
+    console.log("Response from server:", response.data);
 
-        if (response.data.message) {
-          // Handle successful login
-          alert(response.data.message);
-          this.$router.push("/dashboard"); // Adjust route as needed
-        } else {
-          alert(response.data.error || "Invalid login credentials. Please try again.");
-        }
-      } catch (error) {
-        console.error("Login error:", error.response || error);
-        const errorMessage =
-          error.response?.data?.error || "Unable to connect to the server. Please try again later.";
-        alert(errorMessage);
-      }
-    },
+    // Check for 'status' instead of 'message'
+    if (response.data.status === 'success') {
+      // Handle successful login
+      alert("Login successful!");
+      // Save the token or user data if needed
+      localStorage.setItem('token', response.data.token); // Example of storing the token
+      this.$router.push("/dashboard"); // Adjust route as needed
+    } else {
+      alert(response.data.error || "Invalid login credentials. Please try again.");
+    }
+  } catch (error) {
+    console.error("Login error:", error.response || error);
+    const errorMessage =
+      error.response?.data?.error || "Unable to connect to the server. Please try again later.";
+    alert(errorMessage);
+  }
+},
   },
 };
 </script>
