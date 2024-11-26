@@ -25,13 +25,11 @@ class AdminModel extends Model
     // Method to insert a new Admin user using the stored procedure
     public function insertAdmin($data)
     {
-        $f_name = $data['FirstName'];
-        $l_name = $data['Last Name'];
-        $username = $data['Username'];
+        $full_name = $data['FullName'];
         $email = $data['Email'];
         $password = $data['Password'];
 
-        $insertAdmin = "CALL insertAdmin('$f_name', '$l_name','$username', '$email', '$password')";
+        $insertAdmin = "CALL insertAdmin('$full_name', '$email', '$password')";
 
         // Execute the stored procedure to insert the new admin
         // $query = $this->db->query( [

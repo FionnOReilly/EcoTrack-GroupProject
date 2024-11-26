@@ -17,26 +17,15 @@ class UserController extends ResourceController
     }
     public function insertAdmin($data)
     {
-        // Execute the stored procedure to insert the new admin
-        $sql = "CALL InsertAdmin(:f_name:, :l_name:, :username:, :email:, :password_hash:)";
-        $query = $this->db->query($sql, [
-            'f_name' => $data['f_name'],
-            'l_name' => $data['l_name'],
-            'username' => $data['username'],
-            'email' => $data['email'],
-            'password_hash' => $data['password_hash']
-        ]);
-
-        return $query;
+        $data = $this->request->getJSON();
+    
+        $this->model->insertAdmin((array)$data);
+    
     }
 
     // Method to delete an Admin user (soft delete) using the stored procedure
     public function deleteAdmin($adminId)
     {
-        // Execute the stored procedure for soft delete
-        $sql = "CALL DeleteAdmin(:admin_id:)";
-        $query = $this->db->query($sql, ['admin_id' => $adminId]);
-
-        return $query;
+       
     }
 }

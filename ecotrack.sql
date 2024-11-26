@@ -35,15 +35,13 @@ DELIMITER ;
 DELIMITER $$
 ------------------
 CREATE PROCEDURE InsertAdmin(
-    IN p_f_name VARCHAR(50),
-    IN p_l_name VARCHAR(50),
-    IN p_username VARCHAR(50),
+    IN p_full_name VARCHAR(50),
     IN p_email VARCHAR(100),
     IN p_password_hash VARCHAR(255)
 )
 BEGIN
-    INSERT INTO admins (f_name, l_name, username, email, password_hash)
-    VALUES (p_f_name, p_l_name, p_username, p_email, p_password_hash);
+    INSERT INTO admins (full_name, email, password_hash)
+    VALUES (p_full_name,  p_email, p_password_hash);
 END $$
 
 DELIMITER ;
@@ -82,9 +80,7 @@ CREATE TABLE `users` (
 --
 CREATE TABLE admins (
     'admin_id' INT AUTO_INCREMENT PRIMARY KEY,  -- Renamed to admin_id instead of user_id
-    'f_name' VARCHAR(50) NOT NULL,
-    'l_name' VARCHAR(50) NOT NULL,
-    'username' VARCHAR(50) NOT NULL,
+    'full_name' VARCHAR(50) NOT NULL,
     'email' VARCHAR(100) NOT NULL UNIQUE,
     'password' VARCHAR(255) NOT NULL,
     'created_at' TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Timestamp for record creation

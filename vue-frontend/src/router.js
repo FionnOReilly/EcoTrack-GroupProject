@@ -17,8 +17,11 @@ const routes = [
     { path: '/Registration', component: RegistrationPage},
     { path: '/WasteLogging', component: WasteLog},
     { path : '/LoginPage', component : LoginPage},
-    { path : '/AdminLogin', component : AdminLogin}
-
+    { path : '/AdminLogin', component : AdminLogin},
+    { path : '/AdminHome', component : AdminHome},
+    { path : '/ManageUsers', component : ManageUsers},
+    { path : '/ManageAdmin', component : ManageAdmin},
+    { path : '/InsertAdmin', component : InsertAdmin},
 ];
 const router = createRouter({
     history: createWebHistory(),
