@@ -72,13 +72,14 @@ async handleLogin() {
     });
     console.log("Response from server:", response.data);
 
-    // Check for 'status' instead of 'message'
+    // Check for 'status' to handle success
     if (response.data.status === 'success') {
-      // Handle successful login
+      // Save token and user data to localStorage (or sessionStorage)
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+
       alert("Login successful!");
-      // Save the token or user data if needed
-      localStorage.setItem('token', response.data.token); // Example of storing the token
-      this.$router.push("/dashboard"); // Adjust route as needed
+      this.$router.push("/dashboard"); // Redirect to dashboard after successful login
     } else {
       alert(response.data.error || "Invalid login credentials. Please try again.");
     }
