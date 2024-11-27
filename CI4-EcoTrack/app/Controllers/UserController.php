@@ -1,48 +1,25 @@
-<?php
-
-namespace App\Controllers;
+<?php namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 
 class UserController extends ResourceController
 {
-    protected $modelName = 'App\Models\UserModel'; // Specify the model
-    protected $format = 'json'; // Specify response format
+    protected $modelName = 'App\Models\UserModel'; // Specify what model this controller uses
+    protected $format = 'json'; // Specify format
 
-    // Fetch all users
-    public function index()
-    {
+    public function index(){
+
+        // Retrieve all users from the database, you may also call stored procedures here
         $users = $this->model->findAll();
+        // Return the list using the respond function
         return $this->respond($users);
     }
 
-    // Register a new user
     public function registerUser()
     {
         $data = $this->request->getJSON();
 
-        if (!$data) {
-            return $this->fail('Invalid request data.');
-        }
+        $this->model->InsertUser((array)$data);
 
-        $inserted = $this->model->insert((array)$data);
-
-        if ($inserted) {
-            return $this->respondCreated(['message' => 'User registered successfully']);
-        } else {
-            return $this->fail('Failed to register user.');
-        }
-    }
-
-    // Fetch a specific user by ID
-    public function getUser($id)
-    {
-        $user = $this->model->find($id);
-
-        if ($user) {
-            return $this->respond($user);
-        } else {
-            return $this->failNotFound('User not found');
-        }
     }
 }

@@ -24,20 +24,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-   /*  public $baseURL = 'http://localhost:8082/CI4-EcoTrack/public/'; */
-   
-public $baseURL = 'http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/';
-
-
-
-	
-	public $sessionCookieName = 'ci_session';
-	public $sessionExpiration = 7200;
-	public $sessionSavePath = WRITEPATH . 'session';
-	public $sessionMatchIP = false;
-	public $sessionTimeToUpdate = 300;
-	public $sessionRegenerateDestroy = false;
-
+    public $baseURL = 'http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public';
 
     /**
      * --------------------------------------------------------------------------
@@ -176,6 +163,7 @@ public $baseURL = 'http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/publ
      *
      * @var string
      */
+    public $sessionCookieName = 'ci_session';
 
     /**
      * --------------------------------------------------------------------------
@@ -187,6 +175,7 @@ public $baseURL = 'http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/publ
      *
      * @var int
      */
+    public $sessionExpiration = 7200;
 
     /**
      * --------------------------------------------------------------------------
@@ -205,6 +194,7 @@ public $baseURL = 'http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/publ
      *
      * @var string
      */
+    public $sessionSavePath = WRITEPATH . 'session';
 
     /**
      * --------------------------------------------------------------------------
@@ -218,6 +208,7 @@ public $baseURL = 'http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/publ
      *
      * @var bool
      */
+    public $sessionMatchIP = false;
 
     /**
      * --------------------------------------------------------------------------
@@ -228,7 +219,7 @@ public $baseURL = 'http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/publ
      *
      * @var int
      */
-
+    public $sessionTimeToUpdate = 300;
 
     /**
      * --------------------------------------------------------------------------
@@ -241,6 +232,7 @@ public $baseURL = 'http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/publ
      *
      * @var bool
      */
+    public $sessionRegenerateDestroy = false;
 
     /**
      * --------------------------------------------------------------------------
