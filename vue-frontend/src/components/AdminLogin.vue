@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axiosInstance from "@/plugins/axios.js";
 
 export default {
   name: "AdminLoginPage",
@@ -35,7 +35,7 @@ export default {
     };
   },
   methods: {
-  validateForm() {
+    validateForm() {
       if (!this.email.includes("@")) {
         alert("Please enter a valid email address.");
         return false;
@@ -47,25 +47,22 @@ export default {
       return true;
     },
 async handleAdminLogin() {
-  if (!this.validateForm()) return; // Validate form data (e.g., email and password)
+  if (!this.validateForm()) return;
 
   console.log("Attempting admin login with:", this.email, this.password);
   try {
-    // Make POST request to the admin login route
-    const response = await axios.post("/admin-login", {
+    const response = await axiosInstance.post("/admin-login", {
       email: this.email,
       password: this.password,
     });
     console.log("Response from server:", response.data);
 
-    // Check for 'status' to handle success
     if (response.data.status === 'success') {
-      // Save token and admin user data to localStorage (or sessionStorage)
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
 
       alert("Admin login successful!");
-      this.$router.push("/admin-dashboard"); // Redirect to admin dashboard after successful login
+      this.$router.push("/dashboard");
     } else {
       alert(response.data.error || "Invalid admin login credentials. Please try again.");
     }
@@ -75,10 +72,11 @@ async handleAdminLogin() {
       error.response?.data?.error || "Unable to connect to the server. Please try again later.";
     alert(errorMessage);
   }
-}
-  }
+},
+  },
 };
 </script>
+
 
  <style scoped>
     .wrapper {
