@@ -19,7 +19,7 @@
     
           <div class="buttonContainer">
             <router-link to="/AdminHome" class="login-link">
-              <input type="submit" value="Submit" class="contactButton" id="submitButton">Admin Login
+              <button>Admin Login</button>
             </router-link>
 
               <input type="reset" value="Reset" class="contactButton" id="resetButton">

@@ -14,8 +14,12 @@
         <div class="textbox">
           <h1>Manage Admins</h1>
           <p>Add or remove administrators using the options below:</p>
-          <router-link to="/InsertAdmin" ><button class="button" > Add New Admin</button></router-link>
-          <router-link to="/ViewAdmin" ><button class="button" >View Admin List</button></router-link>
+          <button  class="button">
+              <router-link to="/InsertAdmin" >Add New Admin</router-link>
+            </button>
+            <button  class="button">
+              <router-link to="/ViewAdmin" > View Admin </router-link>
+            </button>
         </div>
       </div>
   

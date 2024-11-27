@@ -8,6 +8,11 @@ import InformationPage from './components/InformationPage.vue';
 import WasteLog from './components/WasteLog.vue';
 import LoginPage from './components/LoginPage.vue';
 import AdminLogin from './components/AdminLogin.vue';
+import AdminHome from './components/AdminHome.vue';
+import ManageUsers from './components/ManageUsers.vue';
+import ManageAdmin from './components/ManageAdmin.vue';
+import InsertAdmin from './components/InsertAdmin.vue';
+import ViewAdmin from './components/ViewAdmin.vue';
 
 const routes = [
     { path: '/', component: HomePage},
@@ -22,6 +27,7 @@ const routes = [
     { path : '/ManageUsers', component : ManageUsers},
     { path : '/ManageAdmin', component : ManageAdmin},
     { path : '/InsertAdmin', component : InsertAdmin},
+    { path : '/ViewAdmin', component : ViewAdmin},
 ];
 const router = createRouter({
     history: createWebHistory(),
