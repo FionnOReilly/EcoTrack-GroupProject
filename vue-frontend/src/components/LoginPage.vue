@@ -1,6 +1,5 @@
 <template>
     <div class="wrapper">
-      <!-- Registration Form -->
       <div class="Registercontainer">
         <form class="register-form">
           <legend>Login</legend>
