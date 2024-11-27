@@ -1,5 +1,5 @@
 <template>
-    <div class="manage-users">
+    <div class="manage-admin">
       <!-- Navbar -->
       <nav class="navbar">
         <div><a href="#">Admin Dashboard</a></div>
@@ -51,14 +51,12 @@
     data() {
     return {
         f_name: {
-        l_name: '',
         email: '',
         password: '',
        
       },
       formErrors: {
-        FirstName: '',
-        LastName: '',
+        FullName: '',
         Email: '',
         Password: '',
        
