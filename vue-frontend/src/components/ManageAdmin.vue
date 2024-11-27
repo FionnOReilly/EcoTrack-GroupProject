@@ -4,7 +4,7 @@
       <nav class="navbar">
         <div><a href="#">Admin Dashboard</a></div>
         <div>
-          <a href="adminHome.html">Home</a>
+          <router-link to="/AdminHome" >Home</router-link>
           <a href="#">Logout</a>
         </div>
       </nav>
@@ -14,8 +14,8 @@
         <div class="textbox">
           <h1>Manage Admins</h1>
           <p>Add or remove administrators using the options below:</p>
-          <button class="button" ><a href="AdminHome.vue">Add New Admin</a></button>
-          <button class="button" ><a href="#">Add New Admin</a></button>
+          <router-link to="/InsertAdmin" ><button class="button" > Add New Admin</button></router-link>
+          <router-link to="/ViewAdmin" ><button class="button" >View Admin List</button></router-link>
         </div>
       </div>
   

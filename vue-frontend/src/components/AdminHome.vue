@@ -14,8 +14,8 @@
         <div class="textbox">
           <h1>Welcome Admin</h1>
           <p>This is the Admin Home page. Use the buttons below to manage users and admins.</p>
-          <router-link to="/ManageUsers" class="login-link"><input type="submit" value="Submit" class="button" id="button">Manage Users</router-link>
-          <router-link to="/ManageAdmin" class="login-link"><input type="submit" value="Submit" class="button" id="button">Manage Admin</router-link>
+          <router-link to="/ManageUsers" ><button>Manage Users</button></router-link>
+          <router-link to="/ManageAdmin" ><button>Manage Admin</button> </router-link>
         </div>
       </div>
   
