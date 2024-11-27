@@ -122,9 +122,12 @@
 
 
 <script>
+
 export default {
   name: 'InformationPage',
+  
 };
+
 </script>
 
 <style scoped>

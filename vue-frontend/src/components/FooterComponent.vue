@@ -5,6 +5,9 @@
       <div class="col-md-4">
         <p><router-link to="/">Home</router-link></p>
        <p><router-link to="Infromation" >Information</router-link></p>
+       <div class="buttonContainer">
+        <button  id="primaryButton"><router-link to="/AdminLogin" class="login-link">Admin Portal</router-link></button>
+      </div>
          
       </div>
       <div class="col-md-4">
@@ -19,6 +22,8 @@
         <p>Contact at: EcoTarcker@gmail.com</p>
         <p>Phone: +00 123 1234</p>
       </div>
+
+  
     </div>
   </div>
 </footer>
@@ -69,10 +74,6 @@ export default {
   
   header{
     margin-bottom: 15px;
-  }
-  
-  footer{
-    margin-top: 15px;
   }
   
   .custom-footer {

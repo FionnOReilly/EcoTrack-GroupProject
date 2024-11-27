@@ -6,8 +6,8 @@ import Footer from "@/components/FooterComponent.vue"
 import RegistrationPage from './components/RegistrationPage.vue';
 import InformationPage from './components/InformationPage.vue';
 import WasteLog from './components/WasteLog.vue';
-import UserGoals from "@/components/UserGoals.vue";
-import LeaderBoard from "@/components/LeaderBoard.vue";
+import UserGoals from "./components/UserGoals.vue";
+import LeaderBoard from "./components/LeaderBoard.vue";
 
 const routes = [
     { path: '/', component: HomePage},
@@ -18,9 +18,6 @@ const routes = [
     { path: '/WasteLogging', component: WasteLog},
     { path: '/UserGoals', component: UserGoals},
     { path: '/LeaderBoard', component: LeaderBoard}
-
-
-
 ];
 const router = createRouter({
     history: createWebHistory(),
