@@ -132,11 +132,11 @@ export default {
         date: this.wastelog.date,
       };
 
-      await axios.post('http://localhost:8081/CI4-EcoTrack/public/addWasteLog', wasteLogData);
+      await axios.post('http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/addWasteLog', wasteLogData);
     },
     async getWasteLogs() {
         const response = await axios.get(
-            'http://localhost:8081/CI4-EcoTrack/public/wastelog');
+            'http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/wastelog');
                this.wasteLogs = response.data;
 
     },
