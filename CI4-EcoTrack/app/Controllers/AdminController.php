@@ -1,31 +1,31 @@
 <?php namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
+use App\Models\UserModel;  // Import the UserModel
 
-class UserController extends ResourceController
+class AdminController extends ResourceController
 {
-    protected $modelName = 'App\Models\AdminModel'; // Specify what model this controller uses
-    protected $format = 'json'; // Specify format
+    protected $userModel;
+    protected $format = 'json';
 
-
-    public function index(){
-
-        // Retrieve all users from the database, you may also call stored procedures here
-        $admins = $this->model->findAll();
-        // // Return the list using the respond function
-        return $this->respond($admins);
-    }
-    public function insertAdmin($data)
+    public function __construct()
     {
-        $data = $this->request->getJSON();
-    
-        $this->model->insertAdmin((array)$data);
-    
+        // Initialize the UserModel
+        $this->userModel = new UserModel();
     }
 
-    // Method to delete an Admin user (soft delete) using the stored procedure
-    public function deleteAdmin($adminId)
+    // Method to fetch and return all users
+    public function viewAllUsers()
     {
-       
+        // Fetch all users from the database
+        $users = $this->userModel->findAll();
+
+        // Check if users are found
+        if (empty($users)) {
+            return $this->failNotFound('No users found');
+        }
+
+        // Return the list of users as a JSON response
+        return $this->respond($users);
     }
 }

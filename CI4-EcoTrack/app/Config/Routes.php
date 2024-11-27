@@ -16,6 +16,9 @@ if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
  * Router Setup
  * --------------------------------------------------------------------
  */
+// app/config/Routes.php
+$routes->get('test-db', 'TestController::testDatabaseConnection');
+$routes->get('api/users', 'AdminController::viewAllUsers');
 $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
