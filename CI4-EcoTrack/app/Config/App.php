@@ -26,7 +26,7 @@ class App extends BaseConfig
      */
    /*  public $baseURL = 'http://localhost:8082/CI4-EcoTrack/public/'; */
    
-public $baseURL = 'http://localhost:8081/CI4-EcoTrack-GroupProject/EcoTrack-GroupProject/CI4-EcoTrack/public/';
+public $baseURL = 'http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/';
 
 
 

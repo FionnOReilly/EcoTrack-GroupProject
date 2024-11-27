@@ -36,10 +36,10 @@ $routes->get('/test', 'Home::index');
 $routes->get('users', 'UserController::index');
 $routes->get('users/show/(:num)', 'UserController::show/$1');
 
-$routes->get('wastelog', 'WasteLogController::index');
+$routes->get('/wastelog', 'WasteLogController::index',['filter' => 'cors']);
 $routes->get('wastelog/show/(:num)', 'WasteLogController::show/$1');
 
-$routes->post('addWasteLog', 'WasteLogController::addWasteLog');
+$routes->post('/addWasteLog', 'WasteLogController::addWasteLog',['filter' => 'cors']);
 $routes->post('registerUser', 'UserController::registerUser');
 
 $routes->options('test', 'Home::options');
