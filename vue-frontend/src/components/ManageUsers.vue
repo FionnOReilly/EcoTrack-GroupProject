@@ -38,14 +38,13 @@
         </table>
       </div>
   
-      <!-- Footer -->
-      <footer class="footer">
-        <p>&copy; 2024 Admin Dashboard | All Rights Reserved</p>
-      </footer>
+     
+      
     </div>
   </template>
   
   <script>
+ // import axios from 'axios';
   export default {
     name: "ManageUsers",
     data() {
@@ -75,16 +74,16 @@
         const confirmed = confirm("Are you sure you want to delete this user?");
         if (confirmed) {
           this.users = this.users.filter((user) => user.id !== id);
-          alert(`User with ID: ${id} deleted successfully.`);
+         
         }
       },
 
-    //   async getUsers() {
-    //     const response = await axios.get(
+    //    async getUsers() {
+    //      const response = await axios.get(
     //         'http://localhost:8081/CI4-EcoTrack/public/users');
-    //            this.users = response.data;
-
-    // },
+    //             this.users = response.data;
+    // await axios.post('http://localhost:8081/CI4-EcoTrack/public/users', users);
+    //  },
     },
   };
   </script>

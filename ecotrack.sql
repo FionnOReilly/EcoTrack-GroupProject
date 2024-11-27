@@ -85,18 +85,14 @@ CREATE TABLE `users` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `users`
---
+
+--- Dumping data for table `users`
+
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `created_at`, `updated_at`) VALUES
 (1, 'joe', 'bloggs', 'joe@gmail.com', 'joe123', '2024-11-20 18:33:48', '2024-11-20 18:33:48');
 
--- --------------------------------------------------------
 
---
---table structure for admins--
---
 CREATE TABLE admins (
     admin_id INT AUTO_INCREMENT PRIMARY KEY,  -- Renamed to admin_id instead of user_id
     f_name VARCHAR(50) NOT NULL,

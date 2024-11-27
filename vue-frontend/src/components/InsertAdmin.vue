@@ -59,8 +59,9 @@
   </template>
   
   <script>
+  import axios from 'axios';
   export default {
-    name: "AddAdmin",
+    name: "add-admin",
     data() {
       return {
         FullName: "",
@@ -69,7 +70,7 @@
       };
     },
     methods: {
-      submitAdminDetails() {
+      async submitAdminDetails() {
         // Handle form submission logic here
         const adminDetails = {
           name: this.FullName,
@@ -79,7 +80,9 @@
         console.log("Admin Details Submitted:", adminDetails);
         alert("Admin successfully added!");
         // Replace the following with actual API or server call
+        await axios.post('http://localhost:80/CI4-EcoTrack/public/admindetails', adminDetails);
       },
+      
     },
   };
   </script>

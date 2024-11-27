@@ -23,10 +23,8 @@
         </div>
       </div>
   
-      <!-- Footer -->
-      <footer class="footer">
-        <p>&copy; 2024 Admin Dashboard | All Rights Reserved</p>
-      </footer>
+    
+      
     </div>
   </template>
   
@@ -35,13 +33,13 @@
     name: "ManageAdmins",
     methods: {
       navigateToAddAdmin() {
-        // Replace with your routing logic if using Vue Router
-        window.location.href = "insertAdmin.html";
+     
+        this.$router.push('/InsertAdmin');
       },
       viewAdminList() {
-        // Placeholder logic for viewing the admin list
-        alert("Redirecting to the Admin List page...");
-        // Replace with actual navigation logic, e.g., window.location.href or router.push
+     
+        this.$router.push('/ViewAdmin');
+        
       },
     },
   };
@@ -78,6 +76,7 @@
   .hero-container {
     flex: 1;
     display: flex;
+    padding: 60px;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -100,6 +99,12 @@
     cursor: pointer;
     text-decoration: none;
   }
+
+  .button-link {
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+}
   
   .button:hover {
     background-color: #80CED6;

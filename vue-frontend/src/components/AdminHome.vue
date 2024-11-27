@@ -14,15 +14,16 @@
         <div class="textbox">
           <h1>Welcome Admin</h1>
           <p>This is the Admin Home page. Use the buttons below to manage users and admins.</p>
-          <router-link to="/ManageUsers" ><button>Manage Users</button></router-link>
-          <router-link to="/ManageAdmin" ><button>Manage Admin</button> </router-link>
+          <button  class="button">
+              <router-link to="/ManageUsers" > Manage Users </router-link>
+            </button>
+            <button  class="button">
+          <router-link to="/ManageAdmin" >Manage Admin </router-link>
+        </button>
         </div>
       </div>
   
-      <!-- Footer -->
-      <footer class="footer">
-        <p>&copy; 2024 Admin Dashboard | All Rights Reserved</p>
-      </footer>
+      
     </div>
   </template>
   
@@ -73,6 +74,7 @@
   .hero-container {
     flex: 1;
     display: flex;
+    padding:60px;
     justify-content: center;
     align-items: center;
     text-align: center;
