@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import axiosInstance from "@/plugins/axios.js";
+import axios from 'axios';
 
 export default {
   name: "AdminLoginPage",
@@ -52,7 +52,7 @@ async handleAdminLogin() {
   console.log("Attempting admin login with:", this.email, this.password);
   try {
     // Make POST request to the admin login route
-    const response = await axiosInstance.post("/admin-login", {
+    const response = await axios.post("/admin-login", {
       email: this.email,
       password: this.password,
     });

@@ -21,8 +21,7 @@ class AuthenticationController extends BaseController
 
             // Prepare the user data with first_name and last_name
             $userData = [
-                'user_id' => $user->user_id,
-                'username' => $user->username,
+                'id' => $user->id,
                 'email' => $user->email,
                 'first_name' => $user->first_name,
                 'last_name' => $user->last_name,
@@ -56,14 +55,13 @@ public function adminLogin() {
         $token = base64_encode(random_bytes(32));
 
         // Prepare the user data with first_name, last_name, and role
-        $userData = [
-            'user_id' => $user->user_id,
-            'username' => $user->username,
-            'email' => $user->email,
-            'first_name' => $user->first_name,
-            'last_name' => $user->last_name,
-            'role' => $user->role
-        ];
+            $userData = [
+                'id' => $user->id,
+                'email' => $user->email,
+                'first_name' => $user->first_name,
+                'last_name' => $user->last_name,
+				'role' => $user->role
+            ];
 
         // Return the JSON response with the token and user data
         return $this->response->setJSON([

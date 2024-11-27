@@ -42,6 +42,7 @@ $routes->get('wastelog/show/(:num)', 'WasteLogController::show/$1');
 $routes->post('/addWasteLog', 'WasteLogController::addWasteLog',['filter' => 'cors']);
 $routes->post('registerUser', 'UserController::registerUser');
 
+$routes->options('login', 'AuthenticationController::login');
 $routes->options('test', 'Home::options');
 
 
