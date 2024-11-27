@@ -125,15 +125,16 @@ export default {
         return;
       }
 
+      let user_id = 1;
       const wasteLogData = {
         type: this.wastelog.type,
         size: this.wastelog.size,
         recyclable: this.wastelog.recyclable,
         date: this.wastelog.date,
+        user_id: user_id,
       };
 
-      await axios.post('http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/addWasteLog', wasteLogData);
-    },
+      await axios.post('http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/addWasteLog', wasteLogData);    },
     async getWasteLogs() {
         const response = await axios.get(
             'http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/wastelog');
