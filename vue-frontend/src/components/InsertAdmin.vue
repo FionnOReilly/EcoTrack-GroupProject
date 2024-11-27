@@ -4,7 +4,7 @@
       <nav class="navbar">
         <div><a href="#">Admin Dashboard</a></div>
         <div>
-          <a href="adminHome.html">Home</a>
+          <router-link to="/AdminHome" >Home</router-link>
           <a href="#">Logout</a>
         </div>
       </nav>
@@ -15,31 +15,31 @@
           <h2>New Admin Details</h2>
           <form @submit.prevent="submitAdminDetails">
             <div class="form-group">
-              <label for="adminName">Admin Name:</label>
+              <label for="FullName">Admin Name:</label>
               <input
                 type="text"
-                id="adminName"
-                v-model="adminName"
+                id="FullName"
+                v-model="FullName"
                 placeholder="Enter admin's full name"
                 required
               />
             </div>
             <div class="form-group">
-              <label for="adminEmail">Admin Email:</label>
+              <label for="Email">Admin Email:</label>
               <input
                 type="email"
-                id="email"
+                id="Email"
                 v-model="adminEmail"
                 placeholder="Enter admin's email address"
                 required
               />
             </div>
             <div class="form-group">
-              <label for="password">Password:</label>
+              <label for="Password">Password:</label>
               <input
                 type="password"
-                id="password"
-                v-model="adminPassword"
+                id="Password"
+                v-model="Password"
                 placeholder="Enter a strong password"
                 required
               />
@@ -63,18 +63,18 @@
     name: "AddAdmin",
     data() {
       return {
-        adminName: "",
-        adminEmail: "",
-        adminPassword: "",
+        FullName: "",
+        Email: "",
+        Password: "",
       };
     },
     methods: {
       submitAdminDetails() {
         // Handle form submission logic here
         const adminDetails = {
-          name: this.adminName,
-          email: this.adminEmail,
-          password: this.adminPassword,
+          name: this.FullName,
+          email: this.Email,
+          password: this.Password,
         };
         console.log("Admin Details Submitted:", adminDetails);
         alert("Admin successfully added!");

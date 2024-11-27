@@ -21,14 +21,17 @@ SET time_zone = "+00:00";
 -- Database: `ecotrack`
 --
 
-DELIMITER $$
 --
 -- Procedures
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertUser` (IN `p_first_name` VARCHAR(100), IN `p_last_name` VARCHAR(100), IN `p_email` VARCHAR(255), IN `p_password` VARCHAR(255))   BEGIN
+---------------------------------------------------------
+
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertUser` (IN `p_f_name` VARCHAR(100), IN `p_email` VARCHAR(255), IN `p_password_hash` VARCHAR(255))   BEGIN
   
-        INSERT INTO Users (first_name, last_name, email, password)
-        VALUES (p_first_name, p_last_name, p_email, p_password);
+        INSERT INTO Users (f_name, email, password)
+        VALUES (p_f_name, p_email, p_password_hash);
     
 END$$
 
@@ -39,20 +42,22 @@ END$$
 
 DELIMITER ;
 
+-----------------------------------------------------
+
 DELIMITER $$
-------------------
+
 CREATE PROCEDURE InsertAdmin(
-    IN p_full_name VARCHAR(50),
+    IN p_f_name VARCHAR(50),
     IN p_email VARCHAR(100),
-    IN p_password_hash VARCHAR(255)
+    IN p_password VARCHAR(255)
 )
 BEGIN
-    INSERT INTO admins (full_name, email, password_hash)
-    VALUES (p_full_name,  p_email, p_password_hash);
+    INSERT INTO admins (f_name, email, password)
+    VALUES (p_f_name, p_email, p_password);
 END $$
 
 DELIMITER ;
------------------
+------------------------------------------------------
 DELIMITER $$
 
 CREATE PROCEDURE DeleteAdmin(IN p_admin_id INT)
@@ -64,8 +69,7 @@ END $$
 
 DELIMITER ;
 
-
--- --------------------------------------------------------
+----------------------------------------------------------
 
 --
 -- Table structure for table `users`
@@ -95,7 +99,7 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `crea
 --
 CREATE TABLE admins (
     'admin_id' INT AUTO_INCREMENT PRIMARY KEY,  -- Renamed to admin_id instead of user_id
-    'full_name' VARCHAR(50) NOT NULL,
+    'f_name' VARCHAR(50) NOT NULL,
     'email' VARCHAR(100) NOT NULL UNIQUE,
     'password' VARCHAR(255) NOT NULL,
     'created_at' TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Timestamp for record creation

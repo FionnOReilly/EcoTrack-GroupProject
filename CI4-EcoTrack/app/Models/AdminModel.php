@@ -10,7 +10,7 @@ class AdminModel extends Model
     protected $primaryKey = 'admin_id'; // primary key
     // Define allowed fields for insertion or updating
     protected $allowedFields = [
-        'f_name', 'l_name','username', 'email', 'password_hash'
+        'f_name', 'email', 'password_hash'
     ];
 
     // Validation rules for incoming data (optional but useful for data integrity)
@@ -25,11 +25,11 @@ class AdminModel extends Model
     // Method to insert a new Admin user using the stored procedure
     public function insertAdmin($data)
     {
-        $full_name = $data['FullName'];
+        $f_name = $data['FullName'];
         $email = $data['Email'];
         $password = $data['Password'];
 
-        $insertAdmin = "CALL insertAdmin('$full_name', '$email', '$password')";
+        $insertAdmin = "CALL insertAdmin('$f_name', '$email', '$password')";
 
         // Execute the stored procedure to insert the new admin
         // $query = $this->db->query( [
@@ -45,8 +45,6 @@ class AdminModel extends Model
 
 //   public function updateAdmin($data){
 //     $f_name = $data[""];
-//     $l_name = $data[""];
-//     $username = $data[""];
 //     $email = $data[""];
 //     $password = $data[""];
 //     $updateAdmin = portal_update_admin($data);

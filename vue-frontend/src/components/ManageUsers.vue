@@ -4,7 +4,7 @@
       <nav class="navbar">
         <div><a href="#">Admin Dashboard</a></div>
         <div>
-          <a href="AdminHome.vue">Home</a>
+          <router-link to="/AdminHome" >Home</router-link>
           <a href="#">Logout</a>
         </div>
       </nav>
@@ -78,6 +78,13 @@
           alert(`User with ID: ${id} deleted successfully.`);
         }
       },
+
+      async getUsers() {
+        const response = await axios.get(
+            'http://localhost:8081/CI4-EcoTrack/public/users');
+               this.users = response.data;
+
+    },
     },
   };
   </script>
