@@ -7,7 +7,6 @@ class UserController extends ResourceController
     protected $modelName = 'App\Models\UserModel'; // Specify what model this controller uses
     protected $format = 'json'; // Specify format
 
-
     public function index(){
 
         // Retrieve all users from the database, you may also call stored procedures here

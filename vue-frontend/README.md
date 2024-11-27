@@ -1,4 +1,4 @@
-# vue-frontend
+npm # vue-frontend
 
 Open the terminal and enter the path to the folder vue-frontend
 cd C:\your-path/GitHub\EcoTrack-GroupProject\vue-frontend
