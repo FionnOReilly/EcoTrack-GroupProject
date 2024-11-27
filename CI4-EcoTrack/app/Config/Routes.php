@@ -39,8 +39,21 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+
+// Users routes (show and fetch users)
 $routes->get('users', 'UserController::index');
 $routes->get('users/show/(:num)', 'UserController::show/$1');
+
+// Admin routes for managing users (only delete and update users by admin)
+$routes->delete('api/admin/users/(:num)', 'AdminController::deleteUser/$1');
+$routes->put('api/admin/users/(:num)', 'AdminController::updateUser/$1');
+$routes->get('api/users', 'AdminController::viewAllUsers');
+
+// Ensure this route is pointing to AdminController for delete
+$routes->delete('users/(:num)', 'AdminController::deleteUser/$1');
+
+
+
 
 $routes->get('wastelog', 'WasteLogController::index');
 $routes->get('wastelog/show/(:num)', 'WasteLogController::show/$1');

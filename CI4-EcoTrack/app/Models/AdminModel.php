@@ -7,13 +7,12 @@ use CodeIgniter\Model;
 class AdminModel extends Model
 {
     protected $table = 'admins'; // Table name
-    protected $primaryKey = 'admin_id'; // primary key
-    // Define allowed fields for insertion or updating
+    protected $primaryKey = 'id'; // Primary key
     protected $allowedFields = [
-        'f_name', 'l_name','username', 'email', 'password_hash'
+        'f_name', 'l_name', 'username', 'email', 'password_hash'
     ];
 
-    // Validation rules for incoming data (optional but useful for data integrity)
+    // Validation rules
     protected $validationRules = [
         'f_name' => 'required|min_length[3]|max_length[50]',
         'l_name' => 'required|min_length[3]|max_length[50]',
@@ -29,32 +28,38 @@ class AdminModel extends Model
         $email = $data['Email'];
         $password = $data['Password'];
 
-        $insertAdmin = "CALL insertAdmin('$full_name', '$email', '$password')";
-
-        // Execute the stored procedure to insert the new admin
-        // $query = $this->db->query( [
-        //     'f_name' => $data['f_name'],
-        //     'l_name' => $data['l_name'],
-        //     'username' => $data['username'],
-        //     'email' => $data['email'],
-        //     'password_hash' => $data['password_hash']
-        // ]);
-
-        $this->db->query($insertAdmin);
+        // Call the stored procedure to insert the new admin
+        $insertAdminQuery = "CALL insertAdmin(?, ?, ?)";
+        return $this->db->query($insertAdminQuery, [$full_name, $email, $password]);
     }
 
-//   public function updateAdmin($data){
-//     $f_name = $data[""];
-//     $l_name = $data[""];
-//     $username = $data[""];
-//     $email = $data[""];
-//     $password = $data[""];
-//     $updateAdmin = portal_update_admin($data);
+    // Method to update an existing Admin user using the stored procedure
+    public function updateAdmin($admin_id, $data)
+    {
+        $f_name = $data['f_name'];
+        $l_name = $data['l_name'];
+        $username = $data['username'];
+        $email = $data['email'];
+        $password = $data['password_hash'];
 
-//   }
-    // public function deleteAdmin($admin_id){
-    //     $this->db->query("CALL deleteAdmin()");
-    // }
+        // Call the stored procedure to update the admin
+        $updateAdminQuery = "CALL updateAdmin(?, ?, ?, ?, ?, ?)";
+        return $this->db->query($updateAdminQuery, [$admin_id, $f_name, $l_name, $username, $email, $password]);
+    }
+
+    // Method to delete an Admin user using the stored procedure
+    public function deleteAdmin($admin_id)
+    {
+        // Call the stored procedure to delete the admin by ID
+        $deleteAdminQuery = "CALL deleteAdmin(?)";
+        return $this->db->query($deleteAdminQuery, [$admin_id]);
+    }
+
+    // Method to delete a user (calls deleteAdmin)
+    public function deleteUser($id)
+    {
+        return $this->deleteAdmin($id);  // Correctly calling deleteAdmin method
+    }
 }
 
 ?>

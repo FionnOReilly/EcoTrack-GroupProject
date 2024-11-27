@@ -15,4 +15,12 @@ class UserController extends ResourceController
         // // Return the list using the respond function
         return $this->respond($users);
     }
+    public function deleteUser($user_id)
+    {
+        if ($this->userModel->delete($user_id)) {
+            return $this->respondDeleted(['message' => 'User deleted successfully']);
+        } else {
+            return $this->failNotFound('User not found');
+        }
+    }
 }

@@ -4,27 +4,31 @@
     <div id="loggedUsers">
       <h4>Users List</h4>
       <table>
-        <tr>
-          <th>User ID</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-          <th>Created At</th>
-          <th>Updated At</th>
-          <th>Actions</th>
-        </tr>
-        <tr v-for="user in users" :key="user.user_id">
-          <td>{{ user.user_id }}</td>
-          <td>{{ user.first_name }}</td>
-          <td>{{ user.last_name }}</td>
-          <td>{{ user.username }}</td>
-          <td>{{ formatDate(user.created_at) }}</td>
-          <td>{{ formatDate(user.updated_at) }}</td>
-          <td>
-            <button @click="editUser(user.user_id)">Edit</button>
-            <button @click="deleteUser(user.user_id)">Delete</button>
-          </td>
-        </tr>
+        <thead>
+          <tr>
+            <th>User ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="user in users" :key="user.id">
+            <td>{{ user.id }}</td>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ formatDate(user.created_at) }}</td>
+            <td>{{ formatDate(user.updated_at) }}</td>
+            <td>
+              <button @click="editUser(user.id)">Edit</button>
+              <button @click="deleteUser(user.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>
@@ -37,15 +41,15 @@ export default {
   name: 'UsersPage',
   data() {
     return {
-      users: [], // To store the users fetched from the API
+      users: [], // Array to store users
     };
   },
   methods: {
     // Fetch all users from the API
     async fetchUsers() {
       try {
-        const response = await axios.get('http://localhost:8081/CI4-EcoTrack/public/api/users');
-        this.users = response.data; // Store users in 'users' data property
+        const response = await axios.get('http://localhost:8081/CI4-EcoTrack/public/users');
+        this.users = response.data; // Store the fetched users
       } catch (error) {
         console.error('Error fetching users:', error);
       }
@@ -58,17 +62,39 @@ export default {
       return date.toLocaleDateString(undefined, options);
     },
 
-    // Placeholder for editing a user
-    editUser(userId) {
+    // Edit user functionality (can be expanded later to open an edit form)
+    async editUser(userId) {
       console.log(`Edit user with ID: ${userId}`);
-      // Implement edit functionality
+      // Example: Send a PUT request to update user details
+      const userToEdit = this.users.find(user => user.id === userId);
+      if (userToEdit) {
+        try {
+          const updatedData = {
+            first_name: userToEdit.first_name,
+            last_name: userToEdit.last_name,
+            email: userToEdit.email, // You can add more fields as needed
+          };
+
+          const response = await axios.put(`http://localhost:8081/CI4-EcoTrack/public/users/${userId}`, updatedData);
+          console.log('User updated:', response.data);
+          this.fetchUsers(); // Re-fetch users to get the updated list
+        } catch (error) {
+          console.error('Error editing user:', error);
+        }
+      }
     },
 
-    // Placeholder for deleting a user
-    deleteUser(userId) {
-      console.log(`Delete user with ID: ${userId}`);
-      // Implement delete functionality
-    },
+    // Delete user functionality
+    async deleteUser(userId) {
+  console.log(`Delete user with ID: ${userId}`);
+  try {
+    const response = await axios.delete(`http://localhost:8081/CI4-EcoTrack/public/users/${userId}`);
+    console.log('User deleted:', response.data);
+    this.fetchUsers(); // Re-fetch users to get the updated list
+  } catch (error) {
+    console.error('Error deleting user:', error.response ? error.response.data : error.message);
+  }
+},
   },
   mounted() {
     this.fetchUsers(); // Fetch users when the component is mounted
@@ -123,36 +149,5 @@ export default {
 
 #loggedUsers button:hover {
   background-color: #adffe7;
-}
-
-@media only screen and (max-width: 767px) {
-  .grid-container {
-    grid-template-columns: repeat(5, 20%);
-    grid-row-gap: 2em;
-  }
-
-  #loggedUsers {
-    margin: 0;
-    grid-column: 1/6;
-  }
-
-  label {
-    width: 50%;
-    margin-left: 60px;
-    text-align: left;
-    display: block;
-  }
-
-  select,
-  input[type="text"],
-  input[type="date"] {
-    display: block;
-    width: 70%;
-    margin-left: 70px;
-  }
-
-  #loggedUsers table {
-    margin-top: 20px;
-  }
 }
 </style>
