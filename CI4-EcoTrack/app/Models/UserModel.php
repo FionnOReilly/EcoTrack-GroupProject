@@ -10,12 +10,12 @@ class UserModel extends Model
     protected $allowedFields = [ 'firstName', 'lastName', 'email', 'password']; // Accessible fields
 
 
-    public function InsertUser($wasteLog)
+    public function InsertUser($user)
     {
-        $firstName = $wasteLog['firstName'];
-        $lastName = $wasteLog['lastName'];
-        $email = $wasteLog['email'];
-        $password = $wasteLog['password'];
+        $firstName = $user['firstName'];
+        $lastName = $user['lastName'];
+        $email = $user['email'];
+        $password = $user['password'];
 
         $registerUser = "CALL InsertUser('$firstName', '$lastName', '$email', '$password')";
 
