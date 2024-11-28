@@ -45,6 +45,7 @@ $routes->post('registerUser', 'UserController::registerUser');
 
 $routes->options('login', 'AuthenticationController::login');
 $routes->options('test', 'Home::options');
+$routes->setTranslateURIDashes(true);
 
 
 
