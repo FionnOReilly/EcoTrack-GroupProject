@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c96b7a2f-9ef5-4980-81f2-df8c965b02ce" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CI4-EcoTrack/app/Controllers/testController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/EcoTrack-GroupProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EcoTrack-GroupProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CI4-EcoTrack/app/Config/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/CI4-EcoTrack/app/Config/Database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CI4-EcoTrack/app/Config/Routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/CI4-EcoTrack/app/Config/Routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CI4-EcoTrack/app/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/CI4-EcoTrack/app/Controllers/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CI4-EcoTrack/app/Models/UserModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/CI4-EcoTrack/app/Models/UserModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-frontend/src/components/AdminHome.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-frontend/src/components/AdminHome.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vue-frontend/src/components/ManageUsers.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-frontend/src/components/ManageUsers.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-frontend/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue-frontend/src/router.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,11 +22,23 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Kellys-Branch" />
+        <entry key="$PROJECT_DIR$" value="ManageUsersBranch" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;daniellipper&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/FionnOReilly/EcoTrack-GroupProject.git&quot;,
+    &quot;accountId&quot;: &quot;dad71813-7bd9-4562-9a88-7ef4e517ef4c&quot;
+  }
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -64,7 +67,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "ManageUsersBranch",
+    "git-widget-placeholder": "updateUsers",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Alannah/Documents/GitHub/assignment-three-daniellipper/Assignment_Three_Starter",
     "node.js.detected.package.eslint": "true",
@@ -98,6 +101,7 @@
       <workItem from="1732645353279" duration="1365000" />
       <workItem from="1732699911008" duration="350000" />
       <workItem from="1732700785903" duration="362000" />
+      <workItem from="1732705443776" duration="1194000" />
     </task>
     <servers />
   </component>

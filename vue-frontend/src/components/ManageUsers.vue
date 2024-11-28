@@ -8,7 +8,7 @@
           <th>User ID</th>
           <th>First Name</th>
           <th>Last Name</th>
-          <th>Username</th>
+          <th>Email</th>
           <th>Created At</th>
           <th>Updated At</th>
           <th>Actions</th>
@@ -37,44 +37,58 @@ export default {
   name: 'UsersPage',
   data() {
     return {
-      users: [], // To store the users fetched from the API
+      user: {
+        user_id: '',
+        first_name: '',
+        last_name: '',
+        email: '',
+        created_at: '',
+        updated_at: '',
+      },
+      formErrors: {
+        user_id: '',
+        first_name: '',
+        last_name: '',
+        email: '',
+        created_at: '',
+        updated_at: '',
+      },
+      users: [], // Initialize 'users' as an empty array
     };
   },
   methods: {
-    // Fetch all users from the API
-    async fetchUsers() {
+    async getUsers() {
       try {
         const response = await axios.get('http://localhost:8081/CI4-EcoTrack/public/api/users');
-        this.users = response.data; // Store users in 'users' data property
+        console.log('API Response:', response.data);  // Debug log to see the API response
+        this.users = response.data;  // Store users in 'users' data property
       } catch (error) {
         console.error('Error fetching users:', error);
       }
     },
-
-    // Format date to a readable format
     formatDate(dateString) {
-      const options = { year: 'numeric', month: 'short', day: 'numeric' };
       const date = new Date(dateString);
+      if (isNaN(date.getTime())) {
+        return ''; // Return empty string if the date is invalid
+      }
+      const options = { year: 'numeric', month: 'short', day: 'numeric' };
       return date.toLocaleDateString(undefined, options);
     },
-
-    // Placeholder for editing a user
     editUser(userId) {
       console.log(`Edit user with ID: ${userId}`);
       // Implement edit functionality
     },
-
-    // Placeholder for deleting a user
     deleteUser(userId) {
       console.log(`Delete user with ID: ${userId}`);
       // Implement delete functionality
     },
   },
   mounted() {
-    this.fetchUsers(); // Fetch users when the component is mounted
+    this.getUsers(); // Fetch users when the component is mounted
   },
 };
 </script>
+
 
 <style scoped>
 .grid-container {
