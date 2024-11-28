@@ -26,7 +26,7 @@
           <tbody>
             <tr v-for="admin in admins" :key="admin.id">
               <td>{{ admin.id }}</td>
-              <td>{{ admin.name }}</td>
+              <td>{{ admin.fullname }}</td>
               <td>{{ admin.email }}</td>
               <td>{{ admin.password }}</td>
               <td>

@@ -44,8 +44,19 @@ $routes->get('wastelog/show/(:num)', 'WasteLogController::show/$1');
 $routes->post('login', 'UserController::userLogin', ['filter' => 'cors']);
 $routes->post('addWasteLog', 'WasteLogController::addWasteLog');
 $routes->post('registerUser', 'UserController::registerUser');
+$routes->get('/AdminHome', 'Admin::index'); // AdminHome
+$routes->get('/ManageUsers', 'Admin::manageUsers'); // ManageUsers
+$routes->get('/ManageAdmin', 'Admin::manageAdmin'); // ManageAdmin
+$routes->get('/InsertAdmin', 'Admin::insertAdmin'); // InsertAdmin
+$routes->get('/ViewAdmin', 'Admin::viewAdmin'); // ViewAdmin
 
 
+$routes->post('/admindetails', 'Admin::addDetails'); // Example POST route
+$routes->post('/login', 'Auth::authenticateUser'); // Example login endpoint
+$routes->post('/register', 'Registration::registerUser'); // Example registration endpoint
+
+
+return $routes;
 /*
  * --------------------------------------------------------------------
  * Additional Routing

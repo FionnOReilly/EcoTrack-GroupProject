@@ -73,21 +73,25 @@
       async submitAdminDetails() {
   const adminDetails = {
     name: this.FullName,
-    email: this.Email,
+    email: this.adminEmail,
     password: this.Password,
   };
-  console.log("Admin Details Submitted:", adminDetails);
 
   try {
-    await axios.post('http://localhost:80/CI4-EcoTrack/public/admindetails', adminDetails);
+    const response = await axios.post('http://localhost:80/CI4-EcoTrack/public/InsertAdmin', adminDetails);
+    console.log("Admin added successfully:", response.data);
     alert("Admin successfully added!");
   } catch (error) {
-    console.error("Error submitting admin details:", error);
-    alert("Failed to add admin. Check the console for details.");
+    console.error("Error details:", error);
+    if (error.response) {
+      console.error("Server response error:", error.response.data);
+      alert(`Error: ${error.response.data.message || 'Failed to add admin'}`);
+    } else {
+      alert("Network error. Ensure the server is running and reachable.");
+    }
   }
-}
-}
-  };
+}}};
+  
   </script>
   
   <style scoped>
