@@ -71,19 +71,22 @@
     },
     methods: {
       async submitAdminDetails() {
-        // Handle form submission logic here
-        const adminDetails = {
-          name: this.FullName,
-          email: this.Email,
-          password: this.Password,
-        };
-        console.log("Admin Details Submitted:", adminDetails);
-        alert("Admin successfully added!");
-        // Replace the following with actual API or server call
-        await axios.post('http://localhost:80/CI4-EcoTrack/public/admindetails', adminDetails);
-      },
-      
-    },
+  const adminDetails = {
+    name: this.FullName,
+    email: this.Email,
+    password: this.Password,
+  };
+  console.log("Admin Details Submitted:", adminDetails);
+
+  try {
+    await axios.post('http://localhost:80/CI4-EcoTrack/public/admindetails', adminDetails);
+    alert("Admin successfully added!");
+  } catch (error) {
+    console.error("Error submitting admin details:", error);
+    alert("Failed to add admin. Check the console for details.");
+  }
+}
+}
   };
   </script>
   

@@ -44,7 +44,7 @@
   </template>
   
   <script>
- // import axios from 'axios';
+  import axios from 'axios';
   export default {
     name: "ManageUsers",
     data() {
@@ -78,14 +78,19 @@
         }
       },
 
-    //    async getUsers() {
-    //      const response = await axios.get(
-    //         'http://localhost:8081/CI4-EcoTrack/public/users');
-    //             this.users = response.data;
-    // await axios.post('http://localhost:8081/CI4-EcoTrack/public/users', users);
-    //  },
+      async getUsers() {
+      try {
+        const response = await axios.get('http://localhost:80/CI4-EcoTrack/public/users');
+        this.users = response.data; // Assign fetched data to users array
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
     },
-  };
+  },
+  mounted() {
+    this.getUsers(); // Fetch users when the component is mounted
+  },
+};
   </script>
   
   <style scoped>
