@@ -8,45 +8,38 @@
           <p>
             <label for="wasteType" class="wasteLabel">Waste Type: </label>
             <select id="wasteType" name="wasteType" v-model="wastelog.type">
-              <option value="" disabled selected>Select a Type</option>
+              <option value="" disabled>Select a Type</option>
               <option value="general">General Waste</option>
               <option value="recyclable">Recyclable Materials</option>
               <option value="glass">Glass Waste</option>
               <option value="organic">Organic Waste</option>
             </select>
-            <span id="error1"></span>
           </p>
-
 
           <p>
             <label for="bagSize" class="wasteLabel">Bag Size: </label>
             <select id="bagSize" name="bagSize" v-model="wastelog.size">
-              <option value=""  disabled selected>Select a Size</option>
+              <option value="" disabled>Select a Size</option>
               <option value="Small Bag (25L)">Small Bag (25L)</option>
               <option value="Medium Bag(50L)">Medium Bag (50L)</option>
               <option value="Large Bag(20L)">Large Bag (20L)</option>
               <option value="Large Bag(100L)">Large Bag (100L)</option>
             </select>
-            <span id="error2"></span>
           </p>
 
           <p>
             <label for="isRecyclable" class="wasteLabel">Recyclable: </label>
             <select id="isRecyclable" name="recyclable" v-model="wastelog.recyclable">
-              <option value="" disabled selected>Select</option>
+              <option value="" disabled>Select</option>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
             </select>
-            <span id="error3"></span>
           </p>
-
 
           <p>
             <label for="dateOfDisposal" class="wasteLabel">Date of Disposal: </label>
             <input type="date" name="dateOfDisposal" id="dateOfDisposal" v-model="wastelog.date">
-            <span id="error4"></span>
           </p>
-
 
           <div class="buttonContainer">
             <input type="submit" value="Submit" class="contactButton" id="primaryButton">
@@ -68,7 +61,7 @@
         <tr v-for="log in wasteLogs" :key="log.id">
           <td>{{ log.waste_type }}</td>
           <td>{{ log.bag_size }}</td>
-          <td>{{ log.is_recyclable}}</td>
+          <td>{{ log.is_recyclable }}</td>
           <td>{{ log.date_of_disposal }}</td>
         </tr>
       </table>
@@ -77,76 +70,72 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axiosInstance from "@/plugins/axios.js";
 
 export default {
   name: 'WasteLogPage',
   data() {
     return {
+      user: {},
       wastelog: {
         type: '',
         size: '',
         recyclable: '',
-        date: '',
+        date: ''
       },
-      formErrors: {
-        type: '',
-        size: '',
-        recyclable: '',
-        date: '',
-      },
-      wasteLogs: [],
+      wasteLogs: []
     };
   },
   methods: {
+    fetchUserData() {
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (user) {
+        this.user = user;
+      }
+    },
     async submitForm() {
-      document.getElementById("error1").innerHTML = "";
-      document.getElementById("error2").innerHTML = "";
-      document.getElementById("error3").innerHTML = "";
-      document.getElementById("error4").innerHTML = "";
-
-      if (this.wastelog.type === '' || this.wastelog.type === 'select') {
-        document.getElementById("error1").innerHTML = "*Waste Type is required";
-        return;
-      }
-
-      if (this.wastelog.size === '' || this.wastelog.size === 'select') {
-        document.getElementById("error2").innerHTML = "*Bag Size is required";
-        return;
-      }
-
-      if (this.wastelog.recyclable === '' || this.wastelog.recyclable === 'select') {
-        document.getElementById("error3").innerHTML = "*Option is required";
-        return;
-      }
-
-      if (this.wastelog.date === '') {
-        document.getElementById("error4").innerHTML = "*Date of Disposal is required";
-        return;
-      }
-
       const wasteLogData = {
         type: this.wastelog.type,
         size: this.wastelog.size,
         recyclable: this.wastelog.recyclable,
         date: this.wastelog.date,
+        user_id: this.user.id // Attach user_id
       };
 
-      await axios.post('http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/addWasteLog', wasteLogData);
+      const token = localStorage.getItem('token');
+      if (token) {
+        try {
+          await axiosInstance.post('http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/addWasteLog', wasteLogData, {
+            headers: { Authorization: `Bearer ${token}` }
+          });
+          this.getWasteLogs();
+        } catch (error) {
+          console.error('Error adding waste log:', error);
+        }
+      }
     },
     async getWasteLogs() {
-        const response = await axios.get(
-            'http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/wastelog');
-               this.wasteLogs = response.data;
+      const token = localStorage.getItem('token');
+      const userId = this.user.id;
 
-    },
+      if (token && userId) {
+        try {
+          const response = await axiosInstance.get(`http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/wastelog/user/${userId}`, {
+            headers: { Authorization: `Bearer ${token}` }
+          });
+          this.wasteLogs = response.data;
+        } catch (error) {
+          console.error('Error fetching waste logs:', error);
+        }
+      }
+    }
   },
   mounted() {
+    this.fetchUserData();
     this.getWasteLogs();
-  },
+  }
 };
 </script>
-
 
 
 <style scoped>

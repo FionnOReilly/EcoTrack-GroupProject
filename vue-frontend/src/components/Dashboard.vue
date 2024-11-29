@@ -2,7 +2,7 @@
   <section class="home-section">
     <div class="hero-container">
       <div class="container1">
-        <div class="textbox">
+        <div class="textbox" v-if="user && wasteLogs.length">
           <h1>Welcome, {{ user.first_name }}!</h1>
           <p>Your waste logs:</p>
           <table>
@@ -21,6 +21,12 @@
           </table>
           <button @click="logout">Logout</button>
         </div>
+        <div class="textbox" v-else>
+          <h1>Welcome!</h1>
+          <p v-if="!user">You are not logged in. Please <a @click="redirectToLogin" href="#">log in</a>.</p>
+          <p v-else-if="error">There was an error loading your waste logs: {{ error }}</p>
+          <p v-else>Loading your data, please wait...</p>
+        </div>
       </div>
     </div>
   </section>
@@ -33,34 +39,51 @@ export default {
   name: 'UserDashboard',
   data() {
     return {
-      user: {},
-      wasteLogs: []
+      user: null,
+      wasteLogs: [],
+      error: null, // For error messages
     };
   },
   mounted() {
-    this.fetchUserData();
-    this.fetchWasteLogs();
+    this.checkAuth();
   },
   methods: {
-    fetchUserData() {
-      const user = JSON.parse(localStorage.getItem('user'));
-      if (user) {
-        this.user = user;
+    checkAuth() {
+      // Retrieve user and token from localStorage
+      const user = localStorage.getItem('user');
+      const token = localStorage.getItem('token');
+
+      if (user && token) {
+        this.user = JSON.parse(user);
+        this.fetchWasteLogs();
+      } else {
+        // Redirect to login if not authenticated
+        this.$router.push('/Login');
       }
     },
     async fetchWasteLogs() {
       const token = localStorage.getItem('token');
-      if (token) {
-        try {
-          const response = await axios.get('http://localhost:8081/CI4-EcoTrack/public/wastelog', {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          });
-          this.wasteLogs = response.data;
-        } catch (error) {
-          console.error("Error fetching waste logs:", error);
-          alert("Unable to fetch your waste logs. Please try again later.");
+      const userId = this.user?.id;
+
+      if (!token || !userId) {
+        this.error = "You are not authorized to view this data.";
+        return;
+      }
+
+      try {
+        const response = await axios.get(`http://localhost:8081/CI4-EcoTrack/public/wastelog/user/${userId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        this.wasteLogs = response.data.data; // Adjust this based on your API response structure
+      } catch (error) {
+        console.error("Error fetching waste logs:", error);
+        if (error.response && error.response.status === 401) {
+          this.error = "Your session has expired. Please log in again.";
+          this.logout();
+        } else {
+          this.error = "Unable to fetch your waste logs. Please try again later.";
         }
       }
     },
@@ -68,8 +91,11 @@ export default {
       localStorage.removeItem('user');
       localStorage.removeItem('token');
       this.$router.push('/Login');
-    }
-  }
+    },
+    redirectToLogin() {
+      this.$router.push('/Login');
+    },
+  },
 };
 </script>
 

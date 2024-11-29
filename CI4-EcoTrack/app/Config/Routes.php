@@ -38,7 +38,7 @@ $routes->get('users', 'UserController::index');
 $routes->get('users/show/(:num)', 'UserController::show/$1');
 
 $routes->get('/wastelog', 'WasteLogController::index',['filter' => 'cors']);
-$routes->get('wastelog/show/(:num)', 'WasteLogController::show/$1');
+$routes->get('wastelog/user/(:num)', 'WasteLogController::getUserWasteLogs/$1', ['filter' => 'cors']);
 
 $routes->post('/addWasteLog', 'WasteLogController::addWasteLog',['filter' => 'cors']);
 $routes->post('registerUser', 'UserController::registerUser');
