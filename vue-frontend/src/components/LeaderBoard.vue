@@ -11,31 +11,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td>1</td>
-          <td>Joe Bloggs</td>
-          <td>5,000</td>
+        <tr v-for="leader in leaderboardPoints" :key="leader.user_id">
+          <td class="leader-box">{{ leader.rank }}</td>
+          <td class="leader-box">{{ leader.username }}</td>
+          <td class="leader-box">{{ leader.current_points }}</td>
         </tr>
-        <tr>
-          <td>2</td>
-          <td>Jane Doe</td>
-          <td>4,900</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>John Wayne</td>
-          <td>4,875</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td></td>
-          <td></td>
-        </tr>
+
         </tbody>
       </table>
     </div>
@@ -49,38 +30,48 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td>6</td>
-          <td></td>
-          <td></td>
+        <tr v-for="i in 5" :key="'empty-' + i">
+          <td>{{i+5}}</td>
+          <!--          <td class="leader-box">{{ leader.rank }}</td>-->
+          <!--          <td class="leader-box">{{ leader.username }}</td>-->
+          <!--          <td class="leader-box">{{ leader.current_points }}</td>-->
         </tr>
-        <tr>
-          <td>7</td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>8</td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>9</td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>10</td>
-          <td></td>
-          <td></td>
-        </tr>
+
         </tbody>
       </table>
     </div>
   </div>
 </template>
 
+<script>
+import axios from 'axios';
 
+
+export default {
+  name: 'LeaderboardPage',
+  data() {
+    return {
+      leaderboardPoints: []
+    };
+  },
+  methods: {
+    async getLeaderboardPoints() {
+      try {
+       // this.leaderboardPoints=[];
+        const response = await axios.get('http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/leaderboard');
+        console.log("Fetched Data:", response.data);
+        this.leaderboardPoints = response.data;
+      } catch (error) {
+        console.error("Error fetching results:", error);
+      }
+    },
+  },
+  mounted() {
+    this.getLeaderboardPoints();  // Ensure the API is called when the component is mounted
+  }
+};
+
+</script>
 
 <style scoped>
 

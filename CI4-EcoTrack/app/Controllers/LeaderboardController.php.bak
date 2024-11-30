@@ -1,0 +1,28 @@
+<?php namespace App\Controllers;
+
+use CodeIgniter\RESTful\ResourceController;
+
+class LeaderboardController extends ResourceController
+{
+    protected $modelName = 'App\Models\LeaderboardModel';
+    protected $format = 'json'; 
+
+    public function index()
+{
+
+    $leaderboard = $this->model->findAll();
+
+    return $this->respond($leaderboard);  
+}
+
+public function update()
+{
+	if($this->model->updateLeaderBoard())
+	{
+		return $this->respond(['message']=>'Leaderboard Updated');
+	}
+	else{
+		return $this->failServerError('Error in updating');
+	}
+}
+}

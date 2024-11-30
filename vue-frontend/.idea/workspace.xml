@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b68c702f-c47c-4902-9e4f-54dddbd8da44" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LeaderBoard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LeaderBoard.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UserGoals.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserGoals.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +49,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_interpreter_path": "C:/Users/k00288364/AppData/Roaming/JetBrains/IntelliJIdea2024.2/node/versions/22.11.0/node",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Program Files (x86)\\JetBrains\\IntelliJ IDEA 2024.2.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.2.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
