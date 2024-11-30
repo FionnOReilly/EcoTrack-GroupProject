@@ -1,164 +1,172 @@
 <template>
-    <div class="manage-admin">
-      <!-- Navbar -->
-      <nav class="navbar">
-        <div><a href="#">Admin Dashboard</a></div>
-        <div>
-          <router-link to="/AdminHome" >Home</router-link>
-          <a href="#">Logout</a>
-        </div>
-      </nav>
-  
-      <!-- Main Content -->
-      <div class="content">
-        <h1>Manage Admins</h1>
-        <p>View and manage all registered admin below:</p>
-        <table>
-          <thead>
-            <tr>
-              <th>Admin ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Password</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="admin in admins" :key="admin.id">
-              <td>{{ admin.id }}</td>
-              <td>{{ admin.fullname }}</td>
-              <td>{{ admin.email }}</td>
-              <td>{{ admin.password }}</td>
-              <td>
-                <button class="button" @click="editAdmin(admin.id)">Edit</button>
-                <button class="button" @click="deleteAdmin(admin.id)">Delete</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-  
-      <!-- Footer -->
-     
+  <div class="grid-container">
+    <!-- User Display Section -->
+    <div id="loggedAdmin">
+      <h4>Users List</h4>
+      <table>
+        <tr>
+          <th>Admin ID</th>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Created At</th>
+          <th>Updated At</th>
+          <th>Actions</th>
+        </tr>
+        <tr v-for="admin in admins" :key="admin.admin_id">
+          <td>{{ admin.admin_id }}</td>
+          <td>{{ admin.f_name }}</td>
+          <td>{{ admin.email }}</td>
+          <td>{{ admin.password }}</td>
+          <td>{{ formatDate(admin.created_at) }}</td>
+          <td>{{ formatDate(admin.updated_at) }}</td>
+          <td>
+            <button @click="editUser(admin.admin_id)">Edit</button>
+            <button @click="deleteUser(admin.admin_id)">Delete</button>
+          </td>
+        </tr>
+      </table>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    name: "ManageAdmin",
-    data() {
+  </div>
+</template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  name: 'AdminPage',
+  data() {
     return {
-        f_name: {
+      admin: {
+        admin_id: '',
+        f_name: '',
         email: '',
         password: '',
-       
+        created_at: '',
+        updated_at: '',
       },
       formErrors: {
-        FullName: '',
-        Email: '',
-        Password: '',
-       
+        admin_id: '',
+        f_name: '',
+        email: '',
+        password: '',
+        created_at: '',
+        updated_at: '',
       },
-      wasteLogs: [],
+      admins: [], // Initialize 'users' as an empty array
     };
   },
-    methods: {
-      editUser(id) {
-        alert(`Edit user with ID: ${id}`);
-        // Replace with actual logic, e.g., navigate to an edit form or open a modal
-      },
-      deleteUser(id) {
-        const confirmed = confirm("Are you sure you want to delete this user?");
-        if (confirmed) {
-          this.users = this.users.filter((user) => user.id !== id);
-          alert(`User with ID: ${id} deleted successfully.`);
-        }
-      },
-
-    //   async getUsers() {
-    //     const response = await axios.get(
-    //         'http://localhost:8081/CI4-EcoTrack/public/users');
-    //            this.users = response.data;
-
-    // },
+  methods: {
+    async getAdmins() {
+      try {
+        const response = await axios.get('http://localhost:8081/CI4-EcoTrack/public/api/admins');
+        console.log('API Response:', response.data);  // Debug log to see the API response
+        this.admin = response.data;  // Store users in 'users' data property
+      } catch (error) {
+        console.error("Error fetching admin:", error);
+      }
     },
-  };
-  </script>
-  
-  <style scoped>
-  /* Basic Reset */
-  body {
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      if (isNaN(date.getTime())) {
+        return ''; // Return empty string if the date is invalid
+      }
+      const options = { year: 'numeric', month: 'short', day: 'numeric' };
+      return date.toLocaleDateString(undefined, options);
+    },
+    editAdmin(admin_id) {
+      console.log(`Edit admin with ID: ${admin_id}`);
+      // Implement edit functionality
+    },
+    deleteAdmin(admin_id) {
+      console.log(`Delete admin with ID: ${admin_id}`);
+      // Implement delete functionality
+    },
+  },
+  mounted() {
+    this.getAdmins(); // Fetch users when the component is mounted
+  },
+};
+</script>
+
+
+<style scoped>
+.grid-container {
+  display: grid;
+  grid-template-columns: 100%;
+  margin-bottom: 15px;
+}
+
+#loggedUsers {
+  margin-top: 20px;
+}
+
+#loggedUsers table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#loggedUsers th, #loggedUsers td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #2D2828C6;
+}
+
+#loggedUsers th {
+  background-color: #71BAC1;
+  color: #2D2828;
+  font-weight: bold;
+}
+
+#loggedUsers tr {
+  background-color: #FFFEEF;
+}
+
+#loggedUsers tr:hover {
+  background-color: #C8DFE0;
+}
+
+#loggedUsers button {
+  padding: 5px;
+  margin: 5px;
+  background-color: #3ED2AA;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+#loggedUsers button:hover {
+  background-color: #adffe7;
+}
+
+@media only screen and (max-width: 767px) {
+  .grid-container {
+    grid-template-columns: repeat(5, 20%);
+    grid-row-gap: 2em;
+  }
+
+  #loggedUsers {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f7fc;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    grid-column: 1/6;
   }
-  
-  /* Navbar */
-  .navbar {
-    background-color: #42A5A2;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-  }
-  
-  .navbar a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-  }
-  
-  /* Main Content */
-  .content {
-    flex: 1;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  table {
-    width: 80%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  th,
-  td {
-    border: 1px solid #ddd;
-    padding: 10px;
+
+  label {
+    width: 50%;
+    margin-left: 60px;
     text-align: left;
+    display: block;
   }
-  
-  th {
-    background-color: #42A5A2;
-    color: white;
+
+  select,
+  input[type="text"],
+  input[type="date"] {
+    display: block;
+    width: 70%;
+    margin-left: 70px;
   }
-  
-  .button {
-    margin: 10px 5px;
-    padding: 10px 20px;
-    background-color: #42A5A2;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-transform: uppercase;
+
+  #loggedUsers table {
+    margin-top: 20px;
   }
-  
-  .button:hover {
-    background-color: #80CED6;
-  }
-  
-  /* Footer */
-  .footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-  }
-  </style>
-  
+}
+</style>
