@@ -102,8 +102,8 @@ export default {
         return;
       }
       const userData = {
-        firstName: this.userData.firstName,
-        lastName: this.userData.lastName,
+        first_name: this.userData.firstName,
+        last_name: this.userData.lastName,
         email: this.userData.email,
         password: this.userData.password
       };

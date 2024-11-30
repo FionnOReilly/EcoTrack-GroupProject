@@ -41,6 +41,7 @@ class Filters extends BaseConfig
         ],
         'after' => [
             'toolbar',
+			'cors',
             // 'honeypot',
             // 'secureheaders',
         ],
