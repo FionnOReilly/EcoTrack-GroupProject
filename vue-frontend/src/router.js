@@ -19,7 +19,8 @@ const routes = [
     { path: '/WasteLogging', component: WasteLog},
     { path : '/Login', component : LoginPage},
     { path : '/AdminLogin', component : AdminLogin},
- { path: '/dashboard', name: 'Dashboard', component: Dashboard, meta: { requiresAuth: true },}
+ { path: '/dashboard', name: 'Dashboard', component: Dashboard, meta: { requiresAuth: true },},
+    { path: '/dashboard', name: 'Dashboard', component: Dashboard, meta: { requiresAuth: true },}
 ];
 const router = createRouter({
     history: createWebHistory(),
