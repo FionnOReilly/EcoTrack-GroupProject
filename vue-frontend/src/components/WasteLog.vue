@@ -94,26 +94,41 @@ export default {
       }
     },
     async submitForm() {
+      document.getElementById("error1").innerHTML = "";
+      document.getElementById("error2").innerHTML = "";
+      document.getElementById("error3").innerHTML = "";
+      document.getElementById("error4").innerHTML = "";
+
+      if (this.wastelog.type === '' || this.wastelog.type === 'select') {
+        document.getElementById("error1").innerHTML = "*Waste Type is required";
+        return;
+      }
+
+      if (this.wastelog.size === '' || this.wastelog.size === 'select') {
+        document.getElementById("error2").innerHTML = "*Bag Size is required";
+        return;
+      }
+
+      if (this.wastelog.recyclable === '' || this.wastelog.recyclable === 'select') {
+        document.getElementById("error3").innerHTML = "*Option is required";
+        return;
+      }
+
+      if (this.wastelog.date === '') {
+        document.getElementById("error4").innerHTML = "*Date of Disposal is required";
+        return;
+      }
+
+      let user_id = 1;
       const wasteLogData = {
         type: this.wastelog.type,
         size: this.wastelog.size,
         recyclable: this.wastelog.recyclable,
         date: this.wastelog.date,
-        user_id: this.user.id // Attach user_id
+        user_id: user_id,
       };
 
-      const token = localStorage.getItem('token');
-      if (token) {
-        try {
-          await axiosInstance.post('http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/addWasteLog', wasteLogData, {
-            headers: { Authorization: `Bearer ${token}` }
-          });
-          this.getWasteLogs();
-        } catch (error) {
-          console.error('Error adding waste log:', error);
-        }
-      }
-    },
+      await axios.post('http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/addWasteLog', wasteLogData);    },
     async getWasteLogs() {
       const token = localStorage.getItem('token');
       const userId = this.user.id;

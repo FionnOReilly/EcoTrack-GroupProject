@@ -16,10 +16,11 @@ class WasteLogModel extends Model
         $bagSize = $wasteLog['size'];
         $isRecyclable = $wasteLog['recyclable'];
         $dateOfDisposal = $wasteLog['date'];
-        $userId = $wasteLog['user_id'];
+        $user_id = $wasteLog['user_id'];    
+        $insertWasteLog = "CALL insert_waste_log('$wasteType', '$bagSize', '$isRecyclable', '$dateOfDisposal', '$user_id')";
 
-        $insertWasteLog = "CALL insert_waste_log('$wasteType', '$bagSize', '$isRecyclable', '$dateOfDisposal', '$userId')";
+         $this->db->query($insertWasteLog);
+}
 
-        $this->db->query($insertWasteLog);
-    }
+
 }

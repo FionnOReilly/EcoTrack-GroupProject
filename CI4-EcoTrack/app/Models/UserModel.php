@@ -7,16 +7,14 @@ class UserModel extends Model
     protected $table = 'users';
     protected $allowedFields = ['first_name', 'last_name', 'email', 'password'];
 
-    public function insertUser($data)
+    public function InsertUser($user)
     {
-        // Ensure the keys are correct
-        $db = \Config\Database::connect();
-        $query = $db->query('CALL InsertUser(?, ?, ?, ?)', [
-            $data['first_name'],
-            $data['last_name'],
-            $data['email'],
-            $data['password']
-        ]);
+        $firstName = $user['firstName'];
+        $lastName = $user['lastName'];
+        $email = $user['email'];
+        $password = $user['password'];
+
+        $registerUser = "CALL InsertUser('$firstName', '$lastName', '$email', '$password')";
 
         return $query !== false;
     }
