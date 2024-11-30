@@ -102,14 +102,14 @@ export default {
         return;
       }
       const userData = {
-        firstName: this.userData.firstName,
-        lastName: this.userData.lastName,
+        first_name: this.userData.firstName,
+        last_name: this.userData.lastName,
         email: this.userData.email,
         password: this.userData.password
       };
 
       try {
-        await axios.post('http://localhost:8081/CI4-EcoTrack/public/registerUser', userData);
+        await axios.post('http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/registerUser', userData);
         this.$router.push('/');
         this.resetForm();
       } catch (error) {

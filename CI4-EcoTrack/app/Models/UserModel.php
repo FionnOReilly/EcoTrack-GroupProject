@@ -4,22 +4,20 @@ use CodeIgniter\Model;
 
 class UserModel extends Model
 {
-    // params
-    protected $table = 'users'; // Table name
-    protected $primaryKey = 'id'; // primary key
-    protected $allowedFields = [ 'firstName', 'lastName', 'email', 'password']; // Accessible fields
+    protected $table = 'users';
+    protected $allowedFields = ['first_name', 'last_name', 'email', 'password'];
 
-
-    public function InsertUser($wasteLog)
+    public function insertUser($data)
     {
-        $firstName = $wasteLog['firstName'];
-        $lastName = $wasteLog['lastName'];
-        $email = $wasteLog['email'];
-        $password = $wasteLog['password'];
+        // Ensure the keys are correct
+        $db = \Config\Database::connect();
+        $query = $db->query('CALL InsertUser(?, ?, ?, ?)', [
+            $data['first_name'],
+            $data['last_name'],
+            $data['email'],
+            $data['password']
+        ]);
 
-        $registerUser = "CALL InsertUser('$firstName', '$lastName', '$email', '$password')";
-
-        $this->db->query($registerUser);
-
+        return $query !== false;
     }
 }
