@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c96b7a2f-9ef5-4980-81f2-df8c965b02ce" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-frontend/src/components/ManageUsers.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-frontend/src/components/ManageUsers.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +14,25 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="ManageUsersBranch" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;daniellipper&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/FionnOReilly/EcoTrack-GroupProject.git&quot;,
+    &quot;accountId&quot;: &quot;dad71813-7bd9-4562-9a88-7ef4e517ef4c&quot;
+  }
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -32,8 +50,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "DansBranch",
-    "ignore.virus.scanning.warn.message": "true",
+    "git-widget-placeholder": "updateUsers",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/K00281253/Downloads/Assignment_Two_Starter",
     "node.js.detected.package.eslint": "true",
@@ -65,8 +82,13 @@
       <option name="presentableId" value="Default" />
       <updated>1730821319531</updated>
       <workItem from="1730821331470" duration="853000" />
-      <workItem from="1730839669751" duration="53000" />
-      <workItem from="1732023628471" duration="2059000" />
+      <workItem from="1732635549980" duration="3700000" />
+      <workItem from="1732645090910" duration="183000" />
+      <workItem from="1732645291960" duration="47000" />
+      <workItem from="1732645353279" duration="1365000" />
+      <workItem from="1732699911008" duration="350000" />
+      <workItem from="1732700785903" duration="362000" />
+      <workItem from="1732705443776" duration="1194000" />
     </task>
     <servers />
   </component>
