@@ -128,7 +128,7 @@ export default {
         user_id: user_id,
       };
 
-      await axios.post('http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/addWasteLog', wasteLogData);    },
+      await axiosInstance.post('http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/addWasteLog', wasteLogData);    },
     async getWasteLogs() {
       const token = localStorage.getItem('token');
       const userId = this.user.id;
