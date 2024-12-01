@@ -40,7 +40,6 @@ class WasteLogController extends ResourceController
     public function getUserWasteLogs($userId) {
         $model = new WasteLogModel();
 
-        // Fetch logs for the specific user
         $wasteLogs = $model->where('user_id', $userId)->findAll();
 
         if ($wasteLogs) {
@@ -49,4 +48,22 @@ class WasteLogController extends ResourceController
             return $this->respond(['status' => 'error', 'message' => 'No logs found'], 404);
         }
     }
+
+    public function deleteWasteLog($id)
+{
+    $model = new WasteLogModel();
+
+    $wasteLog = $model->find($id);
+
+    if (!$wasteLog) {
+        return $this->respond(['status' => 'error', 'message' => 'Waste log not found'], 404);
+    }
+
+    // Proceed to delete the waste log
+    if ($model->delete($id)) {
+        return $this->respond(['status' => 'success', 'message' => 'Waste log deleted successfully']);
+    } else {
+        return $this->respond(['status' => 'error', 'message' => 'Failed to delete waste log'], 500);
+    }
+}
 }
