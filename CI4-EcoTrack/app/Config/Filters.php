@@ -34,13 +34,14 @@ class Filters extends BaseConfig
      */
     public $globals = [
         'before' => [
-            'cors'
-            // 'honeypot',
-            // 'csrf',
-            // 'invalidchars',
+            'cors' => [
+                'class' => App\Filters\Cors::class,
+                'parameters' => []
+            ]
         ],
         'after' => [
             'toolbar',
+			'cors',
             // 'honeypot',
             // 'secureheaders',
         ],

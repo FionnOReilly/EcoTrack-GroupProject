@@ -1,4 +1,7 @@
-const { defineConfig } = require('@vue/cli-service')
+const { defineConfig } = require('@vue/cli-service');
 module.exports = defineConfig({
-  transpileDependencies: true
-})
+  devServer: {
+    port: 8082,
+  },
+  publicPath: process.env.NODE_ENV === 'production' ? '/CI4-EcoTrack/public' : '/'
+});

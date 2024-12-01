@@ -8,20 +8,20 @@
           <p>
             <label for="wasteType" class="wasteLabel">Waste Type: </label>
             <select id="wasteType" name="wasteType" v-model="wastelog.type">
-              <option value="" disabled selected>Select a Type</option>
+              <option value="" disabled>Select a Type</option>
               <option value="general">General Waste</option>
               <option value="recyclable">Recyclable Materials</option>
               <option value="glass">Glass Waste</option>
               <option value="organic">Organic Waste</option>
             </select>
             <span id="error1"></span>
-          </p>
 
+          </p>
 
           <p>
             <label for="bagSize" class="wasteLabel">Bag Size: </label>
             <select id="bagSize" name="bagSize" v-model="wastelog.size">
-              <option value=""  disabled selected>Select a Size</option>
+              <option value="" disabled>Select a Size</option>
               <option value="Small Bag (25L)">Small Bag (25L)</option>
               <option value="Medium Bag(50L)">Medium Bag (50L)</option>
               <option value="Large Bag(20L)">Large Bag (20L)</option>
@@ -33,20 +33,20 @@
           <p>
             <label for="isRecyclable" class="wasteLabel">Recyclable: </label>
             <select id="isRecyclable" name="recyclable" v-model="wastelog.recyclable">
-              <option value="" disabled selected>Select</option>
+              <option value="" disabled>Select</option>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
             </select>
             <span id="error3"></span>
-          </p>
 
+          </p>
 
           <p>
             <label for="dateOfDisposal" class="wasteLabel">Date of Disposal: </label>
             <input type="date" name="dateOfDisposal" id="dateOfDisposal" v-model="wastelog.date">
             <span id="error4"></span>
-          </p>
 
+          </p>
 
           <div class="buttonContainer">
             <input type="submit" value="Submit" class="contactButton" id="primaryButton">
@@ -64,12 +64,16 @@
           <th>Bag Size</th>
           <th>Recyclable</th>
           <th>Date of Disposal</th>
+          <th>Actions</th>
         </tr>
         <tr v-for="log in wasteLogs" :key="log.id">
           <td>{{ log.waste_type }}</td>
           <td>{{ log.bag_size }}</td>
-          <td>{{ log.is_recyclable}}</td>
+          <td>{{ log.is_recyclable }}</td>
           <td>{{ log.date_of_disposal }}</td>
+          <td>
+            <button @click="deleteWasteLog(log.id)" id="secondaryButton">Delete</button>
+          </td>
         </tr>
       </table>
     </div>
@@ -77,17 +81,18 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axiosInstance from "@/plugins/axios.js";
 
 export default {
   name: 'WasteLogPage',
   data() {
     return {
+      user: {},
       wastelog: {
         type: '',
         size: '',
         recyclable: '',
-        date: '',
+        date: ''
       },
       formErrors: {
         type: '',
@@ -95,11 +100,18 @@ export default {
         recyclable: '',
         date: '',
       },
-      wasteLogs: [],
+      wasteLogs: []
     };
   },
   methods: {
+    fetchUserData() {
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (user) {
+        this.user = user;
+      }
+    },
     async submitForm() {
+
       document.getElementById("error1").innerHTML = "";
       document.getElementById("error2").innerHTML = "";
       document.getElementById("error3").innerHTML = "";
@@ -136,34 +148,58 @@ export default {
 
       await axios.post('http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/addWasteLog', wasteLogData);    },
     async getWasteLogs() {
-        const response = await axios.get(
-            'http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/wastelog');
-               this.wasteLogs = response.data;
+      const token = localStorage.getItem('token');
+      const userId = this.user.id;
 
+      if (token && userId) {
+        try {
+          const response = await axiosInstance.get(`http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/wastelog/user/${userId}`, {
+            headers: {Authorization: `Bearer ${token}`}
+          });
+          this.wasteLogs = response.data;
+        } catch (error) {
+          console.error('Error fetching waste logs:', error);
+        }
+      }
     },
+    async deleteWasteLog(id) {
+      const token = localStorage.getItem('token');
+      if (token) {
+        try {
+          await axiosInstance.delete(`http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/deleteWasteLog/${id}`, {
+            headers: {Authorization: `Bearer ${token}`}
+          });
+          this.getWasteLogs();
+        } catch (error) {
+          console.error('Error deleting waste log:', error);
+        }
+      }
+    }
   },
+
   mounted() {
+    this.fetchUserData();
     this.getWasteLogs();
-  },
+  }
 };
 </script>
-
 
 
 <style scoped>
 
 span {
   color: red;
-  font-size:16px;
+  font-size: 16px;
 
 }
+
 .grid-container {
   display: grid;
   grid-template-columns: 100%;
-  margin-bottom:15px;
+  margin-bottom: 15px;
 }
 
-#loggedWaste{
+#loggedWaste {
 
 }
 
@@ -172,26 +208,26 @@ span {
 }
 
 #primaryButton:hover {
-  background-color: #adffe7; 
+  background-color: #adffe7;
 }
 
 #secondaryButton:hover {
-  background-color: #fab3a1; 
+  background-color: #fab3a1;
 }
 
-form{
+form {
   width: 100%;
   padding: 20px;
 }
 
-fieldset,#loggedWaste {
+fieldset, #loggedWaste {
   width: 100%;
   background-color: #D4E7E9;
-  font-size:20px;
+  font-size: 20px;
 }
 
 
-#fieldset1, fieldset,#loggedWaste {
+#fieldset1, fieldset, #loggedWaste {
   border: 5px solid #2D2828C6;
   border-radius: 20px;
 }
@@ -208,18 +244,18 @@ label {
   padding-left: 10px;
 }
 
-input[type="text"],select, input[type="date"] {
+input[type="text"], select, input[type="date"] {
   display: inline-block;
   margin-left: 2em;
   margin-bottom: 2px;
-  width:30%;
-  padding:5px;
+  width: 30%;
+  padding: 5px;
 }
 
-input[type="radio"]{
-  margin-left:5%;
-  margin-right:5px;
-  padding:5px;
+input[type="radio"] {
+  margin-left: 5%;
+  margin-right: 5px;
+  padding: 5px;
 }
 
 #service {
@@ -228,7 +264,7 @@ input[type="radio"]{
   padding: 5px;
 }
 
-#fieldset1 legend,#loggedWaste h4 {
+#fieldset1 legend, #loggedWaste h4 {
   padding: 3px;
   border-radius: 14.8px 11.8px 0 0;
   width: 100%;
@@ -242,19 +278,19 @@ input[type="radio"]{
   margin: 10px;
 }
 
- #primaryButton, #secondaryButton {
+#primaryButton, #secondaryButton {
   padding: 5px;
-margin:5px;
+  margin: 5px;
   width: 7em;
   font-weight: bold;
   color: black;
 }
 
-#secondaryButton{
-  background-color:#F79181;
+#secondaryButton {
+  background-color: #F79181;
 }
 
-#primaryButton{
+#primaryButton {
   background-color: #3ED2AA
 }
 
@@ -268,8 +304,8 @@ margin:5px;
   width: 100%;
 }
 
-#loggedWaste{
-  border-radius:20px 20px 0 0 ;
+#loggedWaste {
+  border-radius: 20px 20px 0 0;
 }
 
 #loggedWaste th,
@@ -287,14 +323,12 @@ margin:5px;
 }
 
 #loggedWaste tr {
-  background-color: #FFFEEF; 
+  background-color: #FFFEEF;
 }
 
 #loggedWaste tr:hover {
-  background-color: #C8DFE0; 
+  background-color: #C8DFE0;
 }
-
-
 
 
 /*Mobile view*/
@@ -304,11 +338,10 @@ margin:5px;
     grid-row-gap: 2em;
   }
 
-  form ,#loggedWaste{
+  form, #loggedWaste {
     margin: 0;
     grid-column: 1/6;
   }
-
 
 
   .error {
@@ -320,22 +353,27 @@ margin:5px;
     width: 39%;
   }
 
-label{width:50%;margin-left:60px;text-align: left;display: block;}
+  label {
+    width: 50%;
+    margin-left: 60px;
+    text-align: left;
+    display: block;
+  }
 
   select,
   input[type="text"],
   input[type="date"] {
     display: block;
-    width:70%;
-    margin-left:70px;
-  }
-   
-  input[type="radio"]{
-    margin-left:70px;
+    width: 70%;
+    margin-left: 70px;
   }
 
-  #loggedWaste{
-    margin:0px;
+  input[type="radio"] {
+    margin-left: 70px;
+  }
+
+  #loggedWaste {
+    margin: 0px;
   }
 
 
@@ -353,7 +391,7 @@ label{width:50%;margin-left:60px;text-align: left;display: block;}
   }
 
 
-  form,#loggedWaste {
+  form, #loggedWaste {
     grid-column: 5/13;
   }
 

@@ -1,43 +1,84 @@
 <template>
-    <div class="wrapper">
-      <!-- Registration Form -->
-      <div class="Registercontainer">
-        <form class="register-form">
-          <legend>Admin Login</legend>
-  
-          <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-    
-          <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-          </div>
-    
-    
-    
-          <div class="buttonContainer">
-              <input type="submit" value="Submit" class="contactButton" id="submitButton">
-              <input type="reset" value="Reset" class="contactButton" id="resetButton">
-            </div>
-            
-        </form>
-      </div>
+  <div class="wrapper">
+    <div class="Registercontainer">
+      <form @submit.prevent="handleAdminLogin" class="register-form">
+        <legend>Admin Login</legend>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" v-model="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" v-model="password" placeholder="Enter your password" required>
+        </div>
+
+        <div class="buttonContainer">
+          <input type="submit" value="Submit" class="contactButton" id="submitButton">
+          <input type="reset" value="Reset" class="contactButton" id="resetButton">
+        </div>
+      </form>
     </div>
-    
-    </template>
-    
-    
-    <script>
-    
-    export default {
-      name: 'LoginPage'
+  </div>
+</template>
+
+<script>
+import axiosInstance from "@/plugins/axios.js";
+
+export default {
+  name: "AdminLoginPage",
+  data() {
+    return {
+      email: "",
+      password: "",
     };
-    
-    </script>
-    
-    <style scoped>
+  },
+  methods: {
+    validateForm() {
+      if (!this.email.includes("@")) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+      if (this.password.length < 6) {
+        alert("Password must be at least 6 characters.");
+        return false;
+      }
+      return true;
+    },
+async handleAdminLogin() {
+  if (!this.validateForm()) return;
+
+  console.log("Attempting admin login with:", this.email, this.password);
+  try {
+    const response = await axiosInstance.post("/admin-login", {
+      email: this.email,
+      password: this.password,
+    });
+    console.log("Response from server:", response.data);
+
+    if (response.data.status === 'success') {
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+
+      alert("Admin login successful!");
+      this.$router.push("/dashboard");
+    } else {
+      alert(response.data.error || "Invalid admin login credentials. Please try again.");
+    }
+  } catch (error) {
+    console.error("Admin login error:", error.response || error);
+    const errorMessage =
+      error.response?.data?.error || "Unable to connect to the server. Please try again later.";
+    alert(errorMessage);
+  }
+},
+  },
+};
+</script>
+
+
+ <style scoped>
     .wrapper {
         display: flex;
         flex-direction: column;
