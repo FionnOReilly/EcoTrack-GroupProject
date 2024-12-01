@@ -26,7 +26,7 @@ const routes = [
 
     { path : '/AdminLogin', component : AdminLogin},
  { path: '/dashboard', name: 'Dashboard', component: Dashboard, meta: { requiresAuth: true },},
-    { path: '/Admindashboard', name: 'AdminDashboard', component: AdminDashboard, meta: { requiresAuth: true },}
+    { path: '/AdminDashboard', name: 'AdminDashboard', component: AdminDashboard, meta: { requiresAuth: true },}
 ];
 const router = createRouter({
     history: createWebHistory(),

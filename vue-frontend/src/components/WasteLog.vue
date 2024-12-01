@@ -14,6 +14,8 @@
               <option value="glass">Glass Waste</option>
               <option value="organic">Organic Waste</option>
             </select>
+            <span id="error1"></span>
+
           </p>
 
           <p>
@@ -25,6 +27,7 @@
               <option value="Large Bag(20L)">Large Bag (20L)</option>
               <option value="Large Bag(100L)">Large Bag (100L)</option>
             </select>
+            <span id="error2"></span>
           </p>
 
           <p>
@@ -34,11 +37,15 @@
               <option value="Yes">Yes</option>
               <option value="No">No</option>
             </select>
+            <span id="error3"></span>
+
           </p>
 
           <p>
             <label for="dateOfDisposal" class="wasteLabel">Date of Disposal: </label>
             <input type="date" name="dateOfDisposal" id="dateOfDisposal" v-model="wastelog.date">
+            <span id="error4"></span>
+
           </p>
 
           <div class="buttonContainer">
@@ -87,6 +94,12 @@ export default {
         recyclable: '',
         date: ''
       },
+      formErrors: {
+        type: '',
+        size: '',
+        recyclable: '',
+        date: '',
+      },
       wasteLogs: []
     };
   },
@@ -98,12 +111,38 @@ export default {
       }
     },
     async submitForm() {
+
+      document.getElementById("error1").innerHTML = "";
+      document.getElementById("error2").innerHTML = "";
+      document.getElementById("error3").innerHTML = "";
+      document.getElementById("error4").innerHTML = "";
+
+      if (this.wastelog.type === '' || this.wastelog.type === 'select') {
+        document.getElementById("error1").innerHTML = "*Waste Type is required";
+        return;
+      }
+
+      if (this.wastelog.size === '' || this.wastelog.size === 'select') {
+        document.getElementById("error2").innerHTML = "*Bag Size is required";
+        return;
+      }
+
+      if (this.wastelog.recyclable === '' || this.wastelog.recyclable === 'select') {
+        document.getElementById("error3").innerHTML = "*Option is required";
+        return;
+      }
+
+      if (this.wastelog.date === '') {
+        document.getElementById("error4").innerHTML = "*Date of Disposal is required";
+        return;
+      }
+
       const wasteLogData = {
         type: this.wastelog.type,
         size: this.wastelog.size,
         recyclable: this.wastelog.recyclable,
         date: this.wastelog.date,
-        user_id: this.user.id // Attach user_id
+        user_id: this.user.id
       };
 
       const token = localStorage.getItem('token');
@@ -113,6 +152,7 @@ export default {
             headers: {Authorization: `Bearer ${token}`}
           });
           this.getWasteLogs();
+          this.wastelog = { type: '', size: '', recyclable: '', date: '' };
         } catch (error) {
           console.error('Error adding waste log:', error);
         }
