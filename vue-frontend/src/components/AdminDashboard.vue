@@ -1,13 +1,6 @@
 <template>
   <div class="admin-dashboard">
-    <!-- Navbar -->
-    <nav class="navbar">
-      <div><a href="#">Admin Dashboard</a></div>
-      <div>
-        <a href="/AdminHome.vue">Home</a>
-        <a href="#">Logout</a>
-      </div>
-    </nav>
+
 
     <!-- Hero Section -->
     <div class="hero-container">
