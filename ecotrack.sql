@@ -120,10 +120,15 @@ CREATE TABLE admins (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,  -- Timestamp for record update
     deleted_at TIMESTAMP NULL DEFAULT NULL  
 );
+
+INSERT INTO `admins` (`id`, `f_name`,  `email`, `password`, `created_at`, `updated_at`) VALUES
+(1, 'joe byrnes', 'joebyrnes@gmail.com', 'joe123', '2024-11-20 18:33:48', '2024-11-27 19:33:38'),
+(2, 'test1', 'test1@test.com', 'test1232', '2024-11-27 19:34:08', '2024-11-27 19:34:08');
+
+
 --
 -- Table structure for table `waste_logs`
 --
-
 CREATE TABLE `waste_logs` (
   `id` int(11) NOT NULL,
   `waste_type` varchar(50) NOT NULL,
