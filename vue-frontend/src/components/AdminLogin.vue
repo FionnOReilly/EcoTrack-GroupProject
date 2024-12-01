@@ -62,7 +62,7 @@ async handleAdminLogin() {
       localStorage.setItem('user', JSON.stringify(response.data.user));
 
       alert("Admin login successful!");
-      this.$router.push("/dashboard");
+      this.$router.push("AdminDashboard");
     } else {
       alert(response.data.error || "Invalid admin login credentials. Please try again.");
     }

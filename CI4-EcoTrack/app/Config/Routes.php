@@ -47,6 +47,11 @@ $routes->options('login', 'AuthenticationController::login');
 $routes->options('test', 'Home::options');
 $routes->setTranslateURIDashes(true);
 
+$routes->delete('users/(:num)', 'AdminController::deleteUser/$1');
+$routes->put('users/(:num)', 'AdminController::updateUser/$1');
+
+
+
 
 
 

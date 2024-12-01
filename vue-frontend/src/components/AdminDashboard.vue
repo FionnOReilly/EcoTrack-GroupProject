@@ -18,16 +18,31 @@
         <tbody>
         <tr v-for="user in users" :key="user.id">
           <td>{{ user.id }}</td>
-          <td>{{ user.first_name }}</td>
-          <td>{{ user.last_name }}</td>
-          <td>{{ user.email }}</td>
+          <td>
+            <input v-if="user.editing" v-model="user.first_name" />
+            <span v-else>{{ user.first_name }}</span>
+          </td>
+          <td>
+            <input v-if="user.editing" v-model="user.last_name" />
+            <span v-else>{{ user.last_name }}</span>
+          </td>
+          <td>
+            <input v-if="user.editing" v-model="user.email" />
+            <span v-else>{{ user.email }}</span>
+          </td>
           <td>{{ formatDate(user.created_at) }}</td>
           <td>{{ formatDate(user.updated_at) }}</td>
           <td>
-            <button @click="editUser(user.id)" class="contactButton" id="primaryButton">Edit</button>
+            <button @click="toggleEdit(user)" class="contactButton" id="primaryButton">
+              {{ user.editing ? 'Save' : 'Edit' }}
+            </button>
+            <button v-if="user.editing" @click="cancelEdit(user)" class="contactButton">
+              Cancel
+            </button>
             <button @click="deleteUser(user.id)" class="contactButton" id="secondaryButton">Delete</button>
           </td>
         </tr>
+
         </tbody>
       </table>
     </div>
@@ -62,10 +77,11 @@ export default {
       return date.toLocaleDateString(undefined, options);
     },
 
-    // Edit user functionality
+    // Edit user
     async editUser(userId) {
       console.log(`Edit user with ID: ${userId}`);
       const userToEdit = this.users.find(user => user.id === userId);
+
       if (userToEdit) {
         try {
           const updatedData = {
@@ -76,18 +92,30 @@ export default {
 
           const response = await axios.put(`http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/users/${userId}`, updatedData);
           console.log('User updated:', response.data);
-          this.fetchUsers(); // Re-fetch users to get the updated list
+          this.fetchUsers(); // Refresh users
         } catch (error) {
           console.error('Error editing user:', error);
         }
       }
     },
 
+    toggleEdit(user) {
+      user.editing = !user.editing;
+      if (!user.editing) {
+        // Save changes when exiting edit mode
+        this.editUser(user.id);
+      }
+    },
+    cancelEdit(user) {
+      user.editing = false;
+      this.fetchUsers(); // Revert changes by re-fetching the list
+    },
+
     // Delete user functionality
     async deleteUser(userId) {
       console.log(`Delete user with ID: ${userId}`);
       try {
-        const response = await axios.delete(`http://localhost:8081/CI4-EcoTrack/public/users/${userId}`);
+        const response = await axios.delete(`http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/users/${userId}`);
         console.log('User deleted:', response.data);
         this.fetchUsers(); // Re-fetch users to get the updated list
       } catch (error) {
