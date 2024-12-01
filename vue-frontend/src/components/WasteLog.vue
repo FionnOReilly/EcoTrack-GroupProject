@@ -57,12 +57,16 @@
           <th>Bag Size</th>
           <th>Recyclable</th>
           <th>Date of Disposal</th>
+          <th>Actions</th>
         </tr>
         <tr v-for="log in wasteLogs" :key="log.id">
           <td>{{ log.waste_type }}</td>
           <td>{{ log.bag_size }}</td>
           <td>{{ log.is_recyclable }}</td>
           <td>{{ log.date_of_disposal }}</td>
+          <td>
+            <button @click="deleteWasteLog(log.id)" id="secondaryButton">Delete</button>
+          </td>
         </tr>
       </table>
     </div>
@@ -106,7 +110,7 @@ export default {
       if (token) {
         try {
           await axiosInstance.post('http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/addWasteLog', wasteLogData, {
-            headers: { Authorization: `Bearer ${token}` }
+            headers: {Authorization: `Bearer ${token}`}
           });
           this.getWasteLogs();
         } catch (error) {
@@ -121,15 +125,29 @@ export default {
       if (token && userId) {
         try {
           const response = await axiosInstance.get(`http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/wastelog/user/${userId}`, {
-            headers: { Authorization: `Bearer ${token}` }
+            headers: {Authorization: `Bearer ${token}`}
           });
           this.wasteLogs = response.data;
         } catch (error) {
           console.error('Error fetching waste logs:', error);
         }
       }
+    },
+    async deleteWasteLog(id) {
+      const token = localStorage.getItem('token');
+      if (token) {
+        try {
+          await axiosInstance.delete(`http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/deleteWasteLog/${id}`, {
+            headers: {Authorization: `Bearer ${token}`}
+          });
+          this.getWasteLogs();
+        } catch (error) {
+          console.error('Error deleting waste log:', error);
+        }
+      }
     }
   },
+
   mounted() {
     this.fetchUserData();
     this.getWasteLogs();
@@ -142,16 +160,17 @@ export default {
 
 span {
   color: red;
-  font-size:16px;
+  font-size: 16px;
 
 }
+
 .grid-container {
   display: grid;
   grid-template-columns: 100%;
-  margin-bottom:15px;
+  margin-bottom: 15px;
 }
 
-#loggedWaste{
+#loggedWaste {
 
 }
 
@@ -160,26 +179,26 @@ span {
 }
 
 #primaryButton:hover {
-  background-color: #adffe7; 
+  background-color: #adffe7;
 }
 
 #secondaryButton:hover {
-  background-color: #fab3a1; 
+  background-color: #fab3a1;
 }
 
-form{
+form {
   width: 100%;
   padding: 20px;
 }
 
-fieldset,#loggedWaste {
+fieldset, #loggedWaste {
   width: 100%;
   background-color: #D4E7E9;
-  font-size:20px;
+  font-size: 20px;
 }
 
 
-#fieldset1, fieldset,#loggedWaste {
+#fieldset1, fieldset, #loggedWaste {
   border: 5px solid #2D2828C6;
   border-radius: 20px;
 }
@@ -196,18 +215,18 @@ label {
   padding-left: 10px;
 }
 
-input[type="text"],select, input[type="date"] {
+input[type="text"], select, input[type="date"] {
   display: inline-block;
   margin-left: 2em;
   margin-bottom: 2px;
-  width:30%;
-  padding:5px;
+  width: 30%;
+  padding: 5px;
 }
 
-input[type="radio"]{
-  margin-left:5%;
-  margin-right:5px;
-  padding:5px;
+input[type="radio"] {
+  margin-left: 5%;
+  margin-right: 5px;
+  padding: 5px;
 }
 
 #service {
@@ -216,7 +235,7 @@ input[type="radio"]{
   padding: 5px;
 }
 
-#fieldset1 legend,#loggedWaste h4 {
+#fieldset1 legend, #loggedWaste h4 {
   padding: 3px;
   border-radius: 14.8px 11.8px 0 0;
   width: 100%;
@@ -230,19 +249,19 @@ input[type="radio"]{
   margin: 10px;
 }
 
- #primaryButton, #secondaryButton {
+#primaryButton, #secondaryButton {
   padding: 5px;
-margin:5px;
+  margin: 5px;
   width: 7em;
   font-weight: bold;
   color: black;
 }
 
-#secondaryButton{
-  background-color:#F79181;
+#secondaryButton {
+  background-color: #F79181;
 }
 
-#primaryButton{
+#primaryButton {
   background-color: #3ED2AA
 }
 
@@ -256,8 +275,8 @@ margin:5px;
   width: 100%;
 }
 
-#loggedWaste{
-  border-radius:20px 20px 0 0 ;
+#loggedWaste {
+  border-radius: 20px 20px 0 0;
 }
 
 #loggedWaste th,
@@ -275,14 +294,12 @@ margin:5px;
 }
 
 #loggedWaste tr {
-  background-color: #FFFEEF; 
+  background-color: #FFFEEF;
 }
 
 #loggedWaste tr:hover {
-  background-color: #C8DFE0; 
+  background-color: #C8DFE0;
 }
-
-
 
 
 /*Mobile view*/
@@ -292,11 +309,10 @@ margin:5px;
     grid-row-gap: 2em;
   }
 
-  form ,#loggedWaste{
+  form, #loggedWaste {
     margin: 0;
     grid-column: 1/6;
   }
-
 
 
   .error {
@@ -308,22 +324,27 @@ margin:5px;
     width: 39%;
   }
 
-label{width:50%;margin-left:60px;text-align: left;display: block;}
+  label {
+    width: 50%;
+    margin-left: 60px;
+    text-align: left;
+    display: block;
+  }
 
   select,
   input[type="text"],
   input[type="date"] {
     display: block;
-    width:70%;
-    margin-left:70px;
-  }
-   
-  input[type="radio"]{
-    margin-left:70px;
+    width: 70%;
+    margin-left: 70px;
   }
 
-  #loggedWaste{
-    margin:0px;
+  input[type="radio"] {
+    margin-left: 70px;
+  }
+
+  #loggedWaste {
+    margin: 0px;
   }
 
 
@@ -341,7 +362,7 @@ label{width:50%;margin-left:60px;text-align: left;display: block;}
   }
 
 
-  form,#loggedWaste {
+  form, #loggedWaste {
     grid-column: 5/13;
   }
 
