@@ -46,6 +46,10 @@ $routes->post('registerUser', 'UserController::registerUser');
 
 $routes->options('login', 'AuthenticationController::login');
 $routes->options('test', 'Home::options');
+
+$routes->get('/dashboardPage', 'AuthenticationController::dashboardPage', ['filter' => 'cors']);
+$routes->get('/dashboardPage/user/(:num)', 'WasteLogController::getUserWasteLogs/$1', ['filter' => 'cors']);
+
 $routes->setTranslateURIDashes(true);
 
 
