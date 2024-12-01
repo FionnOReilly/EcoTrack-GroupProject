@@ -2,7 +2,7 @@
   <header class="custom-header py-3">
     <div class="container">
       <nav class="navbar navbar-expand-lg">
-        <router-link to="/"><img src="@/assets/images/EcoTrackLogo.png" alt="Logo"></router-link>
+        <router-link to="/"><img src="@/assets/images/EcoTrackLogo.png" alt="Logo" /></router-link>
         <button
           class="navbar-toggler"
           type="button"
@@ -23,16 +23,19 @@
               <router-link to="/WasteLogging" class="nav-link">Log Waste</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="Information" class="nav-link">Information</router-link>
+              <router-link to="/Information" class="nav-link">Information</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="" class="nav-link">Goals</router-link>
+              <router-link to="#" class="nav-link">Goals</router-link>
             </li>
             <li class="nav-item" v-if="!props.isLoggedIn">
-              <router-link to="Registration" class="nav-link">Register/Login</router-link>
+              <router-link to="/Registration" class="nav-link">Register</router-link>
             </li>
             <li class="nav-item" v-if="!props.isLoggedIn">
-              <router-link to="Login" class="nav-link">Login</router-link>
+              <router-link to="/Login" class="nav-link">Login</router-link>
+            </li>
+            <li class="nav-item" v-if="props.isLoggedIn">
+              <router-link to="/dashboardPage" class="nav-link">Dashboard</router-link>
             </li>
             <li class="nav-item" v-if="props.isLoggedIn">
               <router-link to="#" @click.prevent="logout" class="nav-link">Logout</router-link>
@@ -45,14 +48,11 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue';
-
+/* global defineProps, defineEmits */
 const props = defineProps({
-  isLoggedIn: Boolean
+  isLoggedIn: Boolean,
 });
-
 const emits = defineEmits(['logout']);
-
 const logout = () => {
   emits('logout');
 };

@@ -2,7 +2,7 @@
   <div id="app">
     <NavBar :isLoggedIn="isLoggedIn" @logout="logout" />
 
-    <router-view></router-view>
+<router-view @user-logged-in="checkLoginStatus"></router-view>
 
     <FooterComponent />
   </div>

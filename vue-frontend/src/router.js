@@ -8,7 +8,7 @@ import InformationPage from './components/InformationPage.vue';
 import WasteLog from './components/WasteLog.vue';
 import LoginPage from './components/LoginPage.vue';
 import AdminLogin from './components/AdminLogin.vue';
-import Dashboard from './components/Dashboard.vue';
+import DashboardPage from './components/DashboardPage.vue';
 
 const routes = [
     { path: '/', component: HomePage},
@@ -19,7 +19,7 @@ const routes = [
     { path: '/WasteLogging', component: WasteLog},
     { path : '/Login', component : LoginPage},
     { path : '/AdminLogin', component : AdminLogin},
- { path: '/dashboard', name: 'Dashboard', component: Dashboard, meta: { requiresAuth: true },}
+	{ path: '/DashboardPage', component: DashboardPage}
 ];
 const router = createRouter({
     history: createWebHistory(),

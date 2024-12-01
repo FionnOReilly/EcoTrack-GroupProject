@@ -64,30 +64,23 @@ export default {
 async handleLogin() {
   if (!this.validateForm()) return;
 
-  console.log("Attempting login with:", this.email, this.password);
   try {
-    const response = await axiosInstance.post("/login", {
+    const response = await axiosInstance.post('/login', {
       email: this.email,
       password: this.password,
     });
-    console.log("Response from server:", response.data);
 
-    // Check for 'status' to handle success
     if (response.data.status === 'success') {
-      // Save token and user data to localStorage (or sessionStorage)
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
-
-      alert("Login successful!");
-      this.$router.push("/dashboard"); // Redirect to dashboard after successful login
+      this.$emit('user-logged-in'); // Emit login event
+      this.$router.push('/dashboardPage');
     } else {
-      alert(response.data.error || "Invalid login credentials. Please try again.");
+      alert(response.data.error || 'Invalid login credentials. Please try again.');
     }
   } catch (error) {
-    console.error("Login error:", error.response || error);
-    const errorMessage =
-      error.response?.data?.error || "Unable to connect to the server. Please try again later.";
-    alert(errorMessage);
+    console.error('Login error:', error.response || error);
+    alert('Unable to connect to the server. Please try again later.');
   }
 },
   },
