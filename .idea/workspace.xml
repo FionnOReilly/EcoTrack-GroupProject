@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c96b7a2f-9ef5-4980-81f2-df8c965b02ce" name="Changes" comment="routes to ManageUsers fixed">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CI4-EcoTrack/app/Config/Routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/CI4-EcoTrack/app/Config/Routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-frontend/src/components/AdminDashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-frontend/src/components/AdminDashboard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-frontend/src/components/AdminLogin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-frontend/src/components/AdminLogin.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-frontend/src/components/EditUser.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-frontend/src/components/WasteLog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-frontend/src/components/WasteLog.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,18 +23,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "daniellipper"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;daniellipper&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/FionnOReilly/EcoTrack-GroupProject.git",
-    "accountId": "dad71813-7bd9-4562-9a88-7ef4e517ef4c"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/FionnOReilly/EcoTrack-GroupProject.git&quot;,
+    &quot;accountId&quot;: &quot;dad71813-7bd9-4562-9a88-7ef4e517ef4c&quot;
   }
-}]]></component>
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -50,29 +51,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "backupMaster",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/K00281253/Downloads/Assignment_Two_Starter",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;backupMaster&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/K00281253/Downloads/Assignment_Two_Starter&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager">
-    <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
-      <option name="pathToComposerJson" value="$PROJECT_DIR$/CI4-EcoTrack/composer.json" />
-      <method v="2" />
-    </configuration>
-  </component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -92,6 +87,7 @@
       <workItem from="1730821331470" duration="853000" />
       <workItem from="1730839669751" duration="53000" />
       <workItem from="1733085044408" duration="393000" />
+      <workItem from="1733085767067" duration="1706000" />
     </task>
     <servers />
   </component>

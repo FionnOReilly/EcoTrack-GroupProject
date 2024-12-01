@@ -82,6 +82,7 @@
 
 <script>
 import axiosInstance from "@/plugins/axios.js";
+import axios from "axios";
 
 export default {
   name: 'WasteLogPage',
