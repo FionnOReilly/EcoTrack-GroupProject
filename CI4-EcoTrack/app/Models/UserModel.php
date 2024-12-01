@@ -20,4 +20,11 @@ class UserModel extends Model
 
         return $query !== false;
     }
+
+    public function deleteUserById($id)
+    {
+        $db = \Config\Database::connect();
+        $query = $db->query('CALL DeleteUserById(?)', [$id]);
+        return $query->getRow(); // Returns the result of the stored procedure
+    }
 }
