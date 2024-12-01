@@ -7,7 +7,7 @@ class WasteLogModel extends Model
     protected $table = 'waste_logs';
     protected $primaryKey = 'id';
     protected $allowedFields = ['waste_type', 'bag_size', 'is_recyclable', 'date_of_disposal', 'user_id'];
-    protected $allowedFields = ['waste_type', 'bag_size', 'is_recyclable', 'date_of_disposal', 'user_id'];
+   
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
 
