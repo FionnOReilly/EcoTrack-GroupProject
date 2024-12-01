@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Nov 29, 2024 at 01:21 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Host: 127.0.0.1
+-- Generation Time: Dec 01, 2024 at 05:34 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -48,6 +48,32 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `leaderboard`
+--
+
+CREATE TABLE `leaderboard` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `current_points` int(11) NOT NULL,
+  `rank` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `leaderboard`
+--
+
+INSERT INTO `leaderboard` (`id`, `user_id`, `username`, `current_points`, `rank`) VALUES
+(6, 2, 'test test', 8, 1),
+(7, 1, 'joe bloggs', 2, 2),
+(8, 6, 'test2 test2', 0, 3),
+(9, 3, 'John Doe', 0, 4),
+(10, 4, 'Johnnyyyyy Doe', 0, 5),
+(11, 5, 'popopopopo popoppo', 0, 6);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -60,7 +86,7 @@ CREATE TABLE `users` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `role` varchar(255) DEFAULT 'user'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
@@ -72,7 +98,33 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `crea
 (3, 'John', 'Doe', 'john.doe@example.com', 'password123', '2024-11-27 21:45:39', '2024-11-28 12:27:32', 'user'),
 (4, 'Johnnyyyyy', 'Doe', 'john.doe@example.coms', 'password123', '2024-11-27 21:45:54', '2024-11-27 21:45:54', NULL),
 (5, 'popopopopo', 'popoppo', 'asdadd@gmasd.com', '1231231', '2024-11-27 21:47:26', '2024-11-27 21:47:26', NULL),
-(6, 'test2', 'test2', 'test2@test.com', 'test123', '2024-11-28 12:27:17', '2024-11-28 12:27:36', 'user');
+(6, 'test2', 'test2', 'test2@test.com', 'test123', '2024-11-28 12:27:17', '2024-11-28 12:27:36', 'user'),
+(7, 'sophie', 'begley', 'sophie@gmail.com', 'sophie123', '2024-12-01 16:07:34', '2024-12-01 16:07:34', 'user');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_goals`
+--
+
+CREATE TABLE `user_goals` (
+  `user_id` int(11) NOT NULL,
+  `user_name` varchar(200) NOT NULL,
+  `current_points` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_goals`
+--
+
+INSERT INTO `user_goals` (`user_id`, `user_name`, `current_points`) VALUES
+(1, 'joe bloggs', 1),
+(2, 'test test', 4),
+(3, 'John Doe', 1),
+(4, 'Johnnyyyyy Doe', 0),
+(5, 'popopopopo popoppo', 0),
+(6, 'test2 test2', 0),
+(7, 'sophie begley', 0);
 
 -- --------------------------------------------------------
 
@@ -89,7 +141,7 @@ CREATE TABLE `waste_logs` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `user_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `waste_logs`
@@ -116,18 +168,21 @@ INSERT INTO `waste_logs` (`id`, `waste_type`, `bag_size`, `is_recyclable`, `date
 (32, 'organic', 'Large Bag(20L)', 'No', '2024-11-30', '2024-11-27 21:29:56', '2024-11-27 21:29:56', NULL),
 (33, 'recyclable', 'Medium Bag(50L)', 'No', '2024-11-30', '2024-11-29 10:24:41', '2024-11-29 10:24:41', 2),
 (34, 'recyclable', 'Medium Bag(50L)', 'No', '2024-11-30', '2024-11-29 10:24:55', '2024-11-29 10:24:55', 2),
-(35, 'general', 'Small Bag (25L)', 'Yes', '2024-11-29', '2024-11-29 10:27:24', '2024-11-29 10:27:24', 2),
 (36, 'recyclable', 'Medium Bag(50L)', 'No', '2024-11-30', '2024-11-29 10:29:02', '2024-11-29 10:29:02', 2),
-(37, 'general', 'Small Bag (25L)', 'No', '0000-00-00', '2024-11-29 10:29:59', '2024-11-29 10:29:59', 2),
 (38, 'general', 'Small Bag (25L)', 'No', '2024-11-15', '2024-11-29 10:30:04', '2024-11-29 10:30:04', 2),
-(39, 'general', 'Small Bag (25L)', 'No', '2024-11-15', '2024-11-29 10:34:21', '2024-11-29 10:34:21', 2),
-(40, 'general', 'Small Bag (25L)', 'No', '2024-11-15', '2024-11-29 10:34:25', '2024-11-29 10:34:25', 2),
 (41, 'general', 'Small Bag (25L)', 'Yes', '2024-11-05', '2024-11-29 10:38:59', '2024-11-29 10:38:59', 1),
-(42, 'general', 'Small Bag (25L)', 'No', '2024-11-23', '2024-11-29 10:43:03', '2024-11-29 10:43:03', 1);
+(43, 'recyclable', 'Small Bag (25L)', 'Yes', '2024-11-28', '2024-12-01 15:40:21', '2024-12-01 15:40:21', 3);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `leaderboard`
+--
+ALTER TABLE `leaderboard`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `users`
@@ -135,6 +190,13 @@ INSERT INTO `waste_logs` (`id`, `waste_type`, `bag_size`, `is_recyclable`, `date
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `user_goals`
+--
+ALTER TABLE `user_goals`
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `waste_logs`
@@ -148,20 +210,38 @@ ALTER TABLE `waste_logs`
 --
 
 --
+-- AUTO_INCREMENT for table `leaderboard`
+--
+ALTER TABLE `leaderboard`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `waste_logs`
 --
 ALTER TABLE `waste_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `leaderboard`
+--
+ALTER TABLE `leaderboard`
+  ADD CONSTRAINT `leaderboard_fk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `user_goals`
+--
+ALTER TABLE `user_goals`
+  ADD CONSTRAINT `user_goals_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `waste_logs`
