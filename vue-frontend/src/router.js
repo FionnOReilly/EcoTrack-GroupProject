@@ -10,6 +10,8 @@ import LoginPage from './components/LoginPage.vue';
 import AdminLogin from './components/AdminLogin.vue';
 import DashboardPage from './components/DashboardPage.vue';
 import AdminDashboard from "@/components/AdminDashboard.vue";
+import LeaderBoard from "@/components/LeaderBoard.vue";
+import UserGoals from "@/components/UserGoals.vue";
 
 const routes = [
     { path: '/', component: HomePage},
@@ -19,6 +21,9 @@ const routes = [
     { path: '/Registration', component: RegistrationPage},
     { path: '/WasteLogging', component: WasteLog},
     { path : '/Login', component : LoginPage},
+    { path : '/Leaderboard', component : LeaderBoard},
+    { path : '/Goals', component : UserGoals},
+
     { path : '/AdminLogin', component : AdminLogin},
  { path: '/DashboardPage', name: 'DashboardPage', component: DashboardPage, meta: { requiresAuth: true },},
     { path: '/Admindashboard', name: 'AdminDashboard', component: AdminDashboard, meta: { requiresAuth: true },}

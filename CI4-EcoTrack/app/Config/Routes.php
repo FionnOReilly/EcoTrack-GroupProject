@@ -55,6 +55,11 @@ $routes->setTranslateURIDashes(true);
 $routes->delete('users/(:num)', 'AdminController::deleteUser/$1');
 $routes->put('users/(:num)', 'AdminController::updateUser/$1');
 
+$routes->get('userGoals', 'UserGoalsController::index');
+$routes->get('userGoals/show/(:num)', 'UserGoalsController::show/$1');
+$routes->get('leaderboard', 'LeaderboardController::index');
+$routes->get('leaderboard/show/(:num)', 'LeaderboardController::show/$1');
+
 
 
 
