@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 29, 2024 at 01:21 PM
+-- Generation Time: Dec 01, 2024 at 04:11 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -72,7 +72,8 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `crea
 (3, 'John', 'Doe', 'john.doe@example.com', 'password123', '2024-11-27 21:45:39', '2024-11-28 12:27:32', 'user'),
 (4, 'Johnnyyyyy', 'Doe', 'john.doe@example.coms', 'password123', '2024-11-27 21:45:54', '2024-11-27 21:45:54', NULL),
 (5, 'popopopopo', 'popoppo', 'asdadd@gmasd.com', '1231231', '2024-11-27 21:47:26', '2024-11-27 21:47:26', NULL),
-(6, 'test2', 'test2', 'test2@test.com', 'test123', '2024-11-28 12:27:17', '2024-11-28 12:27:36', 'user');
+(6, 'test2', 'test2', 'test2@test.com', 'test123', '2024-11-28 12:27:17', '2024-11-28 12:27:36', 'user'),
+(7, 'waste', 'waste', 'waste@waste.com', 'waste123', '2024-11-29 12:23:50', '2024-11-29 12:24:18', 'user');
 
 -- --------------------------------------------------------
 
@@ -118,12 +119,20 @@ INSERT INTO `waste_logs` (`id`, `waste_type`, `bag_size`, `is_recyclable`, `date
 (34, 'recyclable', 'Medium Bag(50L)', 'No', '2024-11-30', '2024-11-29 10:24:55', '2024-11-29 10:24:55', 2),
 (35, 'general', 'Small Bag (25L)', 'Yes', '2024-11-29', '2024-11-29 10:27:24', '2024-11-29 10:27:24', 2),
 (36, 'recyclable', 'Medium Bag(50L)', 'No', '2024-11-30', '2024-11-29 10:29:02', '2024-11-29 10:29:02', 2),
-(37, 'general', 'Small Bag (25L)', 'No', '0000-00-00', '2024-11-29 10:29:59', '2024-11-29 10:29:59', 2),
 (38, 'general', 'Small Bag (25L)', 'No', '2024-11-15', '2024-11-29 10:30:04', '2024-11-29 10:30:04', 2),
 (39, 'general', 'Small Bag (25L)', 'No', '2024-11-15', '2024-11-29 10:34:21', '2024-11-29 10:34:21', 2),
 (40, 'general', 'Small Bag (25L)', 'No', '2024-11-15', '2024-11-29 10:34:25', '2024-11-29 10:34:25', 2),
 (41, 'general', 'Small Bag (25L)', 'Yes', '2024-11-05', '2024-11-29 10:38:59', '2024-11-29 10:38:59', 1),
-(42, 'general', 'Small Bag (25L)', 'No', '2024-11-23', '2024-11-29 10:43:03', '2024-11-29 10:43:03', 1);
+(42, 'general', 'Small Bag (25L)', 'No', '2024-11-23', '2024-11-29 10:43:03', '2024-11-29 10:43:03', 1),
+(43, 'general', 'Small Bag (25L)', 'Yes', '2024-11-07', '2024-11-29 12:22:58', '2024-11-29 12:22:58', 2),
+(44, 'general', 'Small Bag (25L)', 'Yes', '2024-11-06', '2024-11-29 12:24:30', '2024-11-29 12:24:30', 7),
+(45, 'general', 'Medium Bag(50L)', 'Yes', '2024-11-30', '2024-11-29 17:26:21', '2024-11-29 17:26:21', 2),
+(46, 'general', 'Small Bag (25L)', 'No', '2024-11-30', '2024-11-29 17:27:14', '2024-11-29 17:27:14', 2),
+(47, 'general', 'Small Bag (25L)', 'No', '2024-11-30', '2024-11-29 17:27:52', '2024-11-29 17:27:52', 2),
+(48, 'general', 'Small Bag (25L)', 'No', '2024-11-30', '2024-11-29 17:27:57', '2024-11-29 17:27:57', 2),
+(49, 'organic', 'Small Bag (25L)', 'No', '2024-11-30', '2024-11-29 17:28:33', '2024-11-29 17:28:33', 2),
+(50, 'general', '', '', '0000-00-00', '2024-12-01 14:39:22', '2024-12-01 14:39:22', 2),
+(51, 'general', '', '', '0000-00-00', '2024-12-01 14:39:24', '2024-12-01 14:39:24', 2);
 
 --
 -- Indexes for dumped tables
@@ -151,13 +160,13 @@ ALTER TABLE `waste_logs`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `waste_logs`
 --
 ALTER TABLE `waste_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- Constraints for dumped tables
