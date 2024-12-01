@@ -35,7 +35,7 @@
       Uncomment this line by removing the `#` at the start.
 4. Search for 'Listen 80' and change it to:
      ```plaintext
-     ServerName localhost:8081
+     Listen 8081
      ```
 5. Search for 'ServerName localhost:80' and change it to:
    ```plaintext
