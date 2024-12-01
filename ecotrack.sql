@@ -46,7 +46,19 @@ END$$
 DELIMITER ;
 
 -- --------------------------------------------------------
-
+--
+-- Table structure for table `admin`
+--
+CREATE TABLE 'admins' (
+    'admin_id' INT AUTO_INCREMENT PRIMARY KEY, 
+    'first_name' VARCHAR(50) NOT NULL,
+    'last_name' VARCHAR(50) NOT NULL,
+    'email' VARCHAR(100) NOT NULL UNIQUE,
+    'password' VARCHAR(255) NOT NULL,
+    'created_at' TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+    'updated_at' TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,  
+    'deleted_at' TIMESTAMP NULL DEFAULT NULL  
+);
 --
 -- Table structure for table `leaderboard`
 --
@@ -204,6 +216,7 @@ ALTER TABLE `user_goals`
 ALTER TABLE `waste_logs`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
+
 
 --
 -- AUTO_INCREMENT for dumped tables
