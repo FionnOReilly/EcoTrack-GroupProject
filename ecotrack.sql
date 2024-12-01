@@ -26,6 +26,20 @@ DELIMITER $$
 --
 -- Procedures
 --
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteUserById` (IN `userId` INT)   BEGIN
+    -- Delete related waste logs first
+    DELETE FROM waste_logs WHERE user_id = userId;
+
+    -- Delete the user
+    DELETE FROM users WHERE id = userId;
+
+    SELECT 'User and related waste logs deleted successfully' AS message;
+END$$
+
+DELIMITER $$
+--
+-- Procedures
+--
 CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertUser` (IN `p_first_name` VARCHAR(100), IN `p_last_name` VARCHAR(100), IN `p_email` VARCHAR(255), IN `p_password` VARCHAR(255))   BEGIN
   
         INSERT INTO Users (first_name, last_name, email, password)
