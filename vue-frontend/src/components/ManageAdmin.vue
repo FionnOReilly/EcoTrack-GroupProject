@@ -1,15 +1,6 @@
 <template>
     <div class="manage-admins">
-      <!-- Navbar -->
-      <nav class="navbar">
-        <div><a href="#">Admin Dashboard</a></div>
-        <div>
-          <router-link to="/AdminHome" >Home</router-link>
-          <a href="#">Logout</a>
-        </div>
-      </nav>
-  
-      <!-- Hero Section -->
+
       <div class="hero-container">
         <div class="textbox">
           <h1>Manage Admins</h1>
@@ -33,7 +24,6 @@
     name: "ManageAdmins",
     methods: {
       navigateToAddAdmin() {
-     
         this.$router.push('/AddAdmin');
       },
       viewAdminList() {
@@ -55,23 +45,8 @@
     flex-direction: column;
     min-height: 100vh;
   }
-  
-  /* Navbar */
-  .navbar {
-    background-color: #42A5A2;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-  }
-  
-  .navbar a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-  }
-  
+
+
   /* Hero Section */
   .hero-container {
     flex: 1;

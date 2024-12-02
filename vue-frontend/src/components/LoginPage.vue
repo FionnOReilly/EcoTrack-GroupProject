@@ -74,20 +74,14 @@ async handleLogin() {
 
     // Check for 'status' to handle success
     if (response.data.status === 'success') {
-      // Save token and user data to localStorage (or sessionStorage)
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
 
-      alert("Login successful!");
       this.$router.push("/dashboard"); // Redirect to dashboard after successful login
-    } else {
-      alert(response.data.error || "Invalid login credentials. Please try again.");
     }
   } catch (error) {
     console.error("Login error:", error.response || error);
-    const errorMessage =
-      error.response?.data?.error || "Unable to connect to the server. Please try again later.";
-    alert(errorMessage);
+
   }
 },
   },

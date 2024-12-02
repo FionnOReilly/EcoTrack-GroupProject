@@ -61,16 +61,10 @@ async handleAdminLogin() {
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
 
-      alert("Admin login successful!");
       this.$router.push("/AdminDashboard");
-    } else {
-      alert(response.data.error || "Invalid admin login credentials. Please try again.");
     }
   } catch (error) {
     console.error("Admin login error:", error.response || error);
-    const errorMessage =
-      error.response?.data?.error || "Unable to connect to the server. Please try again later.";
-    alert(errorMessage);
   }
 },
   },

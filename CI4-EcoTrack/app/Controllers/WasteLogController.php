@@ -5,65 +5,43 @@ use App\Models\WasteLogModel;
 
 class WasteLogController extends ResourceController
 {
-    protected $modelName = 'App\Models\WasteLogModel';
-    protected $format = 'json'; 
-    
-    public function index() {
-        $wastelogs = $this->model->findAll();
-        return $this->respond($wastelogs);
+    protected $wasteLogModel;
+
+    public function __construct()
+    {
+        $this->wasteLogModel = new WasteLogModel();
     }
 
-    public function addWasteLog() {
-        $data = $this->request->getJSON();
+    public function index()
+    {
+        $wasteLogs = $this->wasteLogModel->findAll();
+        return $this->respond($wasteLogs);
+    }
 
-        if (!$data) {
-            return $this->respond(['status' => 'error', 'message' => 'Invalid input'], 400);
-        }
+    public function addWasteLog()
+    {
+        $wasteData = $this->request->getJSON();
 
-        $logData = [
-            'waste_type' => $data->type ?? null,
-            'bag_size' => $data->size ?? null,
-            'is_recyclable' => $data->recyclable ?? null,
-            'date_of_disposal' => $data->date ?? null,
-            'user_id' => $data->user_id ?? null, // THis is to associate logs with users
+        $wasteLog = [
+            'waste_type' => $wasteData->type,
+            'bag_size' => $wasteData->size,
+            'is_recyclable' => $wasteData->recyclable,
+            'date_of_disposal' => $wasteData->date,
+            'user_id' => $wasteData->user_id,
         ];
 
-        $result = $this->model->insert($logData);
-
-        if ($result) {
-            return $this->respond(['status' => 'success', 'message' => 'Waste log added']);
-        } else {
-            return $this->respond(['status' => 'error', 'message' => 'Failed to add log'], 500);
-        }
+        $this->wasteLogModel->insert($wasteLog);
     }
 
-    public function getUserWasteLogs($userId) {
-        $model = new WasteLogModel();
-
-        $wasteLogs = $model->where('user_id', $userId)->findAll();
-
-        if ($wasteLogs) {
-            return $this->respond($wasteLogs);
-        } else {
-            return $this->respond(['status' => 'error', 'message' => 'No logs found'], 404);
-        }
+    public function getUserWasteLogs($userId)
+    {
+        $wasteLogs = $this->wasteLogModel->where('user_id', $userId)->findAll();
+        return $this->respond($wasteLogs);
     }
 
     public function deleteWasteLog($id)
-{
-    $model = new WasteLogModel();
-
-    $wasteLog = $model->find($id);
-
-    if (!$wasteLog) {
-        return $this->respond(['status' => 'error', 'message' => 'Waste log not found'], 404);
+    {
+        $this->wasteLogModel->find($id);
+        $this->wasteLogModel->delete($id);
     }
-
-    // Proceed to delete the waste log
-    if ($model->delete($id)) {
-        return $this->respond(['status' => 'success', 'message' => 'Waste log deleted successfully']);
-    } else {
-        return $this->respond(['status' => 'error', 'message' => 'Failed to delete waste log'], 500);
-    }
-}
 }

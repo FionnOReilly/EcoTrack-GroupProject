@@ -118,13 +118,11 @@ export default {
     },
 
     resetForm() {
-      // Reset form fields
       this.userData = {
         firstName: '',
         lastName: '',
         email: '',
         password: '',
-        confirmPassword: ''
       };
     }
   }

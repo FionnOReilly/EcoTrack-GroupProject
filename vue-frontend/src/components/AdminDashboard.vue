@@ -2,7 +2,6 @@
   <div class="admin-dashboard">
 
 
-    <!-- Hero Section -->
     <div class="hero-container">
       <div class="textbox">
         <h1>Welcome Admin</h1>
