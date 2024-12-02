@@ -25,11 +25,11 @@ export default {
   name: "AdminDashboard",
   methods: {
     navigateTo(page) {
-      // Replace with your routing logic, e.g., Vue Router
+    
       if (page === "ManageUsers") {
-        this.$router.push('/ManageUsers'); // Replace with `this.$router.push('/manage-users')` if using Vue Router
+        this.$router.push('/ManageUsers'); 
       } else if (page === "ManageAdmins") {
-        this.$router.push('/ManageAdmin'); // Replace with `this.$router.push('/manage-admins')` if using Vue Router
+        this.$router.push('/ManageAdmin'); 
       }
     },
   },
