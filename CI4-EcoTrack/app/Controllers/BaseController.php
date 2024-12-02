@@ -47,6 +47,27 @@ abstract class BaseController extends Controller
 
         // Preload any models, libraries, etc, here.
 
+        // Set CORS headers
+        $allowedOrigins = ['http://localhost:8082'];
+        $origin = $request->getHeader('Origin');
+        
+        if (in_array($origin, $allowedOrigins)) {
+            $response->setHeader('Access-Control-Allow-Origin', $origin)
+                     ->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
+                     ->setHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept, Authorization, X-Requested-With')
+                     ->setHeader('Access-Control-Allow-Credentials', 'true');
+        }
+
+        // Handle preflight requests
+        if ($request->getMethod() === 'options')
+        {
+            // Send a 200 OK response
+            $response->setStatusCode(200);
+            $response->setBody('OK');
+            $response->send();
+            exit;
+        }
+
         // E.g.: $this->session = \Config\Services::session();
     }
 }
