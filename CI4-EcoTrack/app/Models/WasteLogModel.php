@@ -7,6 +7,7 @@ class WasteLogModel extends Model
     protected $table = 'waste_logs';
     protected $primaryKey = 'id';
     protected $allowedFields = ['waste_type', 'bag_size', 'is_recyclable', 'date_of_disposal', 'user_id'];
+   
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
 
@@ -16,10 +17,11 @@ class WasteLogModel extends Model
         $bagSize = $wasteLog['size'];
         $isRecyclable = $wasteLog['recyclable'];
         $dateOfDisposal = $wasteLog['date'];
-        $userId = $wasteLog['user_id'];
+        $user_id = $wasteLog['user_id'];    
+        $insertWasteLog = "CALL insert_waste_log('$wasteType', '$bagSize', '$isRecyclable', '$dateOfDisposal', '$user_id')";
 
-        $insertWasteLog = "CALL insert_waste_log('$wasteType', '$bagSize', '$isRecyclable', '$dateOfDisposal', '$userId')";
+         $this->db->query($insertWasteLog);
+}
 
-        $this->db->query($insertWasteLog);
-    }
+
 }
