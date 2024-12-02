@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2024 at 07:27 PM
+-- Generation Time: Dec 02, 2024 at 08:41 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -58,6 +58,32 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `leaderboard`
+--
+
+CREATE TABLE `leaderboard` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `current_points` int(11) NOT NULL,
+  `rank` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `leaderboard`
+--
+
+INSERT INTO `leaderboard` (`id`, `user_id`, `username`, `current_points`, `rank`) VALUES
+(6, 2, 'test test', 8, 1),
+(7, 1, 'joe bloggs', 2, 2),
+(8, 6, 'test2 test2', 0, 3),
+(9, 3, 'John Doe', 0, 4),
+(10, 4, 'Johnnyyyyy Doe', 0, 5),
+(11, 5, 'popopopopo popoppo', 0, 6);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -80,6 +106,31 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `crea
 (1, 'joe', 'bloggs', 'joe@gmail.com', 'joe123', '2024-11-20 18:33:48', '2024-11-27 19:33:38', 'admin'),
 (3, 'John', 'Doe', 'john.doe@example.com', 'password123', '2024-11-27 21:45:39', '2024-11-28 12:27:32', 'user'),
 (4, 'Johnny', 'Doe', 'john.doe@example.coms', 'password123', '2024-11-27 21:45:54', '2024-12-01 21:12:04', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_goals`
+--
+
+CREATE TABLE `user_goals` (
+  `user_id` int(11) NOT NULL,
+  `user_name` varchar(200) NOT NULL,
+  `current_points` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_goals`
+--
+
+INSERT INTO `user_goals` (`user_id`, `user_name`, `current_points`) VALUES
+(1, 'joe bloggs', 1),
+(2, 'test test', 4),
+(3, 'John Doe', 1),
+(4, 'Johnnyyyyy Doe', 0),
+(5, 'popopopopo popoppo', 0),
+(6, 'test2 test2', 0),
+(7, 'sophie begley', 0);
 
 -- --------------------------------------------------------
 
@@ -129,11 +180,25 @@ INSERT INTO `waste_logs` (`id`, `waste_type`, `bag_size`, `is_recyclable`, `date
 --
 
 --
+-- Indexes for table `leaderboard`
+--
+ALTER TABLE `leaderboard`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `user_goals`
+--
+ALTER TABLE `user_goals`
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `waste_logs`
