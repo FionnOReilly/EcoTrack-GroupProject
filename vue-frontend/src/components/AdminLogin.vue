@@ -58,11 +58,14 @@ async handleAdminLogin() {
     console.log("Response from server:", response.data);
 
     if (response.data.status === 'success') {
+	const user = response.data.user; 
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
+      localStorage.setItem('role', user.role); // Store the role
 
+	
       alert("Admin login successful!");
-      this.$router.push("/dashboard");
+      this.$router.push("/adminDashboard"); // Redirect based on role
     } else {
       alert(response.data.error || "Invalid admin login credentials. Please try again.");
     }

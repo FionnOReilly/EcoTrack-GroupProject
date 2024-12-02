@@ -70,6 +70,16 @@
               </router-link>
 
             </li>
+			<li class="nav-item">
+              <router-link
+                  to="/DashboardPage"
+                  class="nav-link"
+                  active-class="active"
+              >
+                Dashboard
+              </router-link>
+
+            </li>
             <li class="nav-item" v-if="!props.isLoggedIn">
               <router-link
                   to="/Registration"
