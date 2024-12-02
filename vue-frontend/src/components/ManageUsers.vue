@@ -60,24 +60,24 @@
       };
     },
     methods: {
-      // Fetch all users from the API
+     
       async fetchUsers() {
         try {
           const response = await axios.get('http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/users');
-          this.users = response.data; // Store the fetched users
+          this.users = response.data; 
         } catch (error) {
           console.error('Error fetching users:', error);
         }
       },
   
-      // Format date to a readable format
+      
       formatDate(dateString) {
         const options = { year: 'numeric', month: 'short', day: 'numeric' };
         const date = new Date(dateString);
         return date.toLocaleDateString(undefined, options);
       },
   
-      // Edit user
+     
       async editUser(userId) {
         console.log(`Edit user with ID: ${userId}`);
         const userToEdit = this.users.find(user => user.id === userId);
