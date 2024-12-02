@@ -57,15 +57,15 @@
           created_at: '',
           updated_at: '',
         },
-        admins: [], // Initialize 'users' as an empty array
+        admins: [], 
       };
     },
     methods: {
       async getAdmins() {
         try {
           const response = await axios.get('http://localhost:8081/CI4-EcoTrack/public/api/admins');
-          console.log('API Response:', response.data);  // Debug log to see the API response
-          this.admin = response.data;  // Store users in 'users' data property
+          console.log('API Response:', response.data);  
+          this.admin = response.data;  
         } catch (error) {
           console.error("Error fetching admin:", error);
         }
@@ -73,22 +73,22 @@
       formatDate(dateString) {
         const date = new Date(dateString);
         if (isNaN(date.getTime())) {
-          return ''; // Return empty string if the date is invalid
+          return ''; 
         }
         const options = { year: 'numeric', month: 'short', day: 'numeric' };
         return date.toLocaleDateString(undefined, options);
       },
       editAdmin(admin_id) {
         console.log(`Edit admin with ID: ${admin_id}`);
-        // Implement edit functionality
+        
       },
       deleteAdmin(admin_id) {
         console.log(`Delete admin with ID: ${admin_id}`);
-        // Implement delete functionality
+        
       },
     },
     mounted() {
-      this.getAdmins(); // Fetch users when the component is mounted
+      this.getAdmins(); 
     },
   };
   </script>
@@ -101,36 +101,36 @@
     margin-bottom: 15px;
   }
   
-  #loggedUsers {
+  #loggedAdmin {
     margin-top: 20px;
   }
   
-  #loggedUsers table {
+  #loggedAdmin table {
     width: 100%;
     border-collapse: collapse;
   }
   
-  #loggedUsers th, #loggedUsers td {
+  #loggedAdmin th, #loggedUsers td {
     padding: 10px;
     text-align: center;
     border: 1px solid #2D2828C6;
   }
   
-  #loggedUsers th {
+  #loggedAdmin th {
     background-color: #71BAC1;
     color: #2D2828;
     font-weight: bold;
   }
   
-  #loggedUsers tr {
+  #loggedAdmin tr {
     background-color: #FFFEEF;
   }
   
-  #loggedUsers tr:hover {
+  #loggedAdmin tr:hover {
     background-color: #C8DFE0;
   }
   
-  #loggedUsers button {
+  #loggedAdmin button {
     padding: 5px;
     margin: 5px;
     background-color: #3ED2AA;
@@ -139,7 +139,7 @@
     cursor: pointer;
   }
   
-  #loggedUsers button:hover {
+  #loggedAdmin button:hover {
     background-color: #adffe7;
   }
   
@@ -149,7 +149,7 @@
       grid-row-gap: 2em;
     }
   
-    #loggedUsers {
+    #loggedAdmin {
       margin: 0;
       grid-column: 1/6;
     }
@@ -169,7 +169,7 @@
       margin-left: 70px;
     }
   
-    #loggedUsers table {
+    #loggedAdmin table {
       margin-top: 20px;
     }
   }
