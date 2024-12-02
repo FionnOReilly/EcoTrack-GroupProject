@@ -8,7 +8,7 @@ import InformationPage from './components/InformationPage.vue';
 import WasteLog from './components/WasteLog.vue';
 import LoginPage from './components/LoginPage.vue';
 import AdminLogin from './components/AdminLogin.vue';
-import Dashboard from './components/Dashboard.vue';
+import DashboardPage from './components/DashboardPage.vue';
 import AdminDashboard from "@/components/AdminDashboard.vue";
 import LeaderBoard from "@/components/LeaderBoard.vue";
 import UserGoals from "@/components/UserGoals.vue";
@@ -29,7 +29,7 @@ const routes = [
     { path: '/Goals', component: UserGoals },
 
     { path: '/AdminLogin', component: AdminLogin },
-    { path: '/dashboard', name: 'Dashboard', component: Dashboard, meta: { requiresAuth: true }, },
+    { path: '/dashboardPage', name: 'DashboardPage', component: DashboardPage, meta: { requiresAuth: true }, },
     { path: '/AdminDashboard', name: 'AdminDashboard', component: AdminDashboard, meta: { requiresAuth: true }, },
     { path: '/ViewAdmin', name: 'ViewAdmin', component: ViewAdmin, meta: { requiresAuth: true }, },
     { path: '/ManageUsers', name: 'ManageUsers', component: ManageUsers, meta: { requiresAuth: true }, },
