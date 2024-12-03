@@ -22,7 +22,10 @@
 6. Click **Go** to execute the query.
 
 ## Step 1: Copy Project Files
-1. Copy the `CI4-EcoTrack` project folder to your `C:\xampp\htdocs` path.
+1. Clone this repository into your **htdocs** folder:  
+[https://github.com/FionnOReilly/EcoTrack-GroupProject.git](https://github.com/FionnOReilly/EcoTrack-GroupProject.git)
+
+2. Switch to the branch called **'backupMaster'**, as that is the branch with the working project.
 
 ## Step 2: Configure XAMPP Apache
 1. Open the XAMPP control panel.
@@ -59,7 +62,7 @@
     ```plaintext
     CI_ENVIRONMENT = development
 
-    app.baseURL = 'http://localhost:8081/CI4-EcoTrack/public'
+   app.baseURL = 'http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public';
     
     database.default.hostname = localhost
     database.default.database = ecotrack
@@ -93,6 +96,8 @@
       ```bash
       npm run serve 
       ```
+ 4. **Click the local link that appears in the terminal** 
+ (e.g., `http://localhost:8082/`) to open the Vue application in your browser.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
