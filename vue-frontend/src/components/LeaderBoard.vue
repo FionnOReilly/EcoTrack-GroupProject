@@ -1,6 +1,6 @@
 <template>
   <h1 id="leaderboardTitle">Leaderboard</h1>
-  <div class="leaderboard">
+  <div class="leaderboard" style="margin:10px;">
     <div class="leaderboard-section">
       <table>
         <thead>
@@ -67,7 +67,7 @@ export default {
     },
   },
   mounted() {
-    this.getLeaderboardPoints();  // Ensure the API is called when the component is mounted
+    this.getLeaderboardPoints();
   }
 };
 

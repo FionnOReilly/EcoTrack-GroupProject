@@ -1,5 +1,11 @@
 <template>
+
+  <nav class="navbar">
+    <router-link to="/AdminDashboard" >Admin Dashboard</router-link>
+  </nav>
     <div class="grid-container">
+
+
       <!-- User Display Section -->
       <div id="loggedUsers">
         <h4>Users List</h4>
@@ -131,6 +137,25 @@
   
   <style scoped>
   /* Centering the grid container horizontally and keeping the table at the top */
+
+  /* Navbar */
+  .navbar {
+    background-color: #42A5A2;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+
+
+
   .grid-container {
     display: flex;
     flex-direction: column;

@@ -10,7 +10,6 @@ class CorsFilter implements FilterInterface
 	
 public function before(RequestInterface $request, $arguments = null)
 {
-    // Respond to preflight requests (OPTIONS)
     if ($request->getMethod() === 'options') {
         $response = service('response');
         $response->setHeader("Access-Control-Allow-Origin", "http://localhost:8082")

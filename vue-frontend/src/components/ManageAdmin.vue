@@ -1,6 +1,8 @@
 <template>
     <div class="manage-admins">
-
+      <nav class="navbar">
+        <router-link to="/AdminDashboard" >Admin Dashboard</router-link>
+      </nav>
       <div class="hero-container">
         <div class="textbox">
           <h1>Manage Admins</h1>
@@ -34,7 +36,7 @@
     },
   };
   </script>
-  
+
   <style scoped>
   /* Basic Reset */
   body {
@@ -56,14 +58,14 @@
     align-items: center;
     text-align: center;
   }
-  
+
   .hero-container .textbox {
     background: rgba(255, 255, 255, 0.9);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
-  
+
   .button {
     margin: 10px 5px;
     padding: 10px 20px;
@@ -75,22 +77,69 @@
     text-decoration: none;
   }
 
-  .button-link {
-  text-decoration: none;
-  color: white;
-  display: inline-block;
-}
-  
+
   .button:hover {
     background-color: #80CED6;
   }
-  
-  /* Footer */
-  .footer {
-    background-color: #333;
+
+
+  /* Navbar */
+  .navbar {
+    background-color: #42A5A2;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     color: white;
-    text-align: center;
-    padding: 10px;
   }
+
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+
+
+
+  .form-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+  }
+
+
+
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .form-group input:focus {
+    outline: none;
+    border-color: #42A5A2;
+  }
+
+  .form-group button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #42A5A2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  .form-group button:hover {
+    background-color: #80CED6;
+  }
+
   </style>
-  
