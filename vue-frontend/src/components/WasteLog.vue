@@ -9,10 +9,10 @@
             <label for="wasteType" class="wasteLabel">Waste Type: </label>
             <select id="wasteType" name="wasteType" v-model="wastelog.type">
               <option value="" disabled>Select a Type</option>
-              <option value="general">General Waste</option>
-              <option value="recyclable">Recyclable Materials</option>
-              <option value="glass">Glass Waste</option>
-              <option value="organic">Organic Waste</option>
+              <option value="General">General Waste</option>
+              <option value="Recyclable">Recyclable Materials</option>
+              <option value="Glass">Glass Waste</option>
+              <option value="Organic">Organic Waste</option>
             </select>
             <span id="error1"></span>
 
@@ -138,17 +138,21 @@ export default {
         return;
       }
 
-      let user_id = 1;
       const wasteLogData = {
         type: this.wastelog.type,
         size: this.wastelog.size,
         recyclable: this.wastelog.recyclable,
         date: this.wastelog.date,
-        user_id: user_id,
+        user_id: this.user.id,
       };
 
-      await axios.post('http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/addWasteLog', wasteLogData);    },
+      await axios.post('http://localhost:8081/EcoTrack-GroupProject/CI4-EcoTrack/public/addWasteLog', wasteLogData);
+      this.wastelog = { type: '', size: '', recyclable: '', date: '' };
+
+      this.getWasteLogs();
+      },
     async getWasteLogs() {
+
       const token = localStorage.getItem('token');
       const userId = this.user.id;
 
